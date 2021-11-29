@@ -1,4 +1,4 @@
-body{
+#index_body{
     padding: 0;
     margin:0;
     width: auto;
@@ -12,4 +12,12 @@ body{
     background-color: #2fff00;
     /*border-top: black solid 1px;*/
     /*border-bottom: black solid 1px;*/
+}
+
+#ProgressBar_body{
+    padding: 6px;
+    margin:0;
+    width: 329px;
+    height: 244px;
+    background-color: #2B2B2B;
 }
