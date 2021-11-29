@@ -1,0 +1,33 @@
+$Bg: #2B2B2B;
+$DaBg: #1E1E1E;
+$front: #3C3F41;
+$L1: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%);
+$L2: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
+$font1: #BBBBBB;
+$font2: #838383;
+$G:#2fff00;
+
+
+#index_body {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: 2px;
+}
+
+#ProBar {
+  /*margin-top: 2px;*/
+  width: 0px;
+  height: 2px;
+  background-color: $G;
+  /*border-top: black solid 1px;*/
+  /*border-bottom: black solid 1px;*/
+}
+
+#ProgressBar_body {
+  padding: 6px;
+  margin: 0;
+  width: 329px;
+  height: 244px;
+  background-color: $Bg;
+}

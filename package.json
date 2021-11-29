@@ -1,5 +1,5 @@
 {
-  "name": "DeadlineProgressBar",
+  "name": "deadlineprogressbar",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,5 +10,22 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^16.0.2"
-  }
+  },
+  "dependencies": {
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "electron-dev-webpack-plugin": "^1.0.5",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pealpool/DeadlineProgressBar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pealpool/DeadlineProgressBar/issues"
+  },
+  "homepage": "https://github.com/pealpool/DeadlineProgressBar#readme"
 }

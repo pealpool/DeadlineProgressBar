@@ -59,15 +59,18 @@ function createWindow() {
     const winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
     Menu.setApplicationMenu(null)
     win = new BrowserWindow({
-        width: winW,
-        height: 2,
-        maxHeight: 2,
-        x: 0,
-        y: winH - 2,
+        width: 329,
+        maxWidth:329,
+        minWidth:329,
+        height: 244,
+        maxHeight: 244,
+        minHeight:244,
+        x: winW/2-164,
+        y: winH/2 - 122,
         frame: false,
         useContentSize: false,
         resizable: false,
-        transparent: true,
+        // transparent: true,
         alwaysOnTop: true,
         icon: path.join(__dirname, 'img/ico16.ico')
     });
