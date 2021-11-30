@@ -57,25 +57,28 @@ function createWindow() {
     // 创建窗口并加载页面
     const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
     const winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
+    const wi = 329;
+    const hi = 244;
+    const pw = 20;
     Menu.setApplicationMenu(null)
     win = new BrowserWindow({
-        width: 329,
-        maxWidth:329,
-        minWidth:329,
-        height: 244,
-        maxHeight: 244,
-        minHeight:244,
-        x: winW/2-164,
-        y: winH/2 - 122,
+        width: wi + pw * 2,
+        maxWidth: wi + pw * 2,
+        minWidth: wi + pw * 2,
+        height: hi + pw * 2,
+        maxHeight: hi + pw * 2,
+        minHeight: hi + pw * 2,
+        x: winW / 2 - wi / 2 - pw,
+        y: winH / 2 - hi / 2 - pw,
         frame: false,
         useContentSize: false,
         resizable: false,
-        // transparent: true,
+        transparent: true,
         alwaysOnTop: true,
         icon: path.join(__dirname, 'img/ico16.ico')
     });
     win.loadURL(`file://${__dirname}/index.html`);
-    win.setIgnoreMouseEvents(true);
+    // win.setIgnoreMouseEvents(true);
     win.setMenu(null);
     // 窗口关闭的监听
     win.on('closed', (event) => {
@@ -90,12 +93,17 @@ function createWindow() {
     //     event.preventDefault();
     // });
 
+    //打开F12调试工具
+    win.webContents.openDevTools({mode: 'detach'});
+
     //创建系统通知区菜单
     tray = new Tray(path.join(__dirname, 'img/ico16.ico'));
     const contextMenu = Menu.buildFromTemplate([
         {
             label: '退出',
-            click: () => {win.destroy()}
+            click: () => {
+                win.destroy()
+            }
         },//我们需要在这里有一个真正的退出（这里直接强制退出）
         {
             label: 'run',
@@ -140,3 +148,5 @@ app.on('activate', () => {
 //         }
 //     }
 // }
+
+

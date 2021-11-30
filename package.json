@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "appName": "DeadLineProgressBar",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "electron ."
   },
-  "author": "",
+  "author": "pealpool",
   "license": "ISC",
   "devDependencies": {
     "electron": "^16.0.2"
@@ -14,8 +16,12 @@
   "dependencies": {
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "cssnano": "^5.0.12",
     "electron-dev-webpack-plugin": "^1.0.5",
+    "mini-css-extract-plugin": "^2.4.5",
     "node-loader": "^2.0.0",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.3.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1"
@@ -27,5 +33,54 @@
   "bugs": {
     "url": "https://github.com/pealpool/DeadlineProgressBar/issues"
   },
-  "homepage": "https://github.com/pealpool/DeadlineProgressBar#readme"
+  "homepage": "https://github.com/pealpool/DeadlineProgressBar#readme",
+  "build": {
+    "asar": true,
+    "productName": "DeadLineProgressBar",
+    "appId": "com.DeadLineProgressBar",
+    "copyright": "Copyright © pealpool",
+    "directories": {
+      "output": "pack"
+    },
+    "files": [
+      "OutputApp/**"
+    ],
+    "mac": {
+      "identity": "com.electron.pealpool",
+      "target": [
+        "dmg"
+      ],
+      "artifactName": "${productName}.${ext}",
+      "icon": "img/ico128.ico"
+    },
+    "dmg": {
+      "title": "${productName}",
+      "artifactName": "${productName}.${ext}",
+      "icon": "img/ico128.ico"
+    },
+    "win": {
+      "legalTrademarks": "Copyright © pealpool",
+      "publisherName": "electron",
+      "requestedExecutionLevel": "highestAvailable",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ],
+      "artifactName": "${productName}.${ext}",
+      "icon": "img/ico128.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": true,
+      "allowElevation": true,
+      "artifactName": "${productName}-安装包-V${version}.${ext}",
+      "runAfterFinish": true,
+      "shortcutName": "Electron+vue+webpack-template"
+    }
+  }
 }

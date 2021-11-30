@@ -1,0 +1,124 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'DigitalNumbers-Regular';
+  src: url("../img/DigitalNumbers-Regular.ttf"); }
+/*其中fontName替换为你的字体名称*/
+#ProgressBar_body {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: 2px;
+  overflow: hidden; }
+
+#ProBar {
+  /*margin-top: 2px;*/
+  width: 0;
+  height: 2px;
+  background-color: #2fff00;
+  /*border-top: black solid 1px;*/
+  /*border-bottom: black solid 1px;*/ }
+
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+#index_body {
+  padding: 20px;
+  margin: 0;
+  width: 329px;
+  height: 244px;
+  overflow: hidden;
+  -webkit-user-select: none; }
+
+#index_div {
+  position: relative;
+  box-sizing: border-box;
+  padding: 6px;
+  margin: 0;
+  width: 329px;
+  height: 244px;
+  border-radius: 10px;
+  background-color: #2B2B2B;
+  overflow: hidden;
+  box-shadow: 0px 1.4px 4.6px -13px rgba(0, 0, 0, 0.364), 0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536), 0px 6px 25px -13px rgba(0, 0, 0, 0.9); }
+
+.bigBoxT {
+  width: 317px;
+  height: 200px; }
+
+.bigBoxB {
+  height: 30px; }
+
+.myTab {
+  width: 126px;
+  height: 200px;
+  background: #2B2B2B;
+  border: 1px solid #1E1E1E;
+  box-sizing: border-box;
+  border-radius: 5px 0px 0px 0px; }
+
+.myOption {
+  height: 42px; }
+
+.optionBox {
+  margin-top: 11px;
+  margin-left: 8px; }
+
+.optionCircle {
+  float: left;
+  width: 25px;
+  height: 25px;
+  background: #2B2B2B;
+  border: 1px solid #3C3F41;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 10px #3C3F41;
+  border-radius: 50%; }
+
+.tabTitle {
+  float: left;
+  margin-left: 7px;
+  font-size: 18px;
+  line-height: 26px;
+  color: #838383; }
+
+.opSelected {
+  position: absolute;
+  width: 24px;
+  height: 20px;
+  left: 18px;
+  fill: #2fff00; }
+
+.figureBigBox {
+  margin-left: 6px; }
+
+.fgBox {
+  float: left;
+  width: 23px;
+  height: 39px;
+  background: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
+  border-radius: 3px;
+  margin-right: 2px; }
+
+.colon {
+  float: left;
+  width: 14px;
+  height: 39px;
+  color: #838383;
+  font-size: 24px;
+  font-family: 'DigitalNumbers-Regular'; }
+  .colon span {
+    margin-left: -4px;
+    line-height: 45px; }
+
+.fb_HourMinSec {
+  float: left;
+  height: 11px;
+  font-size: 9px;
+  color: #1E1E1E; }
+  .fb_HourMinSec span {
+    float: left; }
+    .fb_HourMinSec span:nth-child(1) {
+      margin-left: 12px; }
+    .fb_HourMinSec span:nth-child(2) {
+      margin-left: 39px; }
+
+/*# sourceMappingURL=css.css.map */

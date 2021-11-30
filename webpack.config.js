@@ -1,53 +1,60 @@
 const path = require('path');
-const webpack = require('webpack');
-const {dependencies} = require('../package.json');
-const ElectronDevWebpackPlugin = require('electron-dev-webpack-plugin');
+// const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+// Hard code this to production but can be adapted to accept args to change env.
+// const mode = 'production';
 
 module.exports = {
-    // 配置开发模式
-    mode: 'development',
-    entry: {
-        // 配置入口文件
-        main: path.join(__dirname, 'index.js')
-    },
-    // 配置出口文件
+// mode,
+    mode:"development",
     output: {
-        path: path.join(__dirname, 'OutputApp/'),
-        libraryTarget: 'commonjs2',
-        filename: '[name].js'
+// Webpack will create js files even though they are not used
+// filename: '[name].bundle.js',
+// chunkFilename: '[name].[chunkhash].chunk.js',
+// Where the CSS is saved to
+        path: path.resolve(__dirname, 'OutputApp')
     },
-    // 监听文件改变
-    watch: true,
     optimization: {
-        minimize: true,
+        minimize: false
     },
+    resolve: {
+        extensions: ['.css', '.scss'],
+        alias: {
+// Provides ability to include node_modules with ~
+            '~': path.resolve(process.cwd(), 'src'),
+        },
+    },
+
+    entry: {
+// Will create "styles.css" in "css" dir.
+        "styles": './css/css.scss',
+    },
+
     module: {
         rules: [
             {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.css|.scss$/,
+                test: /\.scss$/,
                 use: [
-                    'style-loader',
-                    { loader: 'css-loader', options: {importLoaders: 2}},  //2代表css-loader后还需要几个loader
-                    'sass-loader'
-                ]
-            }
-            ]
+// Extract and save the final CSS.
+                    MiniCssExtractPlugin.loader,
+// Load the CSS, set url = false to prevent following urls to fonts and images.
+                    { loader: "css-loader", options: { url: false, importLoaders: 1 } },
+// Add browser prefixes and minify CSS.
+//                     { loader: 'postcss-loader', options: { plugins: [autoprefixer(), cssnano()] }},
+// Load the SCSS/SASS
+                    { loader: 'sass-loader' },
+                ],
+            },
+        ],
     },
-    externals: [
-        ...Object.keys(dependencies || {})
-    ],
-    node: {
-        __dirname: true,
-        __filename: true
-    },
+
     plugins: [
-        new webpack.DefinePlugin({}),
-        new ElectronDevWebpackPlugin()
-    ],
-    target: 'electron-main'
+// Define the filename pattern for CSS.
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
+    ]
 }

@@ -5,29 +5,159 @@ $L1: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%);
 $L2: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
 $font1: #BBBBBB;
 $font2: #838383;
-$G:#2fff00;
+$G: #2fff00;
+$bigBox-W: 329px;
+$bigBox-H: 244px;
+$bigBoxT-H: 200px;
+$pw: 20px;
+$frSize1: 18px;
 
+@font-face {
+  font-family: 'DigitalNumbers-Regular';
+  src: url('../img/DigitalNumbers-Regular.ttf');
+}
+/*其中fontName替换为你的字体名称*/
 
-#index_body {
+#ProgressBar_body {
   padding: 0;
   margin: 0;
   width: auto;
   height: 2px;
+  overflow: hidden;
 }
 
 #ProBar {
   /*margin-top: 2px;*/
-  width: 0px;
+  width: 0;
   height: 2px;
   background-color: $G;
   /*border-top: black solid 1px;*/
   /*border-bottom: black solid 1px;*/
 }
 
-#ProgressBar_body {
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+#index_body {
+  padding: $pw;
+  margin: 0;
+  width: $bigBox-W;
+  height: $bigBox-H;
+  overflow: hidden;
+  -webkit-user-select: none;
+}
+
+#index_div {
+  position: relative;
+  box-sizing: border-box;
   padding: 6px;
   margin: 0;
-  width: 329px;
-  height: 244px;
+  width: $bigBox-W;
+  height: $bigBox-H;
+  border-radius: 10px;
   background-color: $Bg;
+  overflow: hidden;
+  box-shadow: 0px 1.4px 4.6px -13px rgba(0, 0, 0, 0.364),
+  0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536),
+  0px 6px 25px -13px rgba(0, 0, 0, 0.9);
+}
+
+.bigBoxT {
+  width: $bigBox-W - 2 * 6px;
+  height: $bigBoxT-H;
+}
+
+.bigBoxB {
+  height: $bigBox-H - 2 * 6px - $bigBoxT-H - 2px;
+}
+
+.myTab {
+  width: 126px;
+  height: 200px;
+  background: $Bg;
+  border: 1px solid $DaBg;
+  box-sizing: border-box;
+  border-radius: 5px 0px 0px 0px;
+}
+
+.myOption {
+  height: 42px;
+}
+
+.optionBox {
+  margin-top: 11px;
+  margin-left: 8px;
+}
+
+.optionCircle {
+  float: left;
+  width: 25px;
+  height: 25px;
+  background: $Bg;
+  border: 1px solid $front;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 10px $front;
+  border-radius: 50%;
+}
+
+.tabTitle {
+  float: left;
+  margin-left: 7px;
+  font-size: $frSize1;
+  line-height: $frSize1 + 8px;
+  color: $font2;
+}
+
+.opSelected {
+  position: absolute;
+  width: 24px;
+  height: 20px;
+  left: 18px;
+  fill: $G;
+}
+
+.figureBigBox{
+  margin-left: 6px;
+}
+
+.fgBox{
+  float: left;
+  width: 23px;
+  height: 39px;
+  background: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
+  border-radius: 3px;
+  margin-right: 2px;
+}
+.colon{
+  float: left;
+  width: 14px;
+  height: 39px;
+  color:$font2;
+  font-size: 24px;
+  font-family: 'DigitalNumbers-Regular';
+
+  span{
+    margin-left: -4px;
+    line-height: 45px;
+  }
+}
+
+.fb_HourMinSec{
+  float: left;
+  height: 11px;
+  font-size: 9px;
+  color: $DaBg;
+
+  span{
+    float: left;
+
+    &:nth-child(1){
+      margin-left: 12px;
+    }
+    &:nth-child(2){
+      margin-left: 39px;
+    }
+  }
+
 }
