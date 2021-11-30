@@ -88,6 +88,7 @@
   fill: #2fff00; }
 
 .figureBigBox {
+  position: relative;
   margin-left: 6px; }
 
 .fgBox {
@@ -120,5 +121,18 @@
       margin-left: 12px; }
     .fb_HourMinSec span:nth-child(2) {
       margin-left: 39px; }
+    .fb_HourMinSec span:nth-child(3) {
+      margin-left: 39px; }
+
+.figureChrBox {
+  position: absolute;
+  margin-top: 4px;
+  margin-left: 2px; }
+
+.figureChr {
+  font-family: 'DigitalNumbers-Regular';
+  font-size: 24px;
+  color: #838383;
+  letter-spacing: 6px; }
 
 /*# sourceMappingURL=css.css.map */

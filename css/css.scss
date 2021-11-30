@@ -11,6 +11,7 @@ $bigBox-H: 244px;
 $bigBoxT-H: 200px;
 $pw: 20px;
 $frSize1: 18px;
+$frSizeD: 24px;
 
 @font-face {
   font-family: 'DigitalNumbers-Regular';
@@ -118,6 +119,7 @@ $frSize1: 18px;
 }
 
 .figureBigBox{
+  position: relative;
   margin-left: 6px;
 }
 
@@ -134,7 +136,7 @@ $frSize1: 18px;
   width: 14px;
   height: 39px;
   color:$font2;
-  font-size: 24px;
+  font-size: $frSizeD;
   font-family: 'DigitalNumbers-Regular';
 
   span{
@@ -158,6 +160,22 @@ $frSize1: 18px;
     &:nth-child(2){
       margin-left: 39px;
     }
+    &:nth-child(3){
+      margin-left: 39px;
+    }
   }
 
+}
+
+.figureChrBox{
+  position: absolute;
+  margin-top: 4px;
+  margin-left: 2px;
+}
+
+.figureChr{
+  font-family: 'DigitalNumbers-Regular';
+  font-size: $frSizeD;
+  color: $font2;
+  letter-spacing:6px;
 }
