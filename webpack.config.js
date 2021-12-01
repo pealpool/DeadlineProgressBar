@@ -1,44 +1,39 @@
 const path = require('path');
-// const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-// Hard code this to production but can be adapted to accept args to change env.
-// const mode = 'production';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { dependencies } = require('./package.json');
 
 module.exports = {
-// mode,
-    mode:"development",
+    mode: process.env.NODE_ENV,
+    entry: {
+        main: ['./js/app.js'],
+        preload: ['./index.js']
+    },
     output: {
-// Webpack will create js files even though they are not used
-// filename: '[name].bundle.js',
-// chunkFilename: '[name].[chunkhash].chunk.js',
-// Where the CSS is saved to
-        path: path.resolve(__dirname, 'OutputApp')
+        path: path.join(process.cwd(), 'OutputApp'),
+        libraryTarget: 'commonjs2',
+        filename: './[name].js'
+    },
+    node: {
+        fs: 'empty',
+        __dirname: false
     },
     optimization: {
-        minimize: false
+        runtimeChunk: false,
+        minimize: true
     },
-    resolve: {
-        extensions: ['.css', '.scss'],
-        alias: {
-// Provides ability to include node_modules with ~
-            '~': path.resolve(process.cwd(), 'src'),
-        },
-    },
-
-    entry: {
-// Will create "styles.css" in "css" dir.
-        "styles": './css/css.scss',
-    },
-
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './index.html',
+            filename: 'index.html'
+        }),
+    ],
     module: {
         rules: [
             {
                 test: /\.scss$/,
                 use: [
 // Extract and save the final CSS.
-                    MiniCssExtractPlugin.loader,
+                    {loader:'mini-css-extract-plugin'},
 // Load the CSS, set url = false to prevent following urls to fonts and images.
                     { loader: "css-loader", options: { url: false, importLoaders: 1 } },
 // Add browser prefixes and minify CSS.
@@ -47,14 +42,15 @@ module.exports = {
                     { loader: 'sass-loader' },
                 ],
             },
-        ],
+            {
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: /node_modules/
+            }
+        ]
     },
-
-    plugins: [
-// Define the filename pattern for CSS.
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[id].css',
-        })
-    ]
-}
+    externals: [
+        ...Object.keys(dependencies || {})
+    ],
+    target: 'electron-main'
+};

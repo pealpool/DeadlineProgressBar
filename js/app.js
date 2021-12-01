@@ -1,5 +1,7 @@
 'use strict';
 // 使用 remote API 来获取渲染页面的当前视窗
+import $ from 'jquery';
+import './css/css.scss';
 
 const electron = require("electron");
 const remote = require('electron').remote;

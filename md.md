@@ -8,6 +8,11 @@ npm update electron -g
 Electron .
 ```
 
+### 更新包
+````
+ncu -u
+````
+
 ### 界面
 https://www.figma.com/file/q6YCZysUbUrko6aOGvBVkZ/DeadlineProgressBar
 
