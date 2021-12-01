@@ -39,7 +39,7 @@
   border-radius: 10px;
   background-color: #2B2B2B;
   overflow: hidden;
-  box-shadow: 0px 1.4px 4.6px -13px rgba(0, 0, 0, 0.364), 0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536), 0px 6px 25px -13px rgba(0, 0, 0, 0.9); }
+  box-shadow: 0 1.4px 4.6px -13px rgba(0, 0, 0, 0.364), 0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536), 0px 6px 25px -13px rgba(0, 0, 0, 0.9); }
 
 .bigBoxT {
   width: 317px;
@@ -49,17 +49,35 @@
   height: 30px; }
 
 .myTab {
-  width: 126px;
+  float: left;
   height: 200px;
   background: #2B2B2B;
   border: 1px solid #1E1E1E;
-  box-sizing: border-box;
-  border-radius: 5px 0px 0px 0px; }
+  box-sizing: border-box; }
+  .myTab.act {
+    border: 1px solid #3C3F41;
+    background: #3C3F41; }
+    .myTab.act .tabTitle, .myTab.act .figureChr, .myTab.act .colon, .myTab.act .timeListTabShort {
+      color: #BBBBBB; }
+    .myTab.act .timeListTabShort, .myTab.act .timeListTabLong {
+      background-color: #2B2B2B; }
+    .myTab.act .fgBox {
+      background: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%); }
+
+#tab_l {
+  width: 126px;
+  border-radius: 5px 0 0 0; }
+
+#tab_r {
+  width: 189px;
+  margin-left: 2px;
+  border-radius: 0 5px 0 0; }
 
 .myOption {
   height: 42px; }
 
 .optionBox {
+  position: relative;
   margin-top: 11px;
   margin-left: 8px; }
 
@@ -84,12 +102,14 @@
   position: absolute;
   width: 24px;
   height: 20px;
-  left: 18px;
+  left: 3px;
   fill: #2fff00; }
 
 .figureBigBox {
   position: relative;
-  margin-left: 6px; }
+  margin-left: 6px;
+  width: auto;
+  height: 64px; }
 
 .fgBox {
   float: left;
@@ -122,17 +142,100 @@
     .fb_HourMinSec span:nth-child(2) {
       margin-left: 39px; }
     .fb_HourMinSec span:nth-child(3) {
-      margin-left: 39px; }
+      margin-left: 31px; }
 
 .figureChrBox {
   position: absolute;
   margin-top: 4px;
   margin-left: 2px; }
 
+.figureChrRow {
+  float: left; }
+
+.row_m {
+  margin-left: 13px; }
+
+.row_s {
+  margin-left: 14px; }
+
 .figureChr {
   font-family: 'DigitalNumbers-Regular';
   font-size: 24px;
   color: #838383;
   letter-spacing: 6px; }
+
+.timeListBigBox {
+  position: relative;
+  width: auto;
+  height: 68px;
+  margin-left: 6px; }
+
+.timeListAdd {
+  text-align: center;
+  font-size: 13px;
+  color: #838383;
+  float: left;
+  width: 54px;
+  height: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background: #2B2B2B;
+  border: 1px solid #1E1E1E;
+  box-sizing: border-box;
+  border-radius: 3px; }
+
+.timeListBoxFt {
+  position: absolute; }
+
+.timeListTabLong {
+  color: #838383;
+  float: left;
+  width: 54px;
+  height: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background: #1E1E1E;
+  box-sizing: border-box;
+  border-radius: 3px;
+  overflow: hidden;
+  padding-left: 2px; }
+  .timeListTabLong span {
+    float: left; }
+    .timeListTabLong span:nth-child(odd) {
+      width: 16px;
+      font-size: 13px;
+      margin-top: 2px;
+      margin-left: 1px; }
+    .timeListTabLong span:nth-child(even) {
+      font-size: 9px;
+      margin-top: 6px;
+      margin-left: 1px; }
+
+.timeListTabShort {
+  color: #838383;
+  float: left;
+  width: 41px;
+  height: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background: #1E1E1E;
+  box-sizing: border-box;
+  border-radius: 3px;
+  overflow: hidden;
+  padding-right: 3px; }
+  .timeListTabShort span {
+    float: right; }
+    .timeListTabShort span:nth-child(even) {
+      width: 16px;
+      font-size: 13px;
+      margin-top: 2px;
+      margin-left: 1px;
+      text-align: right; }
+    .timeListTabShort span:nth-child(odd) {
+      font-size: 9px;
+      margin-top: 6px;
+      margin-left: 1px;
+      text-align: left;
+      width: 8px; }
 
 /*# sourceMappingURL=css.css.map */

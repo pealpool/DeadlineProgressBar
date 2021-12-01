@@ -3,20 +3,24 @@ $DaBg: #1E1E1E;
 $front: #3C3F41;
 $L1: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%);
 $L2: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
-$font1: #BBBBBB;
-$font2: #838383;
+$fontL: #BBBBBB;
+$fontD: #838383;
 $G: #2fff00;
 $bigBox-W: 329px;
 $bigBox-H: 244px;
 $bigBoxT-H: 200px;
 $pw: 20px;
-$frSize1: 18px;
-$frSizeD: 24px;
+$frSizeDig: 24px;
+$frSizeTitle: 18px;
+$frSizeMid: 13px;
+$frSizeSmall: 10px;
+$frSizeMin: 9px;
 
 @font-face {
   font-family: 'DigitalNumbers-Regular';
   src: url('../img/DigitalNumbers-Regular.ttf');
 }
+
 /*其中fontName替换为你的字体名称*/
 
 #ProgressBar_body {
@@ -59,7 +63,7 @@ $frSizeD: 24px;
   border-radius: 10px;
   background-color: $Bg;
   overflow: hidden;
-  box-shadow: 0px 1.4px 4.6px -13px rgba(0, 0, 0, 0.364),
+  box-shadow: 0 1.4px 4.6px -13px rgba(0, 0, 0, 0.364),
   0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536),
   0px 6px 25px -13px rgba(0, 0, 0, 0.9);
 }
@@ -74,12 +78,43 @@ $frSizeD: 24px;
 }
 
 .myTab {
-  width: 126px;
+  float: left;
   height: 200px;
   background: $Bg;
   border: 1px solid $DaBg;
   box-sizing: border-box;
-  border-radius: 5px 0px 0px 0px;
+
+  &.act {
+    border: 1px solid $front;
+    background: $front;
+
+    & .tabTitle,
+    & .figureChr,
+    & .colon,
+    & .timeListTabShort{
+      color: $fontL;
+    }
+
+    & .timeListTabShort,
+    & .timeListTabLong {
+      background-color: $Bg;
+    }
+
+    & .fgBox {
+      background: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%);
+    }
+  }
+}
+
+#tab_l {
+  width: 126px;
+  border-radius: 5px 0 0 0;
+}
+
+#tab_r {
+  width: 189px;
+  margin-left: 2px;
+  border-radius: 0 5px 0 0;
 }
 
 .myOption {
@@ -87,6 +122,7 @@ $frSizeD: 24px;
 }
 
 .optionBox {
+  position: relative;
   margin-top: 11px;
   margin-left: 8px;
 }
@@ -105,25 +141,27 @@ $frSizeD: 24px;
 .tabTitle {
   float: left;
   margin-left: 7px;
-  font-size: $frSize1;
-  line-height: $frSize1 + 8px;
-  color: $font2;
+  font-size: $frSizeTitle;
+  line-height: $frSizeTitle + 8px;
+  color: $fontD;
 }
 
 .opSelected {
   position: absolute;
   width: 24px;
   height: 20px;
-  left: 18px;
+  left: 3px;
   fill: $G;
 }
 
-.figureBigBox{
+.figureBigBox {
   position: relative;
   margin-left: 6px;
+  width: auto;
+  height: 64px;
 }
 
-.fgBox{
+.fgBox {
   float: left;
   width: 23px;
   height: 39px;
@@ -131,51 +169,157 @@ $frSizeD: 24px;
   border-radius: 3px;
   margin-right: 2px;
 }
-.colon{
+
+.colon {
   float: left;
   width: 14px;
   height: 39px;
-  color:$font2;
-  font-size: $frSizeD;
+  color: $fontD;
+  font-size: $frSizeDig;
   font-family: 'DigitalNumbers-Regular';
 
-  span{
+  span {
     margin-left: -4px;
     line-height: 45px;
   }
 }
 
-.fb_HourMinSec{
+.fb_HourMinSec {
   float: left;
   height: 11px;
-  font-size: 9px;
+  font-size: $frSizeMin;
   color: $DaBg;
 
-  span{
+  span {
     float: left;
 
-    &:nth-child(1){
+    &:nth-child(1) {
       margin-left: 12px;
     }
-    &:nth-child(2){
+
+    &:nth-child(2) {
       margin-left: 39px;
     }
-    &:nth-child(3){
-      margin-left: 39px;
+
+    &:nth-child(3) {
+      margin-left: 31px;
     }
   }
 
 }
 
-.figureChrBox{
+.figureChrBox {
   position: absolute;
   margin-top: 4px;
   margin-left: 2px;
 }
 
-.figureChr{
+.figureChrRow {
+  float: left;
+}
+
+.row_m {
+  margin-left: 13px;
+}
+
+.row_s {
+  margin-left: 14px;
+}
+
+.figureChr {
   font-family: 'DigitalNumbers-Regular';
-  font-size: $frSizeD;
-  color: $font2;
-  letter-spacing:6px;
+  font-size: $frSizeDig;
+  color: $fontD;
+  letter-spacing: 6px;
+}
+
+.timeListBigBox {
+  position: relative;
+  width: auto;
+  height: 68px;
+  margin-left: 6px;
+}
+
+.timeListAdd {
+  text-align: center;
+  font-size: $frSizeMid;
+  color: $fontD;
+  float: left;
+  width: 54px;
+  height: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background: $Bg;
+  border: 1px solid $DaBg;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+.timeListBoxFt {
+  position: absolute;
+}
+
+.timeListTabLong {
+  color: $fontD;
+  float: left;
+  width: 54px;
+  height: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background: $DaBg;
+  box-sizing: border-box;
+  border-radius: 3px;
+  overflow: hidden;
+  padding-left: 2px;
+
+  span {
+    float: left;
+
+    &:nth-child(odd) {
+      width: 16px;
+      font-size: $frSizeMid;
+      margin-top: 2px;
+      margin-left: 1px;
+    }
+
+    &:nth-child(even) {
+      font-size: $frSizeMin;
+      margin-top: 6px;
+      margin-left: 1px;
+    }
+  }
+}
+
+.timeListTabShort {
+  color: $fontD;
+  float: left;
+  width: 41px;
+  height: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background: $DaBg;
+  box-sizing: border-box;
+  border-radius: 3px;
+  overflow: hidden;
+  padding-right: 3px;
+
+  span {
+    float: right;
+
+    &:nth-child(even) {
+      width: 16px;
+      font-size: $frSizeMid;
+      margin-top: 2px;
+      margin-left: 1px;
+      text-align: right;
+    }
+
+    &:nth-child(odd) {
+      font-size: $frSizeMin;
+      margin-top: 6px;
+      margin-left: 1px;
+      text-align: left;
+      width: 8px;
+    }
+  }
 }

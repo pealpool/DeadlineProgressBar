@@ -4,52 +4,165 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!--    <link rel="stylesheet" href="OutputApp/styles.css">-->
-<!--    <link rel="stylesheet" href="css/css.css">-->
+    <link rel="stylesheet" href="css/css.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/app.js"></script>
 </head>
 <body id="index_body">
 <div id="index_div">
     <div class="bigBoxT">
-        <div id="leftBox" class="Box">
-            <div id="tab_1" class="myTab">
-                <div class="myOption">
-                    <div class="optionBox">
-                        <div class="optionCircle"></div>
-                        <svg class="opSelected" style="display: none" viewBox="0 0 1024 1024"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M997.888 70.144C686.592 261.12 460.8 502.272 358.912 623.104L110.08 428.032 0 516.608l429.568 437.248C503.296 764.416 737.792 394.24 1024 131.072l-26.112-60.928m0 0z"></path>
-                        </svg>
-                    </div>
-                    <div class="tabTitle">到点提醒</div>
+        <div id="tab_l" class="myTab">
+            <div class="myOption">
+                <div class="optionBox">
+                    <div class="optionCircle"></div>
+                    <svg class="opSelected" style="display: none" viewBox="0 0 1024 1024"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M997.888 70.144C686.592 261.12 460.8 502.272 358.912 623.104L110.08 428.032 0 516.608l429.568 437.248C503.296 764.416 737.792 394.24 1024 131.072l-26.112-60.928m0 0z"></path>
+                    </svg>
                 </div>
-                <div class="figureBigBox">
-                    <div class="figureChrBox">
-                        <div class="figureChrRow row_h">
-                            <div class="figureChr">22</div>
-                        </div>
-                        <div class="figureChrRow row_m">
-                            <div class="figureChr">38</div>
-                        </div>
+                <div class="tabTitle">到点提醒</div>
+            </div>
+            <div class="figureBigBox">
+                <div class="figureChrBox">
+                    <div class="figureChrRow row_h">
+                        <div class="figureChr">22</div>
                     </div>
-                    <div class="figureSmallBox">
-                        <div class="fgBox"></div>
-                        <div class="fgBox"></div>
-                        <div class="colon"><span>:</span></div>
-                        <div class="fgBox"></div>
-                        <div class="fgBox"></div>
+                    <div class="figureChrRow row_m">
+                        <div class="figureChr">38</div>
                     </div>
-                    <div class="fb_HourMinSec">
-                        <span>Hour</span>
-                        <span>Minute</span>
+                </div>
+                <div class="figureSmallBox">
+                    <div class="fgBox"></div>
+                    <div class="fgBox"></div>
+                    <div class="colon"><span>:</span></div>
+                    <div class="fgBox"></div>
+                    <div class="fgBox"></div>
+                </div>
+                <div class="fb_HourMinSec">
+                    <span>Hour</span>
+                    <span>Minute</span>
+                </div>
+            </div>
+            <div class="timeListBigBox">
+                <div class="timeListBoxFt">
+                    <div class="timeListTabLong">
+                        <span>11</span>
+                        <span>h</span>
+                        <span>10</span>
+                        <span>m</span>
                     </div>
+                    <div class="timeListTabLong">
+                        <span>18</span>
+                        <span>h</span>
+                        <span>00</span>
+                        <span>m</span>
+                    </div>
+                </div>
+                <div class="timeListBoxBg">
+                    <div class="timeListAdd">+</div>
+                    <div class="timeListAdd">+</div>
+                    <div class="timeListAdd">+</div>
+                    <div class="timeListAdd">+</div>
+                    <div class="timeListAdd">+</div>
+                    <div class="timeListAdd">+</div>
                 </div>
             </div>
         </div>
-        <div id="rightBox" class="Box"></div>
+        <div id="tab_r" class="myTab act">
+            <div class="myOption">
+                <div class="optionBox">
+                    <div class="optionCircle"></div>
+                    <svg class="opSelected" viewBox="0 0 1024 1024"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M997.888 70.144C686.592 261.12 460.8 502.272 358.912 623.104L110.08 428.032 0 516.608l429.568 437.248C503.296 764.416 737.792 394.24 1024 131.072l-26.112-60.928m0 0z"></path>
+                    </svg>
+                </div>
+                <div class="tabTitle">倒数提醒</div>
+            </div>
+            <div class="figureBigBox">
+                <div class="figureChrBox">
+                    <div class="figureChrRow row_h">
+                        <div class="figureChr">22</div>
+                    </div>
+                    <div class="figureChrRow row_m">
+                        <div class="figureChr">38</div>
+                    </div>
+                    <div class="figureChrRow row_s">
+                        <div class="figureChr">47</div>
+                    </div>
+                </div>
+                <div class="figureSmallBox">
+                    <div class="fgBox"></div>
+                    <div class="fgBox"></div>
+                    <div class="colon"><span>:</span></div>
+                    <div class="fgBox"></div>
+                    <div class="fgBox"></div>
+                    <div class="colon"><span>:</span></div>
+                    <div class="fgBox"></div>
+                    <div class="fgBox"></div>
+                </div>
+                <div class="fb_HourMinSec">
+                    <span>Hour</span>
+                    <span>Minute</span>
+                    <span>Second</span>
+                </div>
+            </div>
+            <div class="timeListBigBox">
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>1</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>3</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>5</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>10</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>20</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>25</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>30</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>40</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>60</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>m</span>
+                    <span>90</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>h</span>
+                    <span>2</span>
+                </div>
+                <div class="timeListTabShort">
+                    <span>h</span>
+                    <span>3</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--<div class="bigBoxB">-->
-    <!--    <div id="hideButton_1" class="grayButton">隐藏</div>-->
-    <!--    <div id="startNew" class="greenButton">开始新倒数</div>-->
-    <!--</div>-->
+    <!--    <div class="bigBoxB">-->
+    <!--        <div id="hideButton_1" class="grayButton">隐藏</div>-->
+    <!--        <div id="startNew" class="greenButton">开始新倒数</div>-->
+    <!--    </div>-->
 </div>
 </body>
 </html>
