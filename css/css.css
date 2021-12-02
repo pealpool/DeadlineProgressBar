@@ -46,6 +46,7 @@
   height: 200px; }
 
 .bigBoxB {
+  margin-top: 2px;
   height: 30px; }
 
 .myTab {
@@ -237,5 +238,31 @@
       margin-left: 1px;
       text-align: left;
       width: 8px; }
+
+.grayButton {
+  float: left;
+  width: 126px;
+  height: 30px;
+  background-color: #3C3F41;
+  border-radius: 0 0 0 5px;
+  color: #838383;
+  text-align: center;
+  font-size: 18px;
+  line-height: 28px; }
+  .grayButton:hover {
+    background-color: #45484a; }
+
+.greenButton {
+  float: left;
+  width: 189px;
+  height: 30px;
+  background-color: #27D600;
+  border-radius: 0 0 5px 0;
+  color: #2B2B2B;
+  text-align: center;
+  font-size: 18px;
+  line-height: 28px; }
+  .greenButton:hover {
+    background-color: #2fff00; }
 
 /*# sourceMappingURL=css.css.map */
