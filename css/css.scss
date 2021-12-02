@@ -9,12 +9,17 @@ $G: #2fff00;
 $bigBox-W: 329px;
 $bigBox-H: 244px;
 $bigBoxT-H: 200px;
-$pw: 20px;
+$pw: 16px;
+$pht: 10px;
+$phb: 20px;
 $frSizeDig: 24px;
 $frSizeTitle: 18px;
 $frSizeMid: 13px;
 $frSizeSmall: 10px;
 $frSizeMin: 9px;
+@mixin tra{
+  transition: all .5s ease-in-out;
+}
 
 @font-face {
   font-family: 'DigitalNumbers-Regular';
@@ -45,12 +50,13 @@ $frSizeMin: 9px;
 /*---------------------------------------------------------------------------*/
 
 #index_body {
-  padding: $pw;
+  padding: $pw $pht $pw $phb;
   margin: 0;
   width: $bigBox-W;
   height: $bigBox-H;
   overflow: hidden;
   -webkit-user-select: none;
+  //-webkit-app-region: drag;
 }
 
 #index_div {
@@ -83,6 +89,12 @@ $frSizeMin: 9px;
   background: $Bg;
   border: 1px solid $DaBg;
   box-sizing: border-box;
+  @include tra;
+  //-webkit-app-region: no-drag;
+
+  &:hover{
+    border: 1px solid $front;
+  }
 
   &.act {
     border: 1px solid $front;
@@ -91,7 +103,8 @@ $frSizeMin: 9px;
     & .tabTitle,
     & .figureChr,
     & .colon,
-    & .timeListTabShort{
+    & .timeListTabShort,
+    & .timeListTabLong {
       color: $fontL;
     }
 
@@ -144,6 +157,7 @@ $frSizeMin: 9px;
   font-size: $frSizeTitle;
   line-height: $frSizeTitle + 8px;
   color: $fontD;
+  @include tra;
 }
 
 .opSelected {
@@ -168,6 +182,7 @@ $frSizeMin: 9px;
   background: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
   border-radius: 3px;
   margin-right: 2px;
+  @include tra;
 }
 
 .colon {
@@ -177,6 +192,7 @@ $frSizeMin: 9px;
   color: $fontD;
   font-size: $frSizeDig;
   font-family: 'DigitalNumbers-Regular';
+  @include tra;
 
   span {
     margin-left: -4px;
@@ -231,6 +247,7 @@ $frSizeMin: 9px;
   font-size: $frSizeDig;
   color: $fontD;
   letter-spacing: 6px;
+  @include tra;
 }
 
 .timeListBigBox {
@@ -249,7 +266,7 @@ $frSizeMin: 9px;
   height: 20px;
   margin-right: 4px;
   margin-bottom: 4px;
-  background: $Bg;
+  //background: $Bg;
   border: 1px solid $DaBg;
   box-sizing: border-box;
   border-radius: 3px;
@@ -271,6 +288,7 @@ $frSizeMin: 9px;
   border-radius: 3px;
   overflow: hidden;
   padding-left: 2px;
+  @include tra;
 
   span {
     float: left;
@@ -302,6 +320,7 @@ $frSizeMin: 9px;
   border-radius: 3px;
   overflow: hidden;
   padding-right: 3px;
+  @include tra;
 
   span {
     float: right;

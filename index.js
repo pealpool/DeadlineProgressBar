@@ -50,32 +50,39 @@ const {app, Menu, Tray} = electron;
 const {BrowserWindow} = electron;
 const path = require('path');
 
+
 let win;
 let tray = null
 
+
 function createWindow() {
     // 创建窗口并加载页面
+
     const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
     const winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
     const wi = 329;
     const hi = 244;
-    const pw = 20;
+    const pw = 16;
+    const pht = 10;
+    const phb = 20;
     Menu.setApplicationMenu(null)
     win = new BrowserWindow({
         width: wi + pw * 2,
         maxWidth: wi + pw * 2,
         minWidth: wi + pw * 2,
-        height: hi + pw * 2,
-        maxHeight: hi + pw * 2,
-        minHeight: hi + pw * 2,
+        height: hi + pht + phb,
+        maxHeight: hi + pht + phb,
+        minHeight: hi + pht + phb,
         x: winW / 2 - wi / 2 - pw,
-        y: winH / 2 - hi / 2 - pw,
+        y: winH / 2 - hi / 2 - pht,
         frame: false,
         useContentSize: false,
         resizable: false,
         transparent: true,
         alwaysOnTop: true,
-        icon: path.join(__dirname, 'img/ico16.ico')
+        icon: path.join(__dirname, 'img/ico16.ico'),
+        nodeIntegration: true,
+        contextIsolation: false
     });
     win.loadURL(`file://${__dirname}/index.html`);
     // win.setIgnoreMouseEvents(true);
@@ -118,6 +125,17 @@ function createWindow() {
     //     win.isVisible() ? win.hide() : win.show()
     //     win.isVisible() ? win.setSkipTaskbar(false) : win.setSkipTaskbar(true);
     // })
+
+    // 禁用框架的右键菜单
+    win.hookWindowMessage(278, function (e) {
+        win.setEnabled(false); //窗口禁用
+        setTimeout(() => {
+            win.setEnabled(true); //窗口启用
+        }, 100); //延时太快会立刻启用，太慢会妨碍窗口其他操作，自行测试
+        return true;
+    })
+
+
 }
 
 app.on('ready', createWindow);
@@ -148,5 +166,4 @@ app.on('activate', () => {
 //         }
 //     }
 // }
-
 

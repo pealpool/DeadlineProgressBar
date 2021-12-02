@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!--    <link rel="stylesheet" href="OutputApp/styles.css">-->
     <link rel="stylesheet" href="css/css.css">
-    <script src="./js/jquery-3.6.0.min.js"></script>
-    <script src="./js/app.js"></script>
+<!--    <script type="module" src="js/jquery-3.6.0.min.js"></script>-->
+
 </head>
 <body id="index_body">
 <div id="index_div">
@@ -165,4 +164,19 @@
     <!--    </div>-->
 </div>
 </body>
+
+
+
+<script> if (typeof module === 'object'){window.module = module; module  = undefined;}</script>
+<!--这句是解决代码Electron与JQuery冲突,期间的为自己的js和jQuery,记住,要将自己的js和引入的jQuery放在这里两句代码中间.（第一句）-->
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script type="module" src="js/box.js"></script>
+
+<script> if (window.module) module = window.module;</script>
+<!--这句是解决代码Electron与JQuery冲突,期间的为自己的js和jQuery,记住,要将自己的js和引入的jQuery放在这里两句代码中间.（第二句）-->
+
+
+
+
 </html>

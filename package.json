@@ -19,6 +19,7 @@
     "css-loader": "^6.5.1",
     "cssnano": "^5.0.12",
     "electron-dev-webpack-plugin": "^1.0.5",
+    "electron-drag": "^2.0.0",
     "jquery": "^3.6.0",
     "mini-css-extract-plugin": "^2.4.5",
     "node-loader": "^2.0.0",
