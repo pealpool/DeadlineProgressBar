@@ -1,11 +1,13 @@
 $Bg: #2B2B2B;
 $DaBg: #1E1E1E;
-$front: #3C3F41;
+$frontD: #3C3F41;
+$frontL: #45484a;
 $L1: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%);
 $L2: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
 $fontL: #BBBBBB;
 $fontD: #838383;
-$G: #2fff00;
+$GreenL: #2fff00;
+$GreenD: #27D600;
 $bigBox-W: 329px;
 $bigBox-H: 244px;
 $bigBoxT-H: 200px;
@@ -40,7 +42,7 @@ $frSizeMin: 9px;
   /*margin-top: 2px;*/
   width: 0;
   height: 2px;
-  background-color: $G;
+  background-color: $GreenL;
   /*border-top: black solid 1px;*/
   /*border-bottom: black solid 1px;*/
 }
@@ -80,6 +82,7 @@ $frSizeMin: 9px;
 }
 
 .bigBoxB {
+  margin-top: 2px;
   height: $bigBox-H - 2 * 6px - $bigBoxT-H - 2px;
 }
 
@@ -97,14 +100,14 @@ $frSizeMin: 9px;
   }
 
   &.act {
-    border: 1px solid $front;
-    background: $front;
+    border: 1px solid $frontD;
+    background: $frontD;
 
     & .tabTitle,
     & .figureChr,
     & .colon,
     & .timeListTabShort,
-    & .timeListTabLong {
+    & .timeListTabShort {
       color: $fontL;
     }
 
@@ -145,9 +148,9 @@ $frSizeMin: 9px;
   width: 25px;
   height: 25px;
   background: $Bg;
-  border: 1px solid $front;
+  border: 1px solid $frontD;
   box-sizing: border-box;
-  box-shadow: inset 0 0 10px $front;
+  box-shadow: inset 0 0 10px $frontD;
   border-radius: 50%;
 }
 
@@ -165,7 +168,7 @@ $frSizeMin: 9px;
   width: 24px;
   height: 20px;
   left: 3px;
-  fill: $G;
+  fill: $GreenL;
 }
 
 .figureBigBox {
@@ -340,5 +343,37 @@ $frSizeMin: 9px;
       text-align: left;
       width: 8px;
     }
+  }
+}
+
+.grayButton {
+  float: left;
+  width: 126px;
+  height: 30px;
+  background-color: $frontD;
+  border-radius: 0 0 0 5px;
+  color: $fontD;
+  text-align: center;
+  font-size: $frSizeTitle;
+  line-height: $frSizeTitle + 10px;
+
+  &:hover {
+    background-color: $frontL;
+  }
+}
+
+.greenButton {
+  float: left;
+  width: 189px;
+  height: 30px;
+  background-color: $GreenD;
+  border-radius: 0 0 5px 0;
+  color: $Bg;
+  text-align: center;
+  font-size: $frSizeTitle;
+  line-height: $frSizeTitle + 10px;
+
+  &:hover {
+    background-color: $GreenL;
   }
 }
