@@ -19,14 +19,29 @@ $frSizeTitle: 18px;
 $frSizeMid: 13px;
 $frSizeSmall: 10px;
 $frSizeMin: 9px;
-@mixin tra{
-  transition: all .5s ease-in-out;
+@mixin tra {
+  transition: all .3s ease-in-out;
 }
+
+@mixin myHoverD {
+  filter: brightness(.7);
+}
+
+@mixin myButton {
+  float: left;
+  height: 30px;
+  text-align: center;
+  font-size: $frSizeTitle;
+  line-height: $frSizeTitle + 10px;
+  @include tra;
+}
+
 
 @font-face {
   font-family: 'DigitalNumbers-Regular';
   src: url('../img/DigitalNumbers-Regular.ttf');
 }
+
 
 /*其中fontName替换为你的字体名称*/
 
@@ -89,19 +104,19 @@ $frSizeMin: 9px;
 .myTab {
   float: left;
   height: 200px;
-  background: $Bg;
+  background-color: $Bg;
   border: 1px solid $DaBg;
   box-sizing: border-box;
   @include tra;
   //-webkit-app-region: no-drag;
 
-  &:hover{
-    border: 1px solid $front;
+  &:hover {
+    border: 1px solid $frontL;
   }
 
   &.act {
     border: 1px solid $frontD;
-    background: $frontD;
+    background-color: $frontD;
 
     & .tabTitle,
     & .figureChr,
@@ -116,9 +131,14 @@ $frSizeMin: 9px;
       background-color: $Bg;
     }
 
+    & .timeListAdd{
+      background-color: $frontD;
+    }
+
     & .fgBox {
       background: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%);
     }
+
   }
 }
 
@@ -147,7 +167,7 @@ $frSizeMin: 9px;
   float: left;
   width: 25px;
   height: 25px;
-  background: $Bg;
+  background-color: $Bg;
   border: 1px solid $frontD;
   box-sizing: border-box;
   box-shadow: inset 0 0 10px $frontD;
@@ -165,11 +185,16 @@ $frSizeMin: 9px;
 
 .opSelected {
   position: absolute;
+  left: 3px;
+}
+
+.myV{
+  position: relative;
   width: 24px;
   height: 20px;
-  left: 3px;
   fill: $GreenL;
 }
+
 
 .figureBigBox {
   position: relative;
@@ -269,10 +294,15 @@ $frSizeMin: 9px;
   height: 20px;
   margin-right: 4px;
   margin-bottom: 4px;
-  //background: $Bg;
+  background: $Bg;
   border: 1px solid $DaBg;
   box-sizing: border-box;
   border-radius: 3px;
+  @include tra;
+
+  &:hover {
+    @include myHoverD;
+  }
 }
 
 .timeListBoxFt {
@@ -286,7 +316,7 @@ $frSizeMin: 9px;
   height: 20px;
   margin-right: 4px;
   margin-bottom: 4px;
-  background: $DaBg;
+  background-color: $DaBg;
   box-sizing: border-box;
   border-radius: 3px;
   overflow: hidden;
@@ -309,6 +339,14 @@ $frSizeMin: 9px;
       margin-left: 1px;
     }
   }
+
+  &:hover {
+    @include myHoverD;
+  }
+
+  &:active {
+    filter: brightness(1);
+  }
 }
 
 .timeListTabShort {
@@ -318,7 +356,7 @@ $frSizeMin: 9px;
   height: 20px;
   margin-right: 4px;
   margin-bottom: 4px;
-  background: $DaBg;
+  background-color: $DaBg;
   box-sizing: border-box;
   border-radius: 3px;
   overflow: hidden;
@@ -344,36 +382,49 @@ $frSizeMin: 9px;
       width: 8px;
     }
   }
+
+  &:hover {
+    @include myHoverD;
+  }
+
+  &:active {
+    filter: brightness(1);
+  }
+
 }
 
 .grayButton {
-  float: left;
   width: 126px;
-  height: 30px;
   background-color: $frontD;
   border-radius: 0 0 0 5px;
   color: $fontD;
-  text-align: center;
-  font-size: $frSizeTitle;
-  line-height: $frSizeTitle + 10px;
+  @include myButton;
 
   &:hover {
     background-color: $frontL;
   }
+
+  &:active {
+    background-color: $frontD;
+  }
 }
 
 .greenButton {
-  float: left;
   width: 189px;
-  height: 30px;
   background-color: $GreenD;
   border-radius: 0 0 5px 0;
   color: $Bg;
-  text-align: center;
-  font-size: $frSizeTitle;
-  line-height: $frSizeTitle + 10px;
+  @include myButton;
 
   &:hover {
     background-color: $GreenL;
   }
+
+  &:active {
+    background-color: $GreenD;
+  }
+}
+
+#startNew{
+  margin-left: 2px;
 }

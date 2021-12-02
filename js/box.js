@@ -19,16 +19,20 @@
 
 $('#tab_l').click(function () {
     $(this).addClass('act');
-    $(this).find('.opSelected').eq(0).css('display', 'inline');
+    // $(this).find('.opSelected').eq(0).css('display', 'inline');
+    $('#tab_l .myV').show('scale',{percent:10},200);
     $('#tab_r').removeClass('act');
-    $('#tab_r').find('.opSelected').eq(0).css('display', 'none');
+    // $('#tab_r').find('.opSelected').eq(0).css('display', 'none');
+    $('#tab_r .myV').hide('scale',{percent:10},200);
 });
 
 $('#tab_r').click(function () {
     $(this).addClass('act');
-    $(this).find('.opSelected').eq(0).css('display', 'inline');
+    // $(this).find('.opSelected').eq(0).css('display', 'inline');
+    $('#tab_r .myV').show('scale',{percent:10},200);
     $('#tab_l').removeClass('act');
-    $('#tab_l').find('.opSelected').eq(0).css('display', 'none');
+    // $('#tab_l').find('.opSelected').eq(0).css('display', 'none');
+    $('#tab_l .myV').hide('scale',{percent:10},200);
 });
 
 // $('.myTab').mousedown(function (){
