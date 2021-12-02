@@ -1,276 +1,80 @@
-@charset "UTF-8";
-@font-face {
-  font-family: 'DigitalNumbers-Regular';
-  src: url("../img/DigitalNumbers-Regular.ttf"); }
-/*其中fontName替换为你的字体名称*/
-#ProgressBar_body {
-  padding: 0;
-  margin: 0;
-  width: auto;
-  height: 2px;
-  overflow: hidden; }
+/*
+Error: Undefined variable: "$front".
+        on line 99 of css.scss
 
-#ProBar {
-  /*margin-top: 2px;*/
-  width: 0;
-  height: 2px;
-  background-color: #2fff00;
-  /*border-top: black solid 1px;*/
-  /*border-bottom: black solid 1px;*/ }
+94:   box-sizing: border-box;
+95:   @include tra;
+96:   //-webkit-app-region: no-drag;
+97: 
+98:   &:hover{
+99:     border: 1px solid $front;
+100:   }
+101: 
+102:   &.act {
+103:     border: 1px solid $frontD;
+104:     background: $frontD;
 
-/*---------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------*/
-#index_body {
-  padding: 16px 10px 16px 20px;
-  margin: 0;
-  width: 329px;
-  height: 244px;
-  overflow: hidden;
-  -webkit-user-select: none; }
-
-#index_div {
-  position: relative;
-  box-sizing: border-box;
-  padding: 6px;
-  margin: 0;
-  width: 329px;
-  height: 244px;
-  border-radius: 10px;
-  background-color: #2B2B2B;
-  overflow: hidden;
-  box-shadow: 0 1.4px 4.6px -13px rgba(0, 0, 0, 0.364), 0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536), 0px 6px 25px -13px rgba(0, 0, 0, 0.9); }
-
-.bigBoxT {
-  width: 317px;
-  height: 200px; }
-
-.bigBoxB {
-  margin-top: 2px;
-  height: 30px; }
-
-.myTab {
-  float: left;
-  height: 200px;
-  background: #2B2B2B;
-  border: 1px solid #1E1E1E;
-  box-sizing: border-box;
-  transition: all .5s ease-in-out; }
-  .myTab:hover {
-    border: 1px solid #3C3F41; }
-  .myTab.act {
-    border: 1px solid #3C3F41;
-    background: #3C3F41; }
-    .myTab.act .tabTitle, .myTab.act .figureChr, .myTab.act .colon, .myTab.act .timeListTabShort, .myTab.act .timeListTabLong {
-      color: #BBBBBB; }
-    .myTab.act .timeListTabShort, .myTab.act .timeListTabLong {
-      background-color: #2B2B2B; }
-    .myTab.act .fgBox {
-      background: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%); }
-
-#tab_l {
-  width: 126px;
-  border-radius: 5px 0 0 0; }
-
-#tab_r {
-  width: 189px;
-  margin-left: 2px;
-  border-radius: 0 5px 0 0; }
-
-.myOption {
-  height: 42px; }
-
-.optionBox {
-  position: relative;
-  margin-top: 11px;
-  margin-left: 8px; }
-
-.optionCircle {
-  float: left;
-  width: 25px;
-  height: 25px;
-  background: #2B2B2B;
-  border: 1px solid #3C3F41;
-  box-sizing: border-box;
-  box-shadow: inset 0 0 10px #3C3F41;
-  border-radius: 50%; }
-
-.tabTitle {
-  float: left;
-  margin-left: 7px;
-  font-size: 18px;
-  line-height: 26px;
-  color: #838383;
-  transition: all .5s ease-in-out; }
-
-.opSelected {
-  position: absolute;
-  width: 24px;
-  height: 20px;
-  left: 3px;
-  fill: #2fff00; }
-
-.figureBigBox {
-  position: relative;
-  margin-left: 6px;
-  width: auto;
-  height: 64px; }
-
-.fgBox {
-  float: left;
-  width: 23px;
-  height: 39px;
-  background: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
-  border-radius: 3px;
-  margin-right: 2px;
-  transition: all .5s ease-in-out; }
-
-.colon {
-  float: left;
-  width: 14px;
-  height: 39px;
-  color: #838383;
-  font-size: 24px;
-  font-family: 'DigitalNumbers-Regular';
-  transition: all .5s ease-in-out; }
-  .colon span {
-    margin-left: -4px;
-    line-height: 45px; }
-
-.fb_HourMinSec {
-  float: left;
-  height: 11px;
-  font-size: 9px;
-  color: #1E1E1E; }
-  .fb_HourMinSec span {
-    float: left; }
-    .fb_HourMinSec span:nth-child(1) {
-      margin-left: 12px; }
-    .fb_HourMinSec span:nth-child(2) {
-      margin-left: 39px; }
-    .fb_HourMinSec span:nth-child(3) {
-      margin-left: 31px; }
-
-.figureChrBox {
-  position: absolute;
-  margin-top: 4px;
-  margin-left: 2px; }
-
-.figureChrRow {
-  float: left; }
-
-.row_m {
-  margin-left: 13px; }
-
-.row_s {
-  margin-left: 14px; }
-
-.figureChr {
-  font-family: 'DigitalNumbers-Regular';
-  font-size: 24px;
-  color: #838383;
-  letter-spacing: 6px;
-  transition: all .5s ease-in-out; }
-
-.timeListBigBox {
-  position: relative;
-  width: auto;
-  height: 68px;
-  margin-left: 6px; }
-
-.timeListAdd {
-  text-align: center;
-  font-size: 13px;
-  color: #838383;
-  float: left;
-  width: 54px;
-  height: 20px;
-  margin-right: 4px;
-  margin-bottom: 4px;
-  border: 1px solid #1E1E1E;
-  box-sizing: border-box;
-  border-radius: 3px; }
-
-.timeListBoxFt {
-  position: absolute; }
-
-.timeListTabLong {
-  color: #838383;
-  float: left;
-  width: 54px;
-  height: 20px;
-  margin-right: 4px;
-  margin-bottom: 4px;
-  background: #1E1E1E;
-  box-sizing: border-box;
-  border-radius: 3px;
-  overflow: hidden;
-  padding-left: 2px;
-  transition: all .5s ease-in-out; }
-  .timeListTabLong span {
-    float: left; }
-    .timeListTabLong span:nth-child(odd) {
-      width: 16px;
-      font-size: 13px;
-      margin-top: 2px;
-      margin-left: 1px; }
-    .timeListTabLong span:nth-child(even) {
-      font-size: 9px;
-      margin-top: 6px;
-      margin-left: 1px; }
-
-.timeListTabShort {
-  color: #838383;
-  float: left;
-  width: 41px;
-  height: 20px;
-  margin-right: 4px;
-  margin-bottom: 4px;
-  background: #1E1E1E;
-  box-sizing: border-box;
-  border-radius: 3px;
-  overflow: hidden;
-  padding-right: 3px;
-  transition: all .5s ease-in-out; }
-  .timeListTabShort span {
-    float: right; }
-    .timeListTabShort span:nth-child(even) {
-      width: 16px;
-      font-size: 13px;
-      margin-top: 2px;
-      margin-left: 1px;
-      text-align: right; }
-    .timeListTabShort span:nth-child(odd) {
-      font-size: 9px;
-      margin-top: 6px;
-      margin-left: 1px;
-      text-align: left;
-      width: 8px; }
-
-.grayButton {
-  float: left;
-  width: 126px;
-  height: 30px;
-  background-color: #3C3F41;
-  border-radius: 0 0 0 5px;
-  color: #838383;
-  text-align: center;
-  font-size: 18px;
-  line-height: 28px; }
-  .grayButton:hover {
-    background-color: #45484a; }
-
-.greenButton {
-  float: left;
-  width: 189px;
-  height: 30px;
-  background-color: #27D600;
-  border-radius: 0 0 5px 0;
-  color: #2B2B2B;
-  text-align: center;
-  font-size: 18px;
-  line-height: 28px; }
-  .greenButton:hover {
-    background-color: #2fff00; }
-
-/*# sourceMappingURL=css.css.map */
+Backtrace:
+css.scss:99
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/tree/variable.rb:49:in `_perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/tree/list_literal.rb:75:in `block in _perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/tree/list_literal.rb:75:in `map'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/tree/list_literal.rb:75:in `_perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `map'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `map'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/bin/scss:13:in `<top (required)>'
+C:/Ruby30-x64/bin/scss:25:in `load'
+C:/Ruby30-x64/bin/scss:25:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$front\".\A         on line 99 of css.scss\A \A 94:   box-sizing: border-box;\A 95:   @include tra;\A 96:   //-webkit-app-region: no-drag;\A 97: \A 98:   &:hover{\A 99:     border: 1px solid $front;\A 100:   }\A 101: \A 102:   &.act {\A 103:     border: 1px solid $frontD;\A 104:     background: $frontD;"; }
