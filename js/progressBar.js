@@ -1,9 +1,9 @@
 'use strict';
+const {remote, clipboard, ipcRenderer } = require('electron');
 
-const electron = require("electron");
-const remote = require('electron').remote;
 
-// // const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
+// const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
+
 runPro();
 
 function runPro() {
@@ -20,3 +20,22 @@ function runPro() {
         }
     }
 }
+
+const mbt = document.querySelector('#myBtTest');
+
+function sendToMainProcess () {
+    // 向主进程发送 imgUploadMain 事件
+    ipcRenderer.send('imgUploadMain', {
+        username: 'huangbiao',
+        age: 18
+    })
+}
+// 渲染进程监听 imgUploadMsgFromMain 事件
+ipcRenderer.on('imgUploadMsgFromMain', (event, message) => {
+    console.log('receive main process msg')
+    console.log(JSON.stringify(message))
+})
+
+mbt.onclick = () => {
+    sendToMainProcess();
+};

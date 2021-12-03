@@ -45,10 +45,16 @@
 // });
 
 
+
+
+
+
+
 const electron = require('electron');
-const {app, Menu, Tray} = electron;
-const {BrowserWindow} = electron;
+const {BrowserWindow,BrowserView,app, Menu, Tray, ipcMain, globalShortcut,} = electron;
+// const {BrowserWindow} = electron;
 const path = require('path');
+
 
 
 let win;
@@ -81,9 +87,16 @@ function createWindow() {
         transparent: true,
         alwaysOnTop: true,
         icon: path.join(__dirname, 'img/ico16.ico'),
-        nodeIntegration: true,
-        contextIsolation: false
+        webPreferences: {
+            contextIsolation: false, // 设置此项为false后，才可在渲染进程中使用electron api
+            nodeIntegration: true,
+            enableRemoteModule:true
+        }
     });
+    require('@electron/remote/main').initialize();
+    require("@electron/remote/main").enable(win.webContents);
+
+
     win.loadURL(`file://${__dirname}/index.html`);
     // win.setIgnoreMouseEvents(true);
     win.setMenu(null);
@@ -107,17 +120,17 @@ function createWindow() {
     tray = new Tray(path.join(__dirname, 'img/ico16.ico'));
     const contextMenu = Menu.buildFromTemplate([
         {
+            label: '设置',
+            click: () => {
+                // runPro();
+            }
+        },
+        {
             label: '退出',
             click: () => {
-                win.destroy()
+                app.quit()
             }
-        },//我们需要在这里有一个真正的退出（这里直接强制退出）
-        {
-            label: 'run',
-            click: () => {
-                runPro();
-            }
-        }
+        }//我们需要在这里有一个真正的退出（这里直接强制退出）
     ])
     tray.setToolTip('My托盘测试')
     tray.setContextMenu(contextMenu)
@@ -151,18 +164,10 @@ app.on('activate', () => {
     }
 });
 
-
-// function runPro() {
-//     const elem = document.getElementById("ProBar");
-//     let w = 10;
-//     const id = setInterval(frame, 10);
-//
-//     function frame() {
-//         if (w >= 3440) {
-//             clearInterval(id);
-//         } else {
-//             w++;
-//             elem.style.width = w + 'px';
-//         }
-//     }
-// }
+// 主进程监听事件
+ipcMain.on('imgUploadMain', (event, message) => {
+    console.log('receive render process msg');
+    console.log(JSON.stringify(message));
+    // 主进程向渲染进程触发事件
+    win.webContents.send('imgUploadMsgFromMain', message);
+})
