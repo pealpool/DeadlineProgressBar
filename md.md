@@ -24,3 +24,5 @@ ncu -u
 ### [倒计时](https://juejin.cn/post/6844903805713121294)
 
 ### [创建子窗口](https://blog.csdn.net/yunchong_zhao/article/details/120374986)
+
+### [git 如何忽略已经提交的文件或文件夹 (.gitignore文件无效)](https://www.cnblogs.com/gaohanghang/p/13301953.html)
