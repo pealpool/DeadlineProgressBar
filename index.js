@@ -122,22 +122,29 @@ function createWindow() {
         {
             label: '设置',
             click: () => {
-                // runPro();
+                if (!win.isVisible()){
+                    win.show();
+                    win.webContents.send('showWin');
+                }
             }
         },
         {
             label: '退出',
             click: () => {
-                app.quit()
+                app.quit();
             }
         }//我们需要在这里有一个真正的退出（这里直接强制退出）
     ])
-    tray.setToolTip('My托盘测试')
-    tray.setContextMenu(contextMenu)
-    // tray.on('click', () => { //我们这里模拟桌面程序点击通知区图标实现打开关闭应用的功能
-    //     win.isVisible() ? win.hide() : win.show()
-    //     win.isVisible() ? win.setSkipTaskbar(false) : win.setSkipTaskbar(true);
-    // })
+    tray.setToolTip('My托盘测试');
+    tray.setContextMenu(contextMenu);
+    tray.on('double-click', () => {
+        //我们这里模拟桌面程序点击通知区图标实现打开关闭应用的功能
+        if (!win.isVisible()){
+            win.show();
+            win.webContents.send('showWin');
+        }
+        // win.isVisible() ? win.setSkipTaskbar(false) : win.setSkipTaskbar(true);
+    })
 
     // 禁用框架的右键菜单
     win.hookWindowMessage(278, function (e) {
@@ -147,9 +154,9 @@ function createWindow() {
         }, 100); //延时太快会立刻启用，太慢会妨碍窗口其他操作，自行测试
         return true;
     })
-
-
 }
+//解决show窗口时闪烁
+app.commandLine.appendSwitch('wm-window-animations-disabled');
 
 app.on('ready', createWindow);
 app.on('window-all-closed', () => {
@@ -170,4 +177,8 @@ ipcMain.on('imgUploadMain', (event, message) => {
     console.log(JSON.stringify(message));
     // 主进程向渲染进程触发事件
     win.webContents.send('imgUploadMsgFromMain', message);
+})
+
+ipcMain.on('hideWin', (event, message) => {
+    win.hide();
 })

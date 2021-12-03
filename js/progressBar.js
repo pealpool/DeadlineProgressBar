@@ -32,9 +32,9 @@ function sendToMainProcess () {
 }
 // 渲染进程监听 imgUploadMsgFromMain 事件
 ipcRenderer.on('imgUploadMsgFromMain', (event, message) => {
-    console.log('receive main process msg')
-    console.log(JSON.stringify(message))
-})
+    console.log('receive main process msg');
+    console.log(JSON.stringify(message));
+});
 
 mbt.onclick = () => {
     sendToMainProcess();

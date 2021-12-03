@@ -57,20 +57,23 @@ $(document).ready(function () {
 
 let newWin = null;
 $('#startNew').click(function () {
+    $('#index_div').hide('scale', {percent: 10}, 100,function (){
+        ipcRenderer.send('hideWin');
+    });
     const winW = screen.getPrimaryDisplay().workAreaSize.width;
     const winH = screen.getPrimaryDisplay().workAreaSize.height;
     //调用 BrowserWindow打开新窗口
     newWin = new BrowserWindow({
 
         width: winW,
-        height: 400,
-        // x: 0,
-        // y: 1410 - 2,
-        // frame: false,
+        height: 2,
+        x: 0,
+        y: winH - 2,
+        frame: false,
         useContentSize: false,
         resizable: false,
         // transparent: true,
-        // alwaysOnTop: true,
+        alwaysOnTop: true,
 
 
         webPreferences: {
@@ -87,44 +90,12 @@ $('#startNew').click(function () {
     });
 });
 
+$('#hideButton_1').click(function (){
+    $('#index_div').hide('scale', {percent: 10}, 100,function (){
+        ipcRenderer.send('hideWin');
+    });
+});
 
-//
-// const btn = document.querySelector('#startNew');
-// //渲染进程没法直接调用主进程中的模块，但是我们可以通过 electron中的remote模块间接的调用主进程中的模块
-// //remote执行主进程与渲染进程之间的IPC
-// // const BrowserWindow = require('electron').remote.BrowserWindow;
-// // const BrowserWindow = require('electron').BrowserWindow;
-//
-// let newWin = null;
-// window.onload = function () {
-//     btn.onclick = () => {
-//         const winW = screen.getPrimaryDisplay().workAreaSize.width;
-//         const winH = screen.getPrimaryDisplay().workAreaSize.height;
-//         //调用 BrowserWindow打开新窗口
-//         newWin = new BrowserWindow({
-//
-//             width: winW,
-//             height: 400,
-//             // x: 0,
-//             // y: 1410 - 2,
-//             // frame: false,
-//             useContentSize: false,
-//             resizable: false,
-//             // transparent: true,
-//             // alwaysOnTop: true,
-//
-//
-//             webPreferences: {
-//                 contextIsolation: false, // 设置此项为false后，才可在渲染进程中使用electron api
-//                 nodeIntegration: true
-//             }
-//         })
-//         //打开一个新的窗口
-//         // newWin.loadURL(`file://${__dirname}/otherWin.html`);
-//         //新建窗口
-//         newWin.loadURL(`file://${__dirname}/progressBar.html`);
-//         newWin.on('close', () => {
-//             newWin = null
-//         })
-//     }
-// }
+ipcRenderer.on('showWin', (event, message) => {
+    $('#index_div').show('scale', {percent: 10}, 100);
+});
