@@ -2,6 +2,9 @@
 @font-face {
   font-family: 'DigitalNumbers-Regular';
   src: url("../img/DigitalNumbers-Regular.ttf"); }
+@font-face {
+  font-family: 'SourceHanSansCN-Regular';
+  src: url("../img/SourceHanSansCN-Regular.otf"); }
 /*其中fontName替换为你的字体名称*/
 #ProgressBar_body {
   padding: 0;
@@ -26,6 +29,7 @@
   margin: 0;
   width: 329px;
   height: 244px;
+  font-family: 'SourceHanSansCN-Regular';
   overflow: hidden;
   -webkit-user-select: none; }
 
@@ -55,7 +59,7 @@
   background-color: #2B2B2B;
   border: 1px solid #1E1E1E;
   box-sizing: border-box;
-  transition: all .3s ease-in-out; }
+  transition: background-color,filter .3s ease-in-out; }
   .myTab:hover {
     border: 1px solid #45484a; }
   .myTab.act {
@@ -103,7 +107,7 @@
   font-size: 18px;
   line-height: 26px;
   color: #838383;
-  transition: all .3s ease-in-out; }
+  transition: background-color,filter .3s ease-in-out; }
 
 .opSelected {
   position: absolute;
@@ -128,7 +132,7 @@
   background: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
   border-radius: 3px;
   margin-right: 2px;
-  transition: all .3s ease-in-out; }
+  transition: background-color,filter .3s ease-in-out; }
 
 .colon {
   float: left;
@@ -137,7 +141,7 @@
   color: #838383;
   font-size: 24px;
   font-family: 'DigitalNumbers-Regular';
-  transition: all .3s ease-in-out; }
+  transition: background-color,filter .3s ease-in-out; }
   .colon span {
     margin-left: -4px;
     line-height: 45px; }
@@ -161,21 +165,28 @@
   margin-top: 4px;
   margin-left: 2px; }
 
+.figureCut {
+  float: left;
+  width: 46px;
+  height: 39px;
+  overflow: hidden; }
+
 .figureChrRow {
-  float: left; }
+  width: 46px;
+  transform: translateY(-1560px); }
 
-.row_m {
-  margin-left: 13px; }
-
+.row_m,
 .row_s {
-  margin-left: 14px; }
+  margin-left: 18px; }
 
 .figureChr {
+  width: 46px;
+  height: 39px;
   font-family: 'DigitalNumbers-Regular';
   font-size: 24px;
   color: #838383;
-  letter-spacing: 6px;
-  transition: all .3s ease-in-out; }
+  letter-spacing: 5.5px;
+  transition: background-color,filter .3s ease-in-out; }
 
 .timeListBigBox {
   position: relative;
@@ -196,7 +207,7 @@
   border: 1px solid #1E1E1E;
   box-sizing: border-box;
   border-radius: 3px;
-  transition: all .3s ease-in-out; }
+  transition: background-color,filter .3s ease-in-out; }
   .timeListAdd:hover {
     filter: brightness(0.7); }
 
@@ -215,7 +226,7 @@
   border-radius: 3px;
   overflow: hidden;
   padding-left: 2px;
-  transition: all .3s ease-in-out; }
+  transition: background-color,filter .3s ease-in-out; }
   .timeListTabLong span {
     float: left; }
     .timeListTabLong span:nth-child(odd) {
@@ -230,7 +241,7 @@
   .timeListTabLong:hover {
     filter: brightness(0.7); }
   .timeListTabLong:active {
-    filter: brightness(1); }
+    transform: translateY(2px); }
 
 .timeListTabShort {
   color: #838383;
@@ -244,7 +255,7 @@
   border-radius: 3px;
   overflow: hidden;
   padding-right: 3px;
-  transition: all .3s ease-in-out; }
+  transition: background-color,filter .3s ease-in-out; }
   .timeListTabShort span {
     float: right; }
     .timeListTabShort span:nth-child(even) {
@@ -262,7 +273,7 @@
   .timeListTabShort:hover {
     filter: brightness(0.7); }
   .timeListTabShort:active {
-    filter: brightness(1); }
+    transform: translateY(2px); }
 
 .grayButton {
   width: 126px;
@@ -274,7 +285,7 @@
   text-align: center;
   font-size: 18px;
   line-height: 28px;
-  transition: all .3s ease-in-out; }
+  transition: background-color,filter .3s ease-in-out; }
   .grayButton:hover {
     background-color: #45484a; }
   .grayButton:active {
@@ -290,7 +301,7 @@
   text-align: center;
   font-size: 18px;
   line-height: 28px;
-  transition: all .3s ease-in-out; }
+  transition: background-color,filter .3s ease-in-out; }
   .greenButton:hover {
     background-color: #2fff00; }
   .greenButton:active {

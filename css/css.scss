@@ -19,8 +19,9 @@ $frSizeTitle: 18px;
 $frSizeMid: 13px;
 $frSizeSmall: 10px;
 $frSizeMin: 9px;
+$fgChrH: 39px;
 @mixin tra {
-  transition: all .3s ease-in-out;
+  transition: background-color,filter .3s ease-in-out;
 }
 
 @mixin myHoverD {
@@ -41,7 +42,10 @@ $frSizeMin: 9px;
   font-family: 'DigitalNumbers-Regular';
   src: url('../img/DigitalNumbers-Regular.ttf');
 }
-
+@font-face {
+  font-family: 'SourceHanSansCN-Regular';
+  src: url('../img/SourceHanSansCN-Regular.otf');
+}
 
 /*其中fontName替换为你的字体名称*/
 
@@ -71,6 +75,7 @@ $frSizeMin: 9px;
   margin: 0;
   width: $bigBox-W;
   height: $bigBox-H;
+  font-family: 'SourceHanSansCN-Regular';
   overflow: hidden;
   -webkit-user-select: none;
   //-webkit-app-region: drag;
@@ -206,7 +211,7 @@ $frSizeMin: 9px;
 .fgBox {
   float: left;
   width: 23px;
-  height: 39px;
+  height: $fgChrH;
   background: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
   border-radius: 3px;
   margin-right: 2px;
@@ -216,7 +221,7 @@ $frSizeMin: 9px;
 .colon {
   float: left;
   width: 14px;
-  height: 39px;
+  height: $fgChrH;
   color: $fontD;
   font-size: $frSizeDig;
   font-family: 'DigitalNumbers-Regular';
@@ -258,24 +263,31 @@ $frSizeMin: 9px;
   margin-left: 2px;
 }
 
-.figureChrRow {
+.figureCut{
   float: left;
+  width: 46px;
+  height: $fgChrH;
+  overflow: hidden;
+}
+.figureChrRow {
+  width: 46px;
+  transform: translateY(-1560px);
 }
 
-.row_m {
-  margin-left: 13px;
-}
-
-.row_s {
-  margin-left: 14px;
+.row_m,
+.row_s{
+  margin-left: 18px;
 }
 
 .figureChr {
+  width: 46px;
+  height: $fgChrH;
   font-family: 'DigitalNumbers-Regular';
   font-size: $frSizeDig;
   color: $fontD;
-  letter-spacing: 6px;
+  letter-spacing: 5.5px;
   @include tra;
+  //transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .timeListBigBox {
@@ -345,7 +357,7 @@ $frSizeMin: 9px;
   }
 
   &:active {
-    filter: brightness(1);
+    transform: translateY(2px);
   }
 }
 
@@ -388,7 +400,7 @@ $frSizeMin: 9px;
   }
 
   &:active {
-    filter: brightness(1);
+    transform: translateY(2px);
   }
 
 }

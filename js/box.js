@@ -57,14 +57,13 @@ $(document).ready(function () {
 
 let newWin = null;
 $('#startNew').click(function () {
-    $('#index_div').hide('scale', {percent: 10}, 100,function (){
+    $('#index_div').hide('scale', {percent: 10}, 100, function () {
         ipcRenderer.send('hideWin');
     });
     const winW = screen.getPrimaryDisplay().workAreaSize.width;
     const winH = screen.getPrimaryDisplay().workAreaSize.height;
     //调用 BrowserWindow打开新窗口
     newWin = new BrowserWindow({
-
         width: winW,
         height: 2,
         x: 0,
@@ -72,9 +71,8 @@ $('#startNew').click(function () {
         frame: false,
         useContentSize: false,
         resizable: false,
-        // transparent: true,
+        transparent: true,
         alwaysOnTop: true,
-
 
         webPreferences: {
             contextIsolation: false, // 设置此项为false后，才可在渲染进程中使用electron api
@@ -88,10 +86,16 @@ $('#startNew').click(function () {
     newWin.on('close', () => {
         newWin = null
     });
+
+    //裁剪窗体成2px高，否则最少不能为2px高
+    newWin.setShape([
+        {x: 0, y: 0, width: winW, height: 2}
+    ]);
+
 });
 
-$('#hideButton_1').click(function (){
-    $('#index_div').hide('scale', {percent: 10}, 100,function (){
+$('#hideButton_1').click(function () {
+    $('#index_div').hide('scale', {percent: 10}, 100, function () {
         ipcRenderer.send('hideWin');
     });
 });

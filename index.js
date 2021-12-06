@@ -84,6 +84,7 @@ function createWindow() {
         frame: false,
         useContentSize: false,
         resizable: false,
+        // backgroundColor:'#00000000', //使字体渲染清晰
         transparent: true,
         alwaysOnTop: true,
         icon: path.join(__dirname, 'img/ico16.ico'),
