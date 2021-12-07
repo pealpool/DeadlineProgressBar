@@ -6,6 +6,7 @@
 const {BrowserWindow, screen} = require('@electron/remote');
 const {remote, clipboard, ipcRenderer} = require('electron');
 
+//拖动窗体
 let wX = 0;
 let wY = 0;
 let dragging = false;
@@ -34,6 +35,57 @@ $('#index_body').mousedown(function (e) {
 });
 
 
+//拖动时间
+let fgChrH = 39;
+let tY = 0;
+let timeDragging = false;
+let myEle;
+$('.figureCut').mousedown(function (e) {
+    //todo 务必要jq转Dom，注册不同ID尝试。还是不行，不关id的事，感觉myEle没释放。
+
+    myEle = '#'+ $(this).find('.figureChrRow').eq(0).attr('id');
+    console.log(myEle);
+    e.stopPropagation();
+    e.preventDefault();
+    timeDragging = true;
+    // tX = e.pageX;
+    tY = e.screenY;
+    let elY = Number($(myEle).css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
+    // let elY = Number(document.defaultView.getComputedStyle(myEle, null).transform.replace(/[^0-9\-,]/g, '').split(',')[5]);
+    $(window).mousemove(function (e) {
+        if (timeDragging) {
+            let yLoc = elY + e.screenY - tY;
+            try {
+                // console.log(yLoc + '=' + elY + '+' + e.screenY + '-' + tY);
+                $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
+                // myEle.style.transform = 'translateY(' + yLoc + 'px)';
+                // window.moveTo(xLoc, yLoc);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    });
+    $(window).mouseup(function () {
+
+        timeDragging = false;
+        console.log($(myEle));
+        // try {
+        //     let clY = Number(myEle.css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
+        // } catch (err) {
+        //     console.log(err);
+        // }
+
+        // let yLoc = 0;
+        // if ((elY % fgChrH) > (39 / 2)) {
+        //     yLoc = Math.floor(elY / fgChrH) * fgChrH;
+        // } else {
+        //     yLoc = Math.ceil(elY / fgChrH) * fgChrH;
+        // }
+        // console.log(yLoc);
+        // myEle.css('transform', 'translateY(' + yLoc + 'px)');
+        // myEle = null;
+    });
+});
 
 
 $('#tab_l').click(function () {

@@ -162,7 +162,6 @@
 
 .figureChrBox {
   position: absolute;
-  margin-top: 4px;
   margin-left: 2px; }
 
 .figureCut {
@@ -184,6 +183,7 @@
   height: 39px;
   font-family: 'DigitalNumbers-Regular';
   font-size: 24px;
+  line-height: 39px;
   color: #838383;
   letter-spacing: 5.5px;
   transition: all .3s ease-in-out, transform 0s ease-in-out; }

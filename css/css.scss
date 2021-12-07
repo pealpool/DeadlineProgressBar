@@ -259,7 +259,7 @@ $fgChrH: 39px;
 
 .figureChrBox {
   position: absolute;
-  margin-top: 4px;
+  //margin-top: 4px;
   margin-left: 2px;
 }
 
@@ -284,6 +284,7 @@ $fgChrH: 39px;
   height: $fgChrH;
   font-family: 'DigitalNumbers-Regular';
   font-size: $frSizeDig;
+  line-height: $fgChrH;
   color: $fontD;
   letter-spacing: 5.5px;
   @include tra;
