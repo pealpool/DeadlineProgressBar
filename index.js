@@ -1,69 +1,14 @@
 'use strict';
-
-// // 引入 electron模块
-// const electron = require('electron');
-// const {remote} = require("electron");
-//
-// // 创建 electron应用对象的引用
-//
-// const app = electron.app;
-// const BrowserWindow = electron.BrowserWindow;
-//
-// // 定义变量 对应用视窗的引用
-// let mainWindow = null;
-//
-// // 监听视窗关闭的事件
-// app.on('window-all-closed', () => {
-//     if (process.platform !== 'darwin') {
-//         app.quit();
-//     }
-// });
-//
-// // 将index.html 载入应用视窗中
-// app.on('ready', () => {
-//     const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
-//     const winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
-//
-//     mainWindow = new BrowserWindow({
-//         // width: Desktop_width,
-//         // minWidth: 1000,
-//         width: winW,
-//         height: 2,
-//         x: 0,
-//         y: winH - 2,
-//         frame: false,
-//         useContentSize:false,
-//         resizable:false,
-//         transparent: true,
-//         alwaysOnTop: true,
-//     });
-//     mainWindow.setSkipTaskbar(true);
-//     mainWindow.loadURL(`file://${__dirname}/index.html`);
-//     mainWindow.on('closed', () => {
-//         mainWindow = null;
-//     });
-// });
-
-
-
-
-
-
-
 const electron = require('electron');
 const {BrowserWindow,BrowserView,app, Menu, Tray, ipcMain, globalShortcut,} = electron;
-// const {BrowserWindow} = electron;
 const path = require('path');
-
 
 
 let win;
 let tray = null
 
-
 function createWindow() {
     // 创建窗口并加载页面
-
     const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
     const winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
     const wi = 329;
@@ -96,7 +41,6 @@ function createWindow() {
     });
     require('@electron/remote/main').initialize();
     require("@electron/remote/main").enable(win.webContents);
-
 
     win.loadURL(`file://${__dirname}/index.html`);
     // win.setIgnoreMouseEvents(true);
@@ -144,7 +88,6 @@ function createWindow() {
             win.show();
             win.webContents.send('showWin');
         }
-        // win.isVisible() ? win.setSkipTaskbar(false) : win.setSkipTaskbar(true);
     })
 
     // 禁用框架的右键菜单

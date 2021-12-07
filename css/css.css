@@ -59,7 +59,7 @@
   background-color: #2B2B2B;
   border: 1px solid #1E1E1E;
   box-sizing: border-box;
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
   .myTab:hover {
     border: 1px solid #45484a; }
   .myTab.act {
@@ -107,7 +107,7 @@
   font-size: 18px;
   line-height: 26px;
   color: #838383;
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
 
 .opSelected {
   position: absolute;
@@ -132,7 +132,7 @@
   background: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
   border-radius: 3px;
   margin-right: 2px;
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
 
 .colon {
   float: left;
@@ -141,7 +141,7 @@
   color: #838383;
   font-size: 24px;
   font-family: 'DigitalNumbers-Regular';
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
   .colon span {
     margin-left: -4px;
     line-height: 45px; }
@@ -186,7 +186,7 @@
   font-size: 24px;
   color: #838383;
   letter-spacing: 5.5px;
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
 
 .timeListBigBox {
   position: relative;
@@ -207,7 +207,7 @@
   border: 1px solid #1E1E1E;
   box-sizing: border-box;
   border-radius: 3px;
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
   .timeListAdd:hover {
     filter: brightness(0.7); }
 
@@ -226,7 +226,7 @@
   border-radius: 3px;
   overflow: hidden;
   padding-left: 2px;
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
   .timeListTabLong span {
     float: left; }
     .timeListTabLong span:nth-child(odd) {
@@ -255,7 +255,7 @@
   border-radius: 3px;
   overflow: hidden;
   padding-right: 3px;
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
   .timeListTabShort span {
     float: right; }
     .timeListTabShort span:nth-child(even) {
@@ -285,7 +285,7 @@
   text-align: center;
   font-size: 18px;
   line-height: 28px;
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
   .grayButton:hover {
     background-color: #45484a; }
   .grayButton:active {
@@ -301,7 +301,7 @@
   text-align: center;
   font-size: 18px;
   line-height: 28px;
-  transition: background-color,filter .3s ease-in-out; }
+  transition: all .3s ease-in-out, transform 0s ease-in-out; }
   .greenButton:hover {
     background-color: #2fff00; }
   .greenButton:active {

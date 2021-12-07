@@ -21,7 +21,7 @@ $frSizeSmall: 10px;
 $frSizeMin: 9px;
 $fgChrH: 39px;
 @mixin tra {
-  transition: background-color,filter .3s ease-in-out;
+  transition: all .3s ease-in-out, transform 0s ease-in-out;
 }
 
 @mixin myHoverD {
