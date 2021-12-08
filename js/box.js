@@ -112,6 +112,7 @@ $('.figureCut').mousedown(function (e) {
         }
 
         let yLoc = 0;
+        //todo 要分大于小于0？未解决
         if ((Math.abs(clY) % fgChrH) > (fgChrH / 2)) {
             if(clY < 0){
                 yLoc = Math.floor(clY / fgChrH) * fgChrH;
@@ -119,7 +120,7 @@ $('.figureCut').mousedown(function (e) {
                 yLoc = Math.ceil(clY / fgChrH) * fgChrH;
             }
         } else {
-            //todo 要分大于小于0？
+
             yLoc = Math.ceil(clY / fgChrH) * fgChrH;
         }
 

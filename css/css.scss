@@ -273,7 +273,8 @@ $fgChrH: 39px;
   position: relative;
   width: 46px;
   transform: translateY(-1560px);
-  //transition: -webkit-transform 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;
+  //transition: transform 300ms ease-in-out 0s;
+  //transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;
 }
 
 .row_m,
