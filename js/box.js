@@ -40,11 +40,15 @@ let fgChrH = 39;
 let tY = 0;
 let timeDragging = false;
 let myEle;
+let mh = 0;
+let mi = 0;
+let i = 1;
 // let cici = 0;
 $('.figureCut').mousedown(function (e) {
-    //todo 务必要jq转Dom，注册不同ID尝试。还是不行，不关id的事，感觉myEle没释放。
+    i = 1;
     myEle = null;
     myEle = '#' + $(this).find('.figureChrRow').eq(0).attr('id');
+    let hOrM = myEle.charAt(myEle.length - 1);
     // console.log(myEle);
     e.stopPropagation();
     e.preventDefault();
@@ -55,22 +59,43 @@ $('.figureCut').mousedown(function (e) {
     // let elY = Number(document.defaultView.getComputedStyle(myEle, null).transform.replace(/[^0-9\-,]/g, '').split(',')[5]);
     $(window).mousemove(function (e) {
         if (timeDragging) {
-            let yLoc = elY + e.screenY - tY;
-            try {
-                // console.log(yLoc + '=' + elY + '+' + e.screenY + '-' + tY);
-                if (yLoc > 0) {
-                    yLoc = 0;
-                } else if (yLoc < (-fgChrH * 80)) {
-                    yLoc = -fgChrH * 80;
-                }
+            /*            let yLoc = elY + e.screenY - tY;
+                        try {
+                            // console.log(yLoc + '=' + elY + '+' + e.screenY + '-' + tY);
+                            if (yLoc > 0) {
+                                yLoc = 0;
+                            } else if (yLoc < (-fgChrH * 80)) {
+                                yLoc = -fgChrH * 80;
+                            }
 
-                console.log(yLoc);
+                            console.log(yLoc);
+                            $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
+                            // myEle.style.transform = 'translateY(' + yLoc + 'px)';
+                            // window.moveTo(xLoc, yLoc);
+                        } catch (err) {
+                            console.log(err);
+                        }*/
+            let len = e.screenY - tY;
+            let yLoc = elY + len;
+            try {
+                // console.log(yLoc);
                 $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
-                // myEle.style.transform = 'translateY(' + yLoc + 'px)';
-                // window.moveTo(xLoc, yLoc);
+                let s = scrollDiv(myEle, len, hOrM, i);
+                console.log('i = ' + i);
+                /*                if (Math.abs(yLoc % fgChrH) > (fgChrH / 2)) {
+                                    mh = -1560 - Math.floor(yLoc / fgChrH) * fgChrH;
+                                } else {
+                                    mh = -1560 - Math.ceil(yLoc / fgChrH) * fgChrH;
+                                }
+                                console.log(mh);*/
+                // mh = mh - s[1];
+                $(myEle).css('margin-top', mh + 'px');
+                i = i + s[0];
             } catch (err) {
                 console.log(err);
             }
+
+
         }
     });
     $(window).mouseup(function () {
@@ -88,8 +113,13 @@ $('.figureCut').mousedown(function (e) {
 
         let yLoc = 0;
         if ((Math.abs(clY) % fgChrH) > (fgChrH / 2)) {
-            yLoc = Math.floor(clY / fgChrH) * fgChrH;
+            if(clY < 0){
+                yLoc = Math.floor(clY / fgChrH) * fgChrH;
+            }else {
+                yLoc = Math.ceil(clY / fgChrH) * fgChrH;
+            }
         } else {
+            //todo 要分大于小于0？
             yLoc = Math.ceil(clY / fgChrH) * fgChrH;
         }
 
@@ -165,3 +195,47 @@ $('#hideButton_1').click(function () {
 ipcRenderer.on('showWin', (event, message) => {
     $('#index_div').show('scale', {percent: 10}, 100);
 });
+
+
+// 滚动增删div
+function scrollDiv(that, len, hOrM, i) {
+    if (len > fgChrH * i - fgChrH / 2) {
+        if ((len % fgChrH) > (fgChrH / 2)) {
+            $(that).children(':last-child').remove();
+            let topNum = $(that).children(':first').text();
+            console.log(topNum);
+            topNum--;
+            if (hOrM == 'h') {
+                if (topNum < 0) {
+                    topNum = 23;
+                }
+            } else {
+                if (topNum < 0) {
+                    topNum = 59;
+                }
+            }
+            topNum = addZero(topNum);
+            $(that).prepend('<div class="figureChr">' + topNum + '</div>');
+            // let yy = Number($(that).parent().css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
+            // yy = yy +1560;
+            mi++;
+            console.log('mi = ' + mi);
+            mh = -fgChrH * mi ;
+            console.log('mh = ' + mh);
+
+            return [1, mh];
+        } else {
+            return [0, mh];
+        }
+    } else {
+        return [0, mh];
+    }
+}
+
+function addZero(a) {
+    if (a < 10) {
+        return '0' + a;
+    } else {
+        return a;
+    }
+}

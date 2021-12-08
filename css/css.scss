@@ -270,6 +270,7 @@ $fgChrH: 39px;
   overflow: hidden;
 }
 .figureChrRow {
+  position: relative;
   width: 46px;
   transform: translateY(-1560px);
   //transition: -webkit-transform 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;

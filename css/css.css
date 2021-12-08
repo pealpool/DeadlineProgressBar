@@ -171,6 +171,7 @@
   overflow: hidden; }
 
 .figureChrRow {
+  position: relative;
   width: 46px;
   transform: translateY(-1560px); }
 
