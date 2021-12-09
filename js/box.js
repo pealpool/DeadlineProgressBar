@@ -189,7 +189,7 @@ ipcRenderer.on('showWin', (event, message) => {
 // 滚动增删div
 function scrollDiv(that, len, hOrM, i) {
     let topNum = '';
-    //todo i的增加后不松手的减少问题
+    //todo i打双来，莫非要用全局i？
     //https://whimsical.com/len-FLycbY7B7NaSbJoCccUpjq
     if (len >= 0) {
         if (len >= fgChrH * i + fgChrH / 2) {
@@ -244,7 +244,7 @@ function scrollDiv(that, len, hOrM, i) {
         }
     } else {
 
-        if (len <= fgChrH * i + fgChrH / 2) {
+        if (len <= fgChrH * i - fgChrH / 2) {
 
             $(that).children(':first').remove();
             topNum = $(that).children(':last').text();
