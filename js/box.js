@@ -40,12 +40,12 @@ let fgChrH = 39;
 let tY = 0;
 let timeDragging = false;
 let myEle;
-let mh = 0;
-let mi = 0;
-let i = 1;
+let mh = 0; //#figureChrRow的margin-top
+let mi = 0; //滚动增删的div数
+let i = 0; //提到全局，否则会产生多个
 // let cici = 0;
 $('.figureCut').mousedown(function (e) {
-    i = 1;
+    i = 0;
     myEle = null;
     myEle = '#' + $(this).find('.figureChrRow').eq(0).attr('id');
     let hOrM = myEle.charAt(myEle.length - 1);
@@ -111,19 +111,7 @@ $('.figureCut').mousedown(function (e) {
             console.log(err);
         }
 
-        let yLoc = 0;
-        //todo 要分大于小于0？未解决
-        if ((Math.abs(clY) % fgChrH) > (fgChrH / 2)) {
-            if(clY < 0){
-                yLoc = Math.floor(clY / fgChrH) * fgChrH;
-            }else {
-                yLoc = Math.ceil(clY / fgChrH) * fgChrH;
-            }
-        } else {
-
-            yLoc = Math.ceil(clY / fgChrH) * fgChrH;
-        }
-
+        let yLoc = Math.round(clY / fgChrH) * fgChrH;
         $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
         $(window).unbind('mouseup');
     });
@@ -200,34 +188,53 @@ ipcRenderer.on('showWin', (event, message) => {
 
 // 滚动增删div
 function scrollDiv(that, len, hOrM, i) {
-    if (len > fgChrH * i - fgChrH / 2) {
-        if ((len % fgChrH) > (fgChrH / 2)) {
-            $(that).children(':last-child').remove();
-            let topNum = $(that).children(':first').text();
-            console.log(topNum);
-            topNum--;
-            if (hOrM == 'h') {
-                if (topNum < 0) {
-                    topNum = 23;
-                }
-            } else {
-                if (topNum < 0) {
-                    topNum = 59;
-                }
-            }
-            topNum = addZero(topNum);
-            $(that).prepend('<div class="figureChr">' + topNum + '</div>');
-            // let yy = Number($(that).parent().css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
-            // yy = yy +1560;
-            mi++;
-            console.log('mi = ' + mi);
-            mh = -fgChrH * mi ;
-            console.log('mh = ' + mh);
+    let topNum = '';
+    //todo i的增加后不松手的减少问题
+    if (len >= fgChrH * i + fgChrH / 2) {
 
-            return [1, mh];
+        $(that).children(':last').remove();
+        topNum = $(that).children(':first').text();
+        console.log(topNum);
+        topNum--;
+        if (hOrM == 'h') {
+            if (topNum < 0) {
+                topNum = 23;
+            }
         } else {
-            return [0, mh];
+            if (topNum < 0) {
+                topNum = 59;
+            }
         }
+        topNum = addZero(topNum);
+        $(that).prepend('<div class="figureChr">' + topNum + '</div>');
+        mi++;
+        console.log('mi = ' + mi);
+        mh = -fgChrH * mi;
+        console.log('mh = ' + mh);
+        return [1, mh];
+
+    } else if (-len >= fgChrH * i + fgChrH / 2) {
+        $(that).children(':first').remove();
+        topNum = $(that).children(':last').text();
+        console.log(topNum);
+        topNum++;
+        if (hOrM == 'h') {
+            if (topNum > 23) {
+                topNum = 0;
+            }
+        } else {
+            if (topNum > 59) {
+                topNum = 0;
+            }
+        }
+        topNum = addZero(topNum);
+        $(that).append('<div class="figureChr">' + topNum + '</div>');
+        mi--;
+        console.log('mi = ' + mi);
+        mh = -fgChrH * mi;
+        console.log('mh = ' + mh);
+        return [-1, mh];
+
     } else {
         return [0, mh];
     }
