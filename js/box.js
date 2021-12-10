@@ -45,7 +45,9 @@ let mi = 0; //滚动增删的div数
 let i = 0; //提到全局，否则会产生多个
 let si = 0;
 let len = 0;
-// let cici = 0;
+let divNum = 0;
+let divTarget = 0;
+let dif = 0;
 $('.figureCut').mousedown(function (e) {
     i = 0;
     myEle = null;
@@ -60,32 +62,19 @@ $('.figureCut').mousedown(function (e) {
     let elY = Number($(myEle).css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
     // let elY = Number(document.defaultView.getComputedStyle(myEle, null).transform.replace(/[^0-9\-,]/g, '').split(',')[5]);
     // $(window).mousemove(function (e) {
-    $(window).bind('mousemove',function (e) {
+    $(window).bind('mousemove', function (e) {
         console.log('mousemove');
         // console.log(myEle);
         if (timeDragging) {
-            /*            let yLoc = elY + e.screenY - tY;
-                        try {
-                            // console.log(yLoc + '=' + elY + '+' + e.screenY + '-' + tY);
-                            if (yLoc > 0) {
-                                yLoc = 0;
-                            } else if (yLoc < (-fgChrH * 80)) {
-                                yLoc = -fgChrH * 80;
-                            }
 
-                            console.log(yLoc);
-                            $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
-                            // myEle.style.transform = 'translateY(' + yLoc + 'px)';
-                            // window.moveTo(xLoc, yLoc);
-                        } catch (err) {
-                            console.log(err);
-                        }*/
             len = e.screenY - tY;
             // let yLoc = elY + len;
             try {
                 // console.log(yLoc);
                 $(myEle).css('transform', 'translateY(' + (elY + len) + 'px)');
                 console.log('i = ' + i);
+
+                divTarget = myRound(len / fgChrH,0);
                 scrollDiv(myEle, hOrM);
                 /*                if (Math.abs(yLoc % fgChrH) > (fgChrH / 2)) {
                                     mh = -1560 - Math.floor(yLoc / fgChrH) * fgChrH;
@@ -192,16 +181,15 @@ ipcRenderer.on('showWin', (event, message) => {
 // 滚动增删div
 function scrollDiv(that, hOrM) {
     let topNum = '';
-    // console.log('len = ' + len + ', fgChrH * ' + i + ' = ' + (fgChrH * i));
-    //todo 每次移动，都有两个不同i。
-    //https://whimsical.com/len-FLycbY7B7NaSbJoCccUpjq
-    if (len >= 0) {
-        if (len >= fgChrH * i + fgChrH / 2) {
+    //todo 往上拖无反应
 
+    // dif = divTarget - divNum;
+
+    while (divNum != divTarget) {
+        console.log('divNum = '+ divNum + ', divTarget = '+ divTarget);
+        if(divTarget - divNum > 0){
             $(that).children(':last').remove();
-            topNum = $(that).children(':first').text()
-            console.log('len('+ len +') >= 0, len >= '+ (fgChrH * i + fgChrH / 2));
-            console.log('first add, topNum = '+ topNum + ' to');
+            topNum = $(that).children(':first').text();
             topNum--;
             if (hOrM == 'h') {
                 if (topNum < 0) {
@@ -214,50 +202,11 @@ function scrollDiv(that, hOrM) {
             }
             topNum = addZero(topNum);
             $(that).prepend('<div class="figureChr">' + topNum + '</div>');
-            console.log(topNum);
-            mi++;
-            // console.log('mi = ' + mi);
-            mh = -fgChrH * mi;
-            // console.log('mh = ' + mh);
-            i++;
-
-        } else {
-            if (i != 0) {
-                $(that).children(':first').remove();
-                topNum = $(that).children(':last').text();
-                console.log('len('+ len +') > 0, len < '+ (fgChrH * i + fgChrH / 2));
-                console.log('last add, topNum = '+ topNum + ' to');
-                topNum++;
-                if (hOrM == 'h') {
-                    if (topNum > 23) {
-                        topNum = 0;
-                    }
-                } else {
-                    if (topNum > 59) {
-                        topNum = 0;
-                    }
-                }
-                topNum = addZero(topNum);
-                $(that).append('<div class="figureChr">' + topNum + '</div>');
-                console.log(topNum);
-                mi--;
-                // console.log('mi = ' + mi);
-                mh = -fgChrH * mi;
-                // console.log('mh = ' + mh);
-                i--;
-            } else {
-
-            }
-
-        }
-    } else {
-
-        if (len <= fgChrH * i - fgChrH / 2) {
-
+            divNum++;
+            mh = -fgChrH * divNum;
+        }else {
             $(that).children(':first').remove();
             topNum = $(that).children(':last').text();
-            console.log('len('+ len +') < 0, len <= '+ (fgChrH * i - fgChrH / 2));
-            console.log('last add, topNum = '+ topNum + ' to');
             topNum++;
             if (hOrM == 'h') {
                 if (topNum > 23) {
@@ -269,20 +218,20 @@ function scrollDiv(that, hOrM) {
                 }
             }
             topNum = addZero(topNum);
-            $(that).append('<div class="figureChr">' + topNum + '</div>');
-            console.log(topNum);
-            mi--;
-            // console.log('mi = ' + mi);
-            mh = -fgChrH * mi;
-            // console.log('mh = ' + mh);
-            i--;
+            $(that).prepend('<div class="figureChr">' + topNum + '</div>');
+            divNum--;
+            mh = -fgChrH * divNum;
+        }
+    }
 
-        } else {
-            if (i != 0) {
+
+    /*    if (len >= 0) {
+            if (len >= fgChrH * i + fgChrH / 2) {
+
                 $(that).children(':last').remove();
                 topNum = $(that).children(':first').text();
-                console.log('len('+ len +') < 0, len > '+ (fgChrH * i - fgChrH / 2));
-                console.log('first add, topNum = '+ topNum + ' to');
+                console.log('len(' + len + ') >= 0, len >= ' + (fgChrH * i + fgChrH / 2));
+                console.log('first add, topNum = ' + topNum + ' to');
                 topNum--;
                 if (hOrM == 'h') {
                     if (topNum < 0) {
@@ -301,12 +250,9 @@ function scrollDiv(that, hOrM) {
                 mh = -fgChrH * mi;
                 // console.log('mh = ' + mh);
                 i++;
-            } else {
             }
+        }*/
 
-        }
-
-    }
 }
 
 function addZero(a) {
