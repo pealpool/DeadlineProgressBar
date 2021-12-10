@@ -291,7 +291,7 @@ $fgChrH: 39px;
   color: $fontD;
   letter-spacing: 5.5px;
   @include tra;
-  //transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all .0s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .timeListBigBox {

@@ -85,7 +85,7 @@ $('.figureCut').mousedown(function (e) {
             try {
                 // console.log(yLoc);
                 $(myEle).css('transform', 'translateY(' + (elY + len) + 'px)');
-                si = scrollDiv(myEle, hOrM);
+                scrollDiv(myEle, hOrM);
                 console.log('i = ' + i);
                 /*                if (Math.abs(yLoc % fgChrH) > (fgChrH / 2)) {
                                     mh = -1560 - Math.floor(yLoc / fgChrH) * fgChrH;
@@ -95,11 +95,10 @@ $('.figureCut').mousedown(function (e) {
                                 console.log(mh);*/
                 // mh = mh - s[1];
                 $(myEle).css('margin-top', mh + 'px');
-                i = i + si;
+                // i = i + si;
             } catch (err) {
                 console.log(err);
             }
-
 
         }
     });
@@ -107,8 +106,6 @@ $('.figureCut').mousedown(function (e) {
         let clY = 0;
         // e.stopPropagation();
         timeDragging = false;
-        // cici++;
-        // console.log($(myEle) + 'cici:'+cici);
 
         try {
             clY = Number($(myEle).css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
@@ -220,7 +217,8 @@ function scrollDiv(that, hOrM) {
             // console.log('mi = ' + mi);
             mh = -fgChrH * mi;
             // console.log('mh = ' + mh);
-            return 1;
+            i++;
+            return;
 
         } else {
             if (i != 0) {
@@ -243,9 +241,10 @@ function scrollDiv(that, hOrM) {
                 // console.log('mi = ' + mi);
                 mh = -fgChrH * mi;
                 // console.log('mh = ' + mh);
-                return -1;
+                i--;
+                return;
             } else {
-                return 0;
+                return;
             }
 
         }
@@ -272,7 +271,8 @@ function scrollDiv(that, hOrM) {
             // console.log('mi = ' + mi);
             mh = -fgChrH * mi;
             // console.log('mh = ' + mh);
-            return -1;
+            i--;
+            return;
 
         } else {
             if (i != 0) {
@@ -295,9 +295,10 @@ function scrollDiv(that, hOrM) {
                 // console.log('mi = ' + mi);
                 mh = -fgChrH * mi;
                 // console.log('mh = ' + mh);
-                return 1;
+                i++;
+                return;
             } else {
-                return 0;
+                return;
             }
 
         }
