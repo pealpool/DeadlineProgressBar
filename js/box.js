@@ -43,6 +43,8 @@ let myEle;
 let mh = 0; //#figureChrRow的margin-top
 let mi = 0; //滚动增删的div数
 let i = 0; //提到全局，否则会产生多个
+let si = 0;
+let len = 0;
 // let cici = 0;
 $('.figureCut').mousedown(function (e) {
     i = 0;
@@ -58,6 +60,9 @@ $('.figureCut').mousedown(function (e) {
     let elY = Number($(myEle).css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
     // let elY = Number(document.defaultView.getComputedStyle(myEle, null).transform.replace(/[^0-9\-,]/g, '').split(',')[5]);
     $(window).mousemove(function (e) {
+
+        console.log('mousemove');
+        // console.log(myEle);
         if (timeDragging) {
             /*            let yLoc = elY + e.screenY - tY;
                         try {
@@ -75,12 +80,12 @@ $('.figureCut').mousedown(function (e) {
                         } catch (err) {
                             console.log(err);
                         }*/
-            let len = e.screenY - tY;
-            let yLoc = elY + len;
+            len = e.screenY - tY;
+            // let yLoc = elY + len;
             try {
                 // console.log(yLoc);
-                $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
-                let s = scrollDiv(myEle, len, hOrM, i);
+                $(myEle).css('transform', 'translateY(' + (elY + len) + 'px)');
+                si = scrollDiv(myEle, hOrM);
                 console.log('i = ' + i);
                 /*                if (Math.abs(yLoc % fgChrH) > (fgChrH / 2)) {
                                     mh = -1560 - Math.floor(yLoc / fgChrH) * fgChrH;
@@ -90,7 +95,7 @@ $('.figureCut').mousedown(function (e) {
                                 console.log(mh);*/
                 // mh = mh - s[1];
                 $(myEle).css('margin-top', mh + 'px');
-                i = i + s;
+                i = i + si;
             } catch (err) {
                 console.log(err);
             }
@@ -111,9 +116,10 @@ $('.figureCut').mousedown(function (e) {
             console.log(err);
         }
 
-        let yLoc = Math.round(clY / fgChrH) * fgChrH;
+        let yLoc = myRound(clY / fgChrH, 0) * fgChrH;
         $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
         $(window).unbind('mouseup');
+        $(window).unbind('mousemove');
     });
 });
 
@@ -187,8 +193,9 @@ ipcRenderer.on('showWin', (event, message) => {
 
 
 // 滚动增删div
-function scrollDiv(that, len, hOrM, i) {
+function scrollDiv(that, hOrM) {
     let topNum = '';
+    console.log('len = ' + len + ', fgChrH * ' + i + ' = ' + (fgChrH * i));
     //todo i打双来，莫非要用全局i？
     //https://whimsical.com/len-FLycbY7B7NaSbJoCccUpjq
     if (len >= 0) {
@@ -196,7 +203,7 @@ function scrollDiv(that, len, hOrM, i) {
 
             $(that).children(':last').remove();
             topNum = $(that).children(':first').text();
-            console.log(topNum);
+            // console.log(topNum);
             topNum--;
             if (hOrM == 'h') {
                 if (topNum < 0) {
@@ -210,16 +217,16 @@ function scrollDiv(that, len, hOrM, i) {
             topNum = addZero(topNum);
             $(that).prepend('<div class="figureChr">' + topNum + '</div>');
             mi++;
-            console.log('mi = ' + mi);
+            // console.log('mi = ' + mi);
             mh = -fgChrH * mi;
-            console.log('mh = ' + mh);
+            // console.log('mh = ' + mh);
             return 1;
 
         } else {
             if (i != 0) {
                 $(that).children(':first').remove();
                 topNum = $(that).children(':last').text();
-                console.log(topNum);
+                // console.log(topNum);
                 topNum++;
                 if (hOrM == 'h') {
                     if (topNum > 23) {
@@ -233,9 +240,9 @@ function scrollDiv(that, len, hOrM, i) {
                 topNum = addZero(topNum);
                 $(that).append('<div class="figureChr">' + topNum + '</div>');
                 mi--;
-                console.log('mi = ' + mi);
+                // console.log('mi = ' + mi);
                 mh = -fgChrH * mi;
-                console.log('mh = ' + mh);
+                // console.log('mh = ' + mh);
                 return -1;
             } else {
                 return 0;
@@ -248,7 +255,7 @@ function scrollDiv(that, len, hOrM, i) {
 
             $(that).children(':first').remove();
             topNum = $(that).children(':last').text();
-            console.log(topNum);
+            // console.log(topNum);
             topNum++;
             if (hOrM == 'h') {
                 if (topNum > 23) {
@@ -262,16 +269,16 @@ function scrollDiv(that, len, hOrM, i) {
             topNum = addZero(topNum);
             $(that).append('<div class="figureChr">' + topNum + '</div>');
             mi--;
-            console.log('mi = ' + mi);
+            // console.log('mi = ' + mi);
             mh = -fgChrH * mi;
-            console.log('mh = ' + mh);
+            // console.log('mh = ' + mh);
             return -1;
 
         } else {
             if (i != 0) {
                 $(that).children(':last').remove();
                 topNum = $(that).children(':first').text();
-                console.log(topNum);
+                // console.log(topNum);
                 topNum--;
                 if (hOrM == 'h') {
                     if (topNum < 0) {
@@ -285,9 +292,9 @@ function scrollDiv(that, len, hOrM, i) {
                 topNum = addZero(topNum);
                 $(that).prepend('<div class="figureChr">' + topNum + '</div>');
                 mi++;
-                console.log('mi = ' + mi);
+                // console.log('mi = ' + mi);
                 mh = -fgChrH * mi;
-                console.log('mh = ' + mh);
+                // console.log('mh = ' + mh);
                 return 1;
             } else {
                 return 0;
@@ -304,4 +311,11 @@ function addZero(a) {
     } else {
         return a;
     }
+}
+
+//让-19.5能四舍五入成-20
+function myRound(number, precision) {
+    let _sign = (number < 0) ? -1 : 1;
+    let _pow = Math.pow(10, precision);
+    return Math.round((number * _sign) * _pow) / _pow * _sign;
 }
