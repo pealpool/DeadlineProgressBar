@@ -59,8 +59,8 @@ $('.figureCut').mousedown(function (e) {
     tY = e.screenY;
     let elY = Number($(myEle).css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
     // let elY = Number(document.defaultView.getComputedStyle(myEle, null).transform.replace(/[^0-9\-,]/g, '').split(',')[5]);
-    $(window).mousemove(function (e) {
-
+    // $(window).mousemove(function (e) {
+    $(window).bind('mousemove',function (e) {
         console.log('mousemove');
         // console.log(myEle);
         if (timeDragging) {
@@ -85,8 +85,8 @@ $('.figureCut').mousedown(function (e) {
             try {
                 // console.log(yLoc);
                 $(myEle).css('transform', 'translateY(' + (elY + len) + 'px)');
-                scrollDiv(myEle, hOrM);
                 console.log('i = ' + i);
+                scrollDiv(myEle, hOrM);
                 /*                if (Math.abs(yLoc % fgChrH) > (fgChrH / 2)) {
                                     mh = -1560 - Math.floor(yLoc / fgChrH) * fgChrH;
                                 } else {
@@ -192,15 +192,16 @@ ipcRenderer.on('showWin', (event, message) => {
 // 滚动增删div
 function scrollDiv(that, hOrM) {
     let topNum = '';
-    console.log('len = ' + len + ', fgChrH * ' + i + ' = ' + (fgChrH * i));
-    //todo i打双来，莫非要用全局i？
+    // console.log('len = ' + len + ', fgChrH * ' + i + ' = ' + (fgChrH * i));
+    //todo 每次移动，都有两个不同i。
     //https://whimsical.com/len-FLycbY7B7NaSbJoCccUpjq
     if (len >= 0) {
         if (len >= fgChrH * i + fgChrH / 2) {
 
             $(that).children(':last').remove();
-            topNum = $(that).children(':first').text();
-            // console.log(topNum);
+            topNum = $(that).children(':first').text()
+            console.log('len('+ len +') >= 0, len >= '+ (fgChrH * i + fgChrH / 2));
+            console.log('first add, topNum = '+ topNum + ' to');
             topNum--;
             if (hOrM == 'h') {
                 if (topNum < 0) {
@@ -213,18 +214,19 @@ function scrollDiv(that, hOrM) {
             }
             topNum = addZero(topNum);
             $(that).prepend('<div class="figureChr">' + topNum + '</div>');
+            console.log(topNum);
             mi++;
             // console.log('mi = ' + mi);
             mh = -fgChrH * mi;
             // console.log('mh = ' + mh);
             i++;
-            return;
 
         } else {
             if (i != 0) {
                 $(that).children(':first').remove();
                 topNum = $(that).children(':last').text();
-                // console.log(topNum);
+                console.log('len('+ len +') > 0, len < '+ (fgChrH * i + fgChrH / 2));
+                console.log('last add, topNum = '+ topNum + ' to');
                 topNum++;
                 if (hOrM == 'h') {
                     if (topNum > 23) {
@@ -237,14 +239,14 @@ function scrollDiv(that, hOrM) {
                 }
                 topNum = addZero(topNum);
                 $(that).append('<div class="figureChr">' + topNum + '</div>');
+                console.log(topNum);
                 mi--;
                 // console.log('mi = ' + mi);
                 mh = -fgChrH * mi;
                 // console.log('mh = ' + mh);
                 i--;
-                return;
             } else {
-                return;
+
             }
 
         }
@@ -254,7 +256,8 @@ function scrollDiv(that, hOrM) {
 
             $(that).children(':first').remove();
             topNum = $(that).children(':last').text();
-            // console.log(topNum);
+            console.log('len('+ len +') < 0, len <= '+ (fgChrH * i - fgChrH / 2));
+            console.log('last add, topNum = '+ topNum + ' to');
             topNum++;
             if (hOrM == 'h') {
                 if (topNum > 23) {
@@ -267,18 +270,19 @@ function scrollDiv(that, hOrM) {
             }
             topNum = addZero(topNum);
             $(that).append('<div class="figureChr">' + topNum + '</div>');
+            console.log(topNum);
             mi--;
             // console.log('mi = ' + mi);
             mh = -fgChrH * mi;
             // console.log('mh = ' + mh);
             i--;
-            return;
 
         } else {
             if (i != 0) {
                 $(that).children(':last').remove();
                 topNum = $(that).children(':first').text();
-                // console.log(topNum);
+                console.log('len('+ len +') < 0, len > '+ (fgChrH * i - fgChrH / 2));
+                console.log('first add, topNum = '+ topNum + ' to');
                 topNum--;
                 if (hOrM == 'h') {
                     if (topNum < 0) {
@@ -291,14 +295,13 @@ function scrollDiv(that, hOrM) {
                 }
                 topNum = addZero(topNum);
                 $(that).prepend('<div class="figureChr">' + topNum + '</div>');
+                console.log(topNum);
                 mi++;
                 // console.log('mi = ' + mi);
                 mh = -fgChrH * mi;
                 // console.log('mh = ' + mh);
                 i++;
-                return;
             } else {
-                return;
             }
 
         }
