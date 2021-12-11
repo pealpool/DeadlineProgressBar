@@ -41,15 +41,13 @@ let tY = 0;
 let timeDragging = false;
 let myEle;
 let mh = 0; //#figureChrRow的margin-top
-let mi = 0; //滚动增删的div数
-let i = 0; //提到全局，否则会产生多个
-let si = 0;
 let len = 0;
 let divNum = 0;
 let divTarget = 0;
 let dif = 0;
+let mgt = '';
 $('.figureCut').mousedown(function (e) {
-    i = 0;
+
     myEle = null;
     myEle = '#' + $(this).find('.figureChrRow').eq(0).attr('id');
     let hOrM = myEle.charAt(myEle.length - 1);
@@ -60,10 +58,12 @@ $('.figureCut').mousedown(function (e) {
     // tX = e.pageX;
     tY = e.screenY;
     let elY = Number($(myEle).css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
+    mgt = $(myEle).css('margin-top');
+    mgt = mgt.substring(0, mgt.length - 2);
+    console.log('margin-top = ' + mgt);
     // let elY = Number(document.defaultView.getComputedStyle(myEle, null).transform.replace(/[^0-9\-,]/g, '').split(',')[5]);
     // $(window).mousemove(function (e) {
     $(window).bind('mousemove', function (e) {
-        console.log('mousemove');
         // console.log(myEle);
         if (timeDragging) {
 
@@ -72,19 +72,10 @@ $('.figureCut').mousedown(function (e) {
             try {
                 // console.log(yLoc);
                 $(myEle).css('transform', 'translateY(' + (elY + len) + 'px)');
-                console.log('i = ' + i);
+                // console.log(len);
 
-                divTarget = myRound(len / fgChrH,0);
+                divTarget = myRound(len / fgChrH, 0);
                 scrollDiv(myEle, hOrM);
-                /*                if (Math.abs(yLoc % fgChrH) > (fgChrH / 2)) {
-                                    mh = -1560 - Math.floor(yLoc / fgChrH) * fgChrH;
-                                } else {
-                                    mh = -1560 - Math.ceil(yLoc / fgChrH) * fgChrH;
-                                }
-                                console.log(mh);*/
-                // mh = mh - s[1];
-                $(myEle).css('margin-top', mh + 'px');
-                // i = i + si;
             } catch (err) {
                 console.log(err);
             }
@@ -106,6 +97,7 @@ $('.figureCut').mousedown(function (e) {
         $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
         $(window).unbind('mouseup');
         $(window).unbind('mousemove');
+        divNum = 0;
     });
 });
 
@@ -184,10 +176,10 @@ function scrollDiv(that, hOrM) {
     //todo 往上拖无反应
 
     // dif = divTarget - divNum;
-
+    console.log('while front');
     while (divNum != divTarget) {
-        console.log('divNum = '+ divNum + ', divTarget = '+ divTarget);
-        if(divTarget - divNum > 0){
+        console.log('divNum = ' + divNum + ', divTarget = ' + divTarget);
+        if (divTarget - divNum > 0) {
             $(that).children(':last').remove();
             topNum = $(that).children(':first').text();
             topNum--;
@@ -202,9 +194,9 @@ function scrollDiv(that, hOrM) {
             }
             topNum = addZero(topNum);
             $(that).prepend('<div class="figureChr">' + topNum + '</div>');
+            console.log('add Top ' + topNum);
             divNum++;
-            mh = -fgChrH * divNum;
-        }else {
+        } else {
             $(that).children(':first').remove();
             topNum = $(that).children(':last').text();
             topNum++;
@@ -218,41 +210,16 @@ function scrollDiv(that, hOrM) {
                 }
             }
             topNum = addZero(topNum);
-            $(that).prepend('<div class="figureChr">' + topNum + '</div>');
+            $(that).append('<div class="figureChr">' + topNum + '</div>');
+            console.log('add Bottom ' + topNum);
             divNum--;
-            mh = -fgChrH * divNum;
         }
+        mh = -fgChrH * divNum;
+        // console.log('mgt = ' + mgt + ', mh = ' + mh);
+        // mgt = Number(mgt) + Number(mh);
+        $(myEle).css('margin-top', (Number(mgt) + Number(mh)) + 'px');
+        // console.log('margin-top = ' + (Number(mgt) + Number(mh)));
     }
-
-
-    /*    if (len >= 0) {
-            if (len >= fgChrH * i + fgChrH / 2) {
-
-                $(that).children(':last').remove();
-                topNum = $(that).children(':first').text();
-                console.log('len(' + len + ') >= 0, len >= ' + (fgChrH * i + fgChrH / 2));
-                console.log('first add, topNum = ' + topNum + ' to');
-                topNum--;
-                if (hOrM == 'h') {
-                    if (topNum < 0) {
-                        topNum = 23;
-                    }
-                } else {
-                    if (topNum < 0) {
-                        topNum = 59;
-                    }
-                }
-                topNum = addZero(topNum);
-                $(that).prepend('<div class="figureChr">' + topNum + '</div>');
-                console.log(topNum);
-                mi++;
-                // console.log('mi = ' + mi);
-                mh = -fgChrH * mi;
-                // console.log('mh = ' + mh);
-                i++;
-            }
-        }*/
-
 }
 
 function addZero(a) {
