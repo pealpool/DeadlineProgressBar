@@ -44,7 +44,6 @@ let mh = 0; //#figureChrRow的margin-top
 let len = 0;
 let divNum = 0;
 let divTarget = 0;
-let dif = 0;
 let mgt = '';
 $('.figureCut').mousedown(function (e) {
 
@@ -94,10 +93,12 @@ $('.figureCut').mousedown(function (e) {
         }
 
         let yLoc = myRound(clY / fgChrH, 0) * fgChrH;
-        $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
         $(window).unbind('mouseup');
         $(window).unbind('mousemove');
         divNum = 0;
+        // $(myEle).css('transform', 'translateY(' + yLoc + 'px)');
+        myAnimate($(myEle), yLoc);
+
     });
 });
 
@@ -235,4 +236,20 @@ function myRound(number, precision) {
     let _sign = (number < 0) ? -1 : 1;
     let _pow = Math.pow(10, precision);
     return Math.round((number * _sign) * _pow) / _pow * _sign;
+}
+
+function myAnimate(obj, target) {
+    let clY = Number(obj.css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
+    // let mmo = clY;
+    clearInterval(obj.time);
+    obj.time = setInterval(function () {
+        let step = target - clY;
+        let c = 1;
+        step = step > 0 ? c : -c;
+        clY = clY + step;
+        obj.css('transform', 'translateY(' + clY + 'px)');
+        if (clY == target) {
+            clearInterval(obj.time);
+        }
+    }, 10);
 }

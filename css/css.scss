@@ -42,6 +42,7 @@ $fgChrH: 39px;
   font-family: 'DigitalNumbers-Regular';
   src: url('../img/DigitalNumbers-Regular.ttf');
 }
+
 @font-face {
   font-family: 'SourceHanSansCN-Regular';
   src: url('../img/SourceHanSansCN-Regular.otf');
@@ -136,12 +137,12 @@ $fgChrH: 39px;
       background-color: $Bg;
     }
 
-    & .timeListAdd{
+    & .timeListAdd {
       background-color: $frontD;
     }
 
     & .fgBox {
-      background: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%);
+      background: $L2;
     }
 
   }
@@ -193,7 +194,7 @@ $fgChrH: 39px;
   left: 3px;
 }
 
-.myV{
+.myV {
   position: relative;
   width: 24px;
   height: 20px;
@@ -212,7 +213,7 @@ $fgChrH: 39px;
   float: left;
   width: 23px;
   height: $fgChrH;
-  background: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
+  background: $L1;
   border-radius: 3px;
   margin-right: 2px;
   @include tra;
@@ -259,16 +260,16 @@ $fgChrH: 39px;
 
 .figureChrBox {
   position: absolute;
-  //margin-top: 4px;
   margin-left: 2px;
 }
 
-.figureCut{
+.figureCut {
   float: left;
   width: 46px;
   height: $fgChrH;
   overflow: hidden;
 }
+
 .figureChrRow {
   position: relative;
   width: 46px;
@@ -278,7 +279,7 @@ $fgChrH: 39px;
 }
 
 .row_m,
-.row_s{
+.row_s {
   margin-left: 18px;
 }
 
@@ -441,6 +442,6 @@ $fgChrH: 39px;
   }
 }
 
-#startNew{
+#startNew {
   margin-left: 2px;
 }
