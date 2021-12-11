@@ -253,3 +253,23 @@ function myAnimate(obj, target) {
         }
     }, 10);
 }
+
+$('.figureCut').on('mousewheel',function (e) {
+    if(!timeDragging){
+        let g = e.originalEvent.deltaY;
+        myEle = null;
+        myEle = '#' + $(this).find('.figureChrRow').eq(0).attr('id');
+        let elY = Number($(myEle).css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
+        console.log(g);
+        g = Math.round(g/100) * fgChrH;
+        try {
+            $(myEle).css('transform', 'translateY(' + (elY - g) + 'px)');
+            //todo 增删div为做，margin未做
+
+            // divTarget = myRound(len / fgChrH, 0);
+            // scrollDiv(myEle, hOrM);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+});
