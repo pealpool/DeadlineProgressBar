@@ -133,5 +133,8 @@ ipcMain.on('startRun_toM', (event, message) => {
     // 主进程向渲染进程触发事件
     // console.log(JSON.stringify(message));
     console.log(message.time_h);
+
+    //todo （发送目标的窗口）.webContents.send 才正确。
+    //https://www.cnblogs.com/ybixian/p/10878899.html
     setBoxWin.webContents.send('startRun_toR', message);
 })

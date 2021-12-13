@@ -144,7 +144,6 @@ $('#startNew').click(function () {
 
     }
 
-
     $('#index_div').hide('scale', {percent: 10}, 100, function () {
         ipcRenderer.send('hideWin');
     });
@@ -293,12 +292,12 @@ $('.figureCut').on('mousewheel', function (e) {
         myEle = '#' + $(this).find('.figureChrRow').eq(0).attr('id');
         let hOrM = myEle.charAt(myEle.length - 1);
         let elY = Number($(myEle).css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
-        console.log(l);
+        // console.log(l);
         let n = Math.round(l / 100);
         l = n * fgChrH;
         let mt = $(myEle).css('margin-top');
         mt = mt.substring(0, mt.length - 2);
-        console.log('elY =' + elY + ', l = ' + l + ', translateY = ' + (elY - l) + ', mt = ' + mt);
+        // console.log('elY =' + elY + ', l = ' + l + ', translateY = ' + (elY - l) + ', mt = ' + mt);
         try {
             // $(myEle).css('transform', 'translateY(' + (elY - g) + 'px)');
             myAnimate($(myEle), (elY - l), 3, function () {

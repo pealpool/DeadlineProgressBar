@@ -1,4 +1,5 @@
 'use strict';
+
 const {remote, clipboard, ipcRenderer } = require('electron');
 
 
