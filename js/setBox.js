@@ -124,9 +124,43 @@ $('#tab_r').click(function () {
 
 let newWin = null;
 $('#startNew').click(function () {
+    if (newWin == null) {
+        createNewWin();
+    }
+    let time_h = 0, time_m = 0, time_s = 0;
+    if ($('#tab_r').attr('class') == 'myTab') {
+        //勾选 #tab_l
+        time_h = $('#timeChrL_h .figureChr:nth-child(41)').text();
+        time_m = $('#timeChrL_m .figureChr:nth-child(41)').text();
+        ipcRenderer.send('startRun_toM',{
+            tab: 'l',
+            time_h: time_h,
+            time_m: time_m
+        });
+
+
+    } else {
+        //勾选 #tab_r
+
+    }
+
+
     $('#index_div').hide('scale', {percent: 10}, 100, function () {
         ipcRenderer.send('hideWin');
     });
+});
+
+$('#hideButton_1').click(function () {
+    $('#index_div').hide('scale', {percent: 10}, 100, function () {
+        ipcRenderer.send('hideWin');
+    });
+});
+
+ipcRenderer.on('showWin', (event, message) => {
+    $('#index_div').show('scale', {percent: 10}, 100);
+});
+
+function createNewWin() {
     const winW = screen.getPrimaryDisplay().workAreaSize.width;
     const winH = screen.getPrimaryDisplay().workAreaSize.height;
     //调用 BrowserWindow打开新窗口
@@ -154,22 +188,14 @@ $('#startNew').click(function () {
         newWin = null
     });
 
+    //打开F12调试工具
+    newWin.webContents.openDevTools({mode: 'detach'});
+
     //裁剪窗体成2px高，否则最少不能为2px高
     newWin.setShape([
         {x: 0, y: 0, width: winW, height: 2}
     ]);
-
-});
-
-$('#hideButton_1').click(function () {
-    $('#index_div').hide('scale', {percent: 10}, 100, function () {
-        ipcRenderer.send('hideWin');
-    });
-});
-
-ipcRenderer.on('showWin', (event, message) => {
-    $('#index_div').show('scale', {percent: 10}, 100);
-});
+}
 
 
 // 滚动增删div
@@ -275,7 +301,7 @@ $('.figureCut').on('mousewheel', function (e) {
         console.log('elY =' + elY + ', l = ' + l + ', translateY = ' + (elY - l) + ', mt = ' + mt);
         try {
             // $(myEle).css('transform', 'translateY(' + (elY - g) + 'px)');
-            myAnimate($(myEle), (elY - l), 3,function () {
+            myAnimate($(myEle), (elY - l), 3, function () {
                 if (n > 0) {
                     for (let i = 0; i < n; i++) {
                         $(myEle).children(':first').remove();

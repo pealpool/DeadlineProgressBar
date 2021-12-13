@@ -3,6 +3,9 @@ const {remote, clipboard, ipcRenderer } = require('electron');
 
 
 // const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
+let getOk = false;
+
+
 
 runPro();
 
@@ -17,6 +20,10 @@ function runPro() {
         } else {
             w++;
             elem.style.width = w + 'px';
+            console.log(getOk);
+            if (getOk){
+                console.log(w);
+            }
         }
     }
 }
@@ -36,6 +43,12 @@ ipcRenderer.on('imgUploadMsgFromMain', (event, message) => {
     console.log(JSON.stringify(message));
 });
 
-mbt.onclick = () => {
+/*mbt.onclick = () => {
     sendToMainProcess();
-};
+};*/
+
+ipcRenderer.on('startRun_toR', (event, message) => {
+    getOk = true;
+    console.log('ok');
+    console.log(JSON.stringify(message));
+});

@@ -4,10 +4,10 @@ const {BrowserWindow,BrowserView,app, Menu, Tray, ipcMain, globalShortcut,} = el
 const path = require('path');
 
 
-let win;
+let setBoxWin;
 let tray = null
 
-function createWindow() {
+function create_setBoxWin() {
     // 创建窗口并加载页面
     const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
     const winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
@@ -17,7 +17,7 @@ function createWindow() {
     const pht = 10;
     const phb = 20;
     Menu.setApplicationMenu(null)
-    win = new BrowserWindow({
+    setBoxWin = new BrowserWindow({
         width: wi + pw * 2,
         maxWidth: wi + pw * 2,
         minWidth: wi + pw * 2,
@@ -40,16 +40,16 @@ function createWindow() {
         }
     });
     require('@electron/remote/main').initialize();
-    require("@electron/remote/main").enable(win.webContents);
+    require("@electron/remote/main").enable(setBoxWin.webContents);
 
-    win.loadURL(`file://${__dirname}/index.html`);
+    setBoxWin.loadURL(`file://${__dirname}/index.html`);
     // win.setIgnoreMouseEvents(true);
-    win.setMenu(null);
+    setBoxWin.setMenu(null);
     // 窗口关闭的监听
-    win.on('closed', (event) => {
-        win = null;
+    setBoxWin.on('closed', (event) => {
+        setBoxWin = null;
     });
-    win.setSkipTaskbar(true);
+    setBoxWin.setSkipTaskbar(true);
     // 当我们点击关闭时触发close事件，我们按照之前的思路在关闭时，隐藏窗口，隐藏任务栏窗口
     // event.preventDefault(); 禁止关闭行为(非常必要，因为我们并不是想要关闭窗口，所以需要禁止默认行为)
     // win.on('close', (event) => {
@@ -59,7 +59,7 @@ function createWindow() {
     // });
 
     //打开F12调试工具
-    win.webContents.openDevTools({mode: 'detach'});
+    setBoxWin.webContents.openDevTools({mode: 'detach'});
 
     //创建系统通知区菜单
     tray = new Tray(path.join(__dirname, 'img/ico16.ico'));
@@ -67,9 +67,9 @@ function createWindow() {
         {
             label: '设置',
             click: () => {
-                if (!win.isVisible()){
-                    win.show();
-                    win.webContents.send('showWin');
+                if (!setBoxWin.isVisible()){
+                    setBoxWin.show();
+                    setBoxWin.webContents.send('showWin');
                 }
             }
         },
@@ -84,17 +84,17 @@ function createWindow() {
     tray.setContextMenu(contextMenu);
     tray.on('double-click', () => {
         //我们这里模拟桌面程序点击通知区图标实现打开关闭应用的功能
-        if (!win.isVisible()){
-            win.show();
-            win.webContents.send('showWin');
+        if (!setBoxWin.isVisible()){
+            setBoxWin.show();
+            setBoxWin.webContents.send('showWin');
         }
     })
 
     // 禁用框架的右键菜单
-    win.hookWindowMessage(278, function (e) {
-        win.setEnabled(false); //窗口禁用
+    setBoxWin.hookWindowMessage(278, function (e) {
+        setBoxWin.setEnabled(false); //窗口禁用
         setTimeout(() => {
-            win.setEnabled(true); //窗口启用
+            setBoxWin.setEnabled(true); //窗口启用
         }, 100); //延时太快会立刻启用，太慢会妨碍窗口其他操作，自行测试
         return true;
     })
@@ -102,7 +102,7 @@ function createWindow() {
 //解决show窗口时闪烁
 app.commandLine.appendSwitch('wm-window-animations-disabled');
 
-app.on('ready', createWindow);
+app.on('ready', create_setBoxWin);
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
@@ -110,8 +110,8 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-    if (win === null) {
-        createWindow();
+    if (setBoxWin === null) {
+        create_setBoxWin();
     }
 });
 
@@ -120,9 +120,18 @@ ipcMain.on('imgUploadMain', (event, message) => {
     console.log('receive render process msg');
     console.log(JSON.stringify(message));
     // 主进程向渲染进程触发事件
-    win.webContents.send('imgUploadMsgFromMain', message);
+    setBoxWin.webContents.send('imgUploadMsgFromMain', message);
 })
 
 ipcMain.on('hideWin', (event, message) => {
-    win.hide();
+    setBoxWin.hide();
+})
+
+ipcMain.on('startRun_toM', (event, message) => {
+    // console.log('receive render process msg');
+    // console.log(JSON.stringify(message));
+    // 主进程向渲染进程触发事件
+    // console.log(JSON.stringify(message));
+    console.log(message.time_h);
+    setBoxWin.webContents.send('startRun_toR', message);
 })
