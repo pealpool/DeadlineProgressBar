@@ -122,42 +122,7 @@ $('#tab_r').click(function () {
     $('#tab_l .myV').hide('scale', {percent: 10}, 200);
 });
 
-let pgBarWin = null;
-$('#startNew').click(function () {
-    if (pgBarWin == null) {
-        createBarWin();
-    }
-    let time_h = 0, time_m = 0, time_s = 0;
-    if ($('#tab_r').attr('class') == 'myTab') {
-        //勾选 #tab_l
-        time_h = $('#timeChrL_h .figureChr:nth-child(41)').text();
-        time_m = $('#timeChrL_m .figureChr:nth-child(41)').text();
-        ipcRenderer.send('startRun_toM',{
-            tab: 'l',
-            time_h: time_h,
-            time_m: time_m
-        });
-
-
-    } else {
-        //勾选 #tab_r
-
-    }
-
-    $('#index_div').hide('scale', {percent: 10}, 100, function () {
-        ipcRenderer.send('hideWin');
-    });
-});
-
-$('#hideButton_1').click(function () {
-    $('#index_div').hide('scale', {percent: 10}, 100, function () {
-        ipcRenderer.send('hideWin');
-    });
-});
-
-ipcRenderer.on('showWin', (event, message) => {
-    $('#index_div').show('scale', {percent: 10}, 100);
-});
+/*
 
 function createBarWin() {
     const winW = screen.getPrimaryDisplay().workAreaSize.width;
@@ -195,6 +160,7 @@ function createBarWin() {
         {x: 0, y: 0, width: winW, height: 2}
     ]);
 }
+*/
 
 
 // 滚动增删div
@@ -345,4 +311,38 @@ $('.figureCut').on('mousewheel', function (e) {
             console.log(err);
         }
     }
+});
+
+
+$('#startNew').click(function () {
+    let time_h = 0, time_m = 0, time_s = 0;
+    if ($('#tab_r').attr('class') == 'myTab') {
+        //勾选 #tab_l
+        time_h = $('#timeChrL_h .figureChr:nth-child(41)').text();
+        time_m = $('#timeChrL_m .figureChr:nth-child(41)').text();
+        ipcRenderer.send('startRun_toM',{
+            tab: 'l',
+            time_h: time_h,
+            time_m: time_m
+        });
+
+
+    } else {
+        //勾选 #tab_r
+
+    }
+
+    $('#index_div').hide('scale', {percent: 10}, 100, function () {
+        ipcRenderer.send('hideWin');
+    });
+});
+
+$('#hideButton_1').click(function () {
+    $('#index_div').hide('scale', {percent: 10}, 100, function () {
+        ipcRenderer.send('hideWin');
+    });
+});
+
+ipcRenderer.on('showWin', (event, message) => {
+    $('#index_div').show('scale', {percent: 10}, 100);
 });

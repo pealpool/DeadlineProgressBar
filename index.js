@@ -1,11 +1,60 @@
 'use strict';
 const electron = require('electron');
-const {BrowserWindow,app, Menu, Tray, ipcMain} = electron;
+const {BrowserWindow, app, Menu, Tray, ipcMain} = electron;
 const path = require('path');
+const {screen} = require("@electron/remote/main");
 
 
-let setBoxWin;
-let tray = null
+let setBoxWin, pgBarWin;
+let tray = null;
+
+
+//解决show窗口时闪烁
+app.commandLine.appendSwitch('wm-window-animations-disabled');
+
+app.on('ready', function () {
+    create_setBoxWin();
+    create_bgBarWin();
+    // pgBarWin.hide();
+});
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+
+/*app.on('activate', () => {
+    if (setBoxWin === null) {
+        create_setBoxWin();
+        create_bgBarWin();
+    }
+});*/
+
+// 主进程监听事件
+ipcMain.on('imgUploadMain', (event, message) => {
+    console.log('receive render process msg');
+    console.log(JSON.stringify(message));
+    // 主进程向渲染进程触发事件
+    setBoxWin.webContents.send('imgUploadMsgFromMain', message);
+})
+
+ipcMain.on('hideWin', (event, message) => {
+    setBoxWin.hide();
+})
+
+ipcMain.on('startRun_toM', (event, message) => {
+    // console.log('receive render process msg');
+    // console.log(JSON.stringify(message));
+    // 主进程向渲染进程触发事件
+    // console.log(JSON.stringify(message));
+    console.log(message.time_h);
+
+    //todo （发送目标的窗口）.webContents.send 才正确。
+    //https://www.cnblogs.com/ybixian/p/10878899.html
+    pgBarWin.webContents.send('startRun_toR', message);
+})
+
 
 function create_setBoxWin() {
     // 创建窗口并加载页面
@@ -16,7 +65,7 @@ function create_setBoxWin() {
     const pw = 16;
     const pht = 10;
     const phb = 20;
-    Menu.setApplicationMenu(null)
+    Menu.setApplicationMenu(null);
     setBoxWin = new BrowserWindow({
         width: wi + pw * 2,
         maxWidth: wi + pw * 2,
@@ -36,7 +85,7 @@ function create_setBoxWin() {
         webPreferences: {
             contextIsolation: false, // 设置此项为false后，才可在渲染进程中使用electron api
             nodeIntegration: true,
-            enableRemoteModule:true
+            enableRemoteModule: true
         }
     });
     require('@electron/remote/main').initialize();
@@ -65,13 +114,16 @@ function create_setBoxWin() {
     tray = new Tray(path.join(__dirname, 'img/ico16.ico'));
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: '设置',
+            label: '倒数设置',
             click: () => {
-                if (!setBoxWin.isVisible()){
+                if (!setBoxWin.isVisible()) {
                     setBoxWin.show();
                     setBoxWin.webContents.send('showWin');
                 }
             }
+        },
+        {
+            label: '颜色选择',
         },
         {
             label: '退出',
@@ -80,11 +132,11 @@ function create_setBoxWin() {
             }
         }//我们需要在这里有一个真正退出（这里直接强制退出）
     ])
-    tray.setToolTip('My托盘测试');
+    tray.setToolTip('剩余时间：');
     tray.setContextMenu(contextMenu);
     tray.on('double-click', () => {
         //我们这里模拟桌面程序点击通知区图标实现打开关闭应用的功能
-        if (!setBoxWin.isVisible()){
+        if (!setBoxWin.isVisible()) {
             setBoxWin.show();
             setBoxWin.webContents.send('showWin');
         }
@@ -99,42 +151,40 @@ function create_setBoxWin() {
         return true;
     })
 }
-//解决show窗口时闪烁
-app.commandLine.appendSwitch('wm-window-animations-disabled');
 
-app.on('ready', create_setBoxWin);
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
+function create_bgBarWin() {
+    const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
+    const winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
+    //调用 BrowserWindow打开新窗口
+    pgBarWin = new BrowserWindow({
+        width: winW,
+        height: 2,
+        x: 0,
+        y: winH - 2,
+        frame: false,
+        useContentSize: false,
+        resizable: false,
+        transparent: true,
+        alwaysOnTop: true,
 
-app.on('activate', () => {
-    if (setBoxWin === null) {
-        create_setBoxWin();
-    }
-});
+        webPreferences: {
+            contextIsolation: false, // 设置此项为false后，才可在渲染进程中使用electron api
+            nodeIntegration: true
+        }
+    })
+    //打开一个新的窗口
+    // newWin.loadURL(`file://${__dirname}/otherWin.html`);
+    //新建窗口
+    pgBarWin.loadURL(`file://${__dirname}/progressBar.html`);
+    pgBarWin.on('close', () => {
+        pgBarWin = null
+    });
 
-// 主进程监听事件
-ipcMain.on('imgUploadMain', (event, message) => {
-    console.log('receive render process msg');
-    console.log(JSON.stringify(message));
-    // 主进程向渲染进程触发事件
-    setBoxWin.webContents.send('imgUploadMsgFromMain', message);
-})
+    //打开F12调试工具
+    pgBarWin.webContents.openDevTools({mode: 'detach'});
 
-ipcMain.on('hideWin', (event, message) => {
-    setBoxWin.hide();
-})
-
-ipcMain.on('startRun_toM', (event, message) => {
-    // console.log('receive render process msg');
-    // console.log(JSON.stringify(message));
-    // 主进程向渲染进程触发事件
-    // console.log(JSON.stringify(message));
-    console.log(message.time_h);
-
-    //todo （发送目标的窗口）.webContents.send 才正确。
-    //https://www.cnblogs.com/ybixian/p/10878899.html
-    setBoxWin.webContents.send('startRun_toR', message);
-})
+    //裁剪窗体成2px高，否则最少不能为2px高
+    pgBarWin.setShape([
+        {x: 0, y: 0, width: winW, height: 2}
+    ]);
+}
