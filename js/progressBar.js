@@ -34,7 +34,7 @@ const mbt = document.querySelector('#myBtTest');
 function sendToMainProcess () {
     // 向主进程发送 imgUploadMain 事件
     ipcRenderer.send('imgUploadMain', {
-        username: 'huangbiao',
+        username: '22231',
         age: 18
     })
 }

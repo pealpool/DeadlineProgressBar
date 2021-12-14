@@ -1,6 +1,6 @@
 'use strict';
 const electron = require('electron');
-const {BrowserWindow,BrowserView,app, Menu, Tray, ipcMain, globalShortcut,} = electron;
+const {BrowserWindow,app, Menu, Tray, ipcMain} = electron;
 const path = require('path');
 
 
@@ -46,7 +46,7 @@ function create_setBoxWin() {
     // win.setIgnoreMouseEvents(true);
     setBoxWin.setMenu(null);
     // 窗口关闭的监听
-    setBoxWin.on('closed', (event) => {
+    setBoxWin.on('closed', () => {
         setBoxWin = null;
     });
     setBoxWin.setSkipTaskbar(true);
@@ -78,7 +78,7 @@ function create_setBoxWin() {
             click: () => {
                 app.quit();
             }
-        }//我们需要在这里有一个真正的退出（这里直接强制退出）
+        }//我们需要在这里有一个真正退出（这里直接强制退出）
     ])
     tray.setToolTip('My托盘测试');
     tray.setContextMenu(contextMenu);
@@ -91,7 +91,7 @@ function create_setBoxWin() {
     })
 
     // 禁用框架的右键菜单
-    setBoxWin.hookWindowMessage(278, function (e) {
+    setBoxWin.hookWindowMessage(278, function () {
         setBoxWin.setEnabled(false); //窗口禁用
         setTimeout(() => {
             setBoxWin.setEnabled(true); //窗口启用

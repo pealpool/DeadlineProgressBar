@@ -4,7 +4,7 @@
 // const {BrowserWindow} = electron;
 // const path = require('path');
 const {BrowserWindow, screen} = require('@electron/remote');
-const {remote, clipboard, ipcRenderer} = require('electron');
+const { ipcRenderer} = require('electron');
 
 //拖动窗体
 let wX = 0;
@@ -60,7 +60,7 @@ $('.figureCut').mousedown(function (e) {
     let elY = Number($(myEle).css('transform').replace(/[^0-9\-,]/g, '').split(',')[5]);
     mgt = $(myEle).css('margin-top');
     mgt = mgt.substring(0, mgt.length - 2);
-    console.log('margin-top = ' + mgt);
+    // console.log('margin-top = ' + mgt);
     // let elY = Number(document.defaultView.getComputedStyle(myEle, null).transform.replace(/[^0-9\-,]/g, '').split(',')[5]);
     // $(window).mousemove(function (e) {
     $(window).bind('mousemove', function (e) {
