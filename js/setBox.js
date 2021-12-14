@@ -122,10 +122,10 @@ $('#tab_r').click(function () {
     $('#tab_l .myV').hide('scale', {percent: 10}, 200);
 });
 
-let newWin = null;
+let pgBarWin = null;
 $('#startNew').click(function () {
-    if (newWin == null) {
-        createNewWin();
+    if (pgBarWin == null) {
+        createBarWin();
     }
     let time_h = 0, time_m = 0, time_s = 0;
     if ($('#tab_r').attr('class') == 'myTab') {
@@ -159,11 +159,11 @@ ipcRenderer.on('showWin', (event, message) => {
     $('#index_div').show('scale', {percent: 10}, 100);
 });
 
-function createNewWin() {
+function createBarWin() {
     const winW = screen.getPrimaryDisplay().workAreaSize.width;
     const winH = screen.getPrimaryDisplay().workAreaSize.height;
     //调用 BrowserWindow打开新窗口
-    newWin = new BrowserWindow({
+    pgBarWin = new BrowserWindow({
         width: winW,
         height: 2,
         x: 0,
@@ -182,16 +182,16 @@ function createNewWin() {
     //打开一个新的窗口
     // newWin.loadURL(`file://${__dirname}/otherWin.html`);
     //新建窗口
-    newWin.loadURL(`file://${__dirname}/progressBar.html`);
-    newWin.on('close', () => {
-        newWin = null
+    pgBarWin.loadURL(`file://${__dirname}/progressBar.html`);
+    pgBarWin.on('close', () => {
+        pgBarWin = null
     });
 
     //打开F12调试工具
-    newWin.webContents.openDevTools({mode: 'detach'});
+    pgBarWin.webContents.openDevTools({mode: 'detach'});
 
     //裁剪窗体成2px高，否则最少不能为2px高
-    newWin.setShape([
+    pgBarWin.setShape([
         {x: 0, y: 0, width: winW, height: 2}
     ]);
 }
