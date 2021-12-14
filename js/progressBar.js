@@ -24,23 +24,25 @@ function runPro(message) {
     myDate = new Date();
     let point_s = myDate.getTime();
     let point_e;
+    let targetTime;
 
     console.log(point_s);
     if (message.tab == 'l') {
+        targetTime = (Number(message.time_h) * 3600 + Number(message.time_m) * 60) * 1000;
+
         elem.css('width', '0');
         runningTimer = setInterval(function () {
-            //todo 
-        },10);
+            //todo
+        }, 10);
 
 
-
-       /* //animate 难以修正误差
-        elem.animate({width: '100%'}, 20000, 'linear', function () {
-            myDate = new Date();
-            point_e = myDate.getTime();
-            console.log(point_e);
-            console.log((point_e - point_s) / 1000);
-        });*/
+        /* //animate 难以修正误差
+         elem.animate({width: '100%'}, 20000, 'linear', function () {
+             myDate = new Date();
+             point_e = myDate.getTime();
+             console.log(point_e);
+             console.log((point_e - point_s) / 1000);
+         });*/
 
     } else {
 
