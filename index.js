@@ -7,12 +7,14 @@ const {screen} = require("@electron/remote/main");
 
 let setBoxWin, pgBarWin;
 let tray = null;
-
+let winW, winH;
 
 //解决show窗口时闪烁
 app.commandLine.appendSwitch('wm-window-animations-disabled');
 
 app.on('ready', function () {
+    winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
+    winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
     create_setBoxWin();
     create_bgBarWin();
     // pgBarWin.hide();
@@ -48,18 +50,14 @@ ipcMain.on('startRun_toM', (event, message) => {
     // console.log(JSON.stringify(message));
     // 主进程向渲染进程触发事件
     // console.log(JSON.stringify(message));
-    console.log(message.time_h);
-
-    //todo （发送目标的窗口）.webContents.send 才正确。
-    //https://www.cnblogs.com/ybixian/p/10878899.html
+    // console.log(message.time_h);
+    message.screenW = winW;
     pgBarWin.webContents.send('startRun_toR', message);
 })
 
 
 function create_setBoxWin() {
     // 创建窗口并加载页面
-    const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
-    const winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
     const wi = 329;
     const hi = 244;
     const pw = 16;
@@ -153,8 +151,7 @@ function create_setBoxWin() {
 }
 
 function create_bgBarWin() {
-    const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
-    const winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
+
     //调用 BrowserWindow打开新窗口
     pgBarWin = new BrowserWindow({
         width: winW,
@@ -179,6 +176,7 @@ function create_bgBarWin() {
     pgBarWin.on('close', () => {
         pgBarWin = null
     });
+
 
     //打开F12调试工具
     pgBarWin.webContents.openDevTools({mode: 'detach'});

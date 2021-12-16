@@ -1,48 +1,57 @@
 'use strict';
 
-const {remote, clipboard, ipcRenderer} = require('electron');
+// const electron = require('electron');
+// const {app, Menu, Tray} = electron;
+// const {BrowserWindow} = electron;
+// const path = require('path');
+const {ipcRenderer} = require('electron');
 let running = 's';// s(stop),l,r
-let myDate;
 let runningTimer;
+let myDate;
 
 // const winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
 // const elem = document.getElementById("ProBar");
 const elem = $('#ProBar');
 
-/*function runPro() {
-    let w = 10;
-    const id = setInterval(function () {
-        if (w >= 3440) {
-            clearInterval(id);
-        } else {
-            w++;
-            elem.style.width = w + 'px';
-        }
-    }, 10);
-}*/
-function runPro(message) {
-    myDate = new Date();
-    let point_s = myDate.getTime();
-    let point_e;
-    let targetTime;
 
-    console.log(point_s);
+function runPro(message) {
+    console.log(message.screenW);
+    myDate = new Date();
+    let point_start = (myDate.getHours() * 3600 + myDate.getMinutes() * 60 + myDate.getSeconds()) * 1000;
+
+    let targetTime;
+    let ftp = 10;
+    let w = 0;
+
+    console.log('point_start = ' + point_start);
     if (message.tab == 'l') {
         targetTime = (Number(message.time_h) * 3600 + Number(message.time_m) * 60) * 1000;
+//todo 限制最低10s倒计时
 
+        if (targetTime < point_start) {
+            targetTime = targetTime + 12 * 3600 * 1000;
+        }
+        ftp = (targetTime - point_start) / message.screenW;
+
+        // let step = 100 / ((targetTime - point_start) / ftp);
+
+        console.log('targetTime = ' + targetTime);
         elem.css('width', '0');
         runningTimer = setInterval(function () {
-            //todo
-        }, 10);
 
+            if (w < message.screenW) {
+                w = w + 1;
+                elem.css('width', w + 'px');
+                // console.log(w);
+            } else {
+                myDate = new Date();
+                let point_end = (myDate.getHours() * 3600 + myDate.getMinutes() * 60 + myDate.getSeconds()) * 1000;
 
-        /* //animate 难以修正误差
-         elem.animate({width: '100%'}, 20000, 'linear', function () {
-             myDate = new Date();
-             point_e = myDate.getTime();
-             console.log(point_e);
-             console.log((point_e - point_s) / 1000);
-         });*/
+                console.log('误差：' + (point_end - targetTime) / 1000 + 's');
+                clearInterval(runningTimer);
+            }
+        }, ftp);
+
 
     } else {
 
