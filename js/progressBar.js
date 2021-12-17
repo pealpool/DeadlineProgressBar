@@ -82,13 +82,14 @@ function runPro(message) {
         });
     } else {
         difTime = (Number(message.time_h) * 3600 + Number(message.time_m) * 60 +Number(message.time_s)) * 1000;
-        //todo 合并重复代码
+        //todo 合并重复代码, 等测试2h误差后。
         elem.css('width', '0');
         elem.animate({width: '100%'}, difTime, 'linear', function () {
             myDate = new Date();
             let point_end = (myDate.getHours() * 3600 + myDate.getMinutes() * 60 + myDate.getSeconds()) * 1000;
             console.log('误差：' + (point_end - point_start - difTime) / 1000 + 's');
             console.log(myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds());
+            //todo 到点提醒窗
         });
     }
 }
