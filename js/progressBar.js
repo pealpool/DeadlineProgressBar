@@ -82,7 +82,7 @@ function runPro(message) {
         });
     } else {
         difTime = (Number(message.time_h) * 3600 + Number(message.time_m) * 60 +Number(message.time_s)) * 1000;
-        //todo 合并重复代码, 等测试2h误差后。
+        //todo 合并重复代码, 等测试8h误差后。
         elem.css('width', '0');
         elem.animate({width: '100%'}, difTime, 'linear', function () {
             myDate = new Date();
