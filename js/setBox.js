@@ -325,11 +325,17 @@ $('#startNew').click(function () {
             time_h: time_h,
             time_m: time_m
         });
-
-
     } else {
         //勾选 #tab_r
-
+        time_h = $('#timeChrR_h .figureChr:nth-child(41)').text();
+        time_m = $('#timeChrR_m .figureChr:nth-child(41)').text();
+        time_s = $('#timeChrR_s .figureChr:nth-child(41)').text();
+        ipcRenderer.send('startRun_toM',{
+            tab: 'r',
+            time_h: time_h,
+            time_m: time_m,
+            time_s: time_s
+        });
     }
 
     $('#index_div').hide('scale', {percent: 10}, 100, function () {

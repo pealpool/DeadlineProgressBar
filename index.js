@@ -51,6 +51,7 @@ ipcMain.on('startRun_toM', (event, message) => {
     // 主进程向渲染进程触发事件
     // console.log(JSON.stringify(message));
     // console.log(message.time_h);
+    //todo winW 可能无用。
     message.screenW = winW;
     pgBarWin.webContents.send('startRun_toR', message);
 })
