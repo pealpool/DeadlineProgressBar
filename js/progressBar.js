@@ -14,6 +14,7 @@ let myDate;
 const elem = $('#ProBar');
 
 
+//todo 误差大
 function runPro(message) {
     console.log(message.screenW);
     myDate = new Date();
@@ -23,18 +24,18 @@ function runPro(message) {
     let ftp = 10;
     let w = 0;
 
-    console.log('point_start = ' + point_start);
+    // console.log('point_start = ' + point_start);
+    console.log(myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds());
     if (message.tab == 'l') {
         targetTime = (Number(message.time_h) * 3600 + Number(message.time_m) * 60) * 1000;
-//todo 限制最低10s倒计时
-
         if (targetTime < point_start) {
             targetTime = targetTime + 12 * 3600 * 1000;
         }
         ftp = (targetTime - point_start) / message.screenW;
-
+        if (ftp < 10) {
+            ftp = 10;
+        }
         // let step = 100 / ((targetTime - point_start) / ftp);
-
         console.log('targetTime = ' + targetTime);
         elem.css('width', '0');
         runningTimer = setInterval(function () {
@@ -48,6 +49,7 @@ function runPro(message) {
                 let point_end = (myDate.getHours() * 3600 + myDate.getMinutes() * 60 + myDate.getSeconds()) * 1000;
 
                 console.log('误差：' + (point_end - targetTime) / 1000 + 's');
+                console.log(myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds());
                 clearInterval(runningTimer);
             }
         }, ftp);
@@ -56,17 +58,6 @@ function runPro(message) {
     } else {
 
     }
-
-
-    /*    let w = 10;
-        const id = setInterval(function () {
-            if (w >= 3440) {
-                clearInterval(id);
-            } else {
-                w++;
-                elem.animate() = w + 'px';
-            }
-        }, 10);*/
 }
 
 const mbt = document.querySelector('#myBtTest');
