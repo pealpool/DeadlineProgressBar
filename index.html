@@ -1,645 +1,648 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="src/css/css.css">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="src/css/css.css">
 </head>
 <body id="index_body">
 <div id="index_div">
-    <div class="bigBoxT">
-        <div id="tab_l" class="myTab">
-            <div class="myOption">
-                <div class="optionBox">
-                    <div class="optionCircle"></div>
-                    <div class="opSelected">
-                        <div class="myV" style="display: none">
-                            <svg viewBox="0 0 1024 1024"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M997.888 70.144C686.592 261.12 460.8 502.272 358.912 623.104L110.08 428.032 0 516.608l429.568 437.248C503.296 764.416 737.792 394.24 1024 131.072l-26.112-60.928m0 0z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="tabTitle">到点提醒</div>
+  <div class="bigBoxT">
+    <div id="tab_l" class="myTab">
+      <div class="myOption">
+        <div class="optionBox">
+          <div class="optionCircle"></div>
+          <div class="opSelected">
+            <div class="myV" style="display: none">
+              <svg viewBox="0 0 1024 1024"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M997.888 70.144C686.592 261.12 460.8 502.272 358.912 623.104L110.08 428.032 0 516.608l429.568 437.248C503.296 764.416 737.792 394.24 1024 131.072l-26.112-60.928m0 0z"></path>
+              </svg>
             </div>
-            <div class="figureBigBox">
-                <div class="figureChrBox">
-                    <div class="figureCut  row_h">
-                        <div class="figureChrRow" id="timeChrL_h">
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">00</div>
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
-                            <div class="figureChr">04</div>
-
-                            <div class="figureChr">05</div>
-                            <div class="figureChr">06</div>
-                            <div class="figureChr">07</div>
-                            <div class="figureChr">08</div>
-                            <div class="figureChr">09</div>
-                            <div class="figureChr">10</div>
-                            <div class="figureChr">11</div>
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
-                            <div class="figureChr">14</div>
-
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">00</div>
-
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
-                            <div class="figureChr">04</div>
-                            <div class="figureChr">05</div>
-                            <div class="figureChr">06</div>
-                            <div class="figureChr">07</div>
-                            <div class="figureChr">08</div>
-                            <div class="figureChr">09</div>
-                            <div class="figureChr">10</div>
-
-                            <div class="figureChr">11</div>
-
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
-                            <div class="figureChr">14</div>
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-                            <div class="figureChr">21</div>
-
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">00</div>
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
-                            <div class="figureChr">04</div>
-                            <div class="figureChr">05</div>
-                            <div class="figureChr">06</div>
-                            <div class="figureChr">07</div>
-
-                            <div class="figureChr">08</div>
-                            <div class="figureChr">09</div>
-                            <div class="figureChr">10</div>
-                            <div class="figureChr">11</div>
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
-                            <div class="figureChr">14</div>
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
-
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">00</div>
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
-                        </div>
-                    </div>
-                    <div class="figureCut row_m">
-                        <div class="figureChrRow" id="timeChrL_m">
-                            <div class="figureChr">30</div>
-                            <div class="figureChr">31</div>
-                            <div class="figureChr">32</div>
-                            <div class="figureChr">33</div>
-                            <div class="figureChr">34</div>
-                            <div class="figureChr">35</div>
-                            <div class="figureChr">36</div>
-                            <div class="figureChr">37</div>
-                            <div class="figureChr">38</div>
-                            <div class="figureChr">39</div>
-
-                            <div class="figureChr">40</div>
-                            <div class="figureChr">41</div>
-                            <div class="figureChr">42</div>
-                            <div class="figureChr">43</div>
-                            <div class="figureChr">44</div>
-                            <div class="figureChr">45</div>
-                            <div class="figureChr">46</div>
-                            <div class="figureChr">47</div>
-                            <div class="figureChr">48</div>
-                            <div class="figureChr">49</div>
-
-                            <div class="figureChr">50</div>
-                            <div class="figureChr">51</div>
-                            <div class="figureChr">52</div>
-                            <div class="figureChr">53</div>
-                            <div class="figureChr">54</div>
-                            <div class="figureChr">55</div>
-                            <div class="figureChr">56</div>
-                            <div class="figureChr">57</div>
-                            <div class="figureChr">58</div>
-                            <div class="figureChr">59</div>
-
-                            <div class="figureChr">00</div>
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
-                            <div class="figureChr">04</div>
-                            <div class="figureChr">05</div>
-                            <div class="figureChr">06</div>
-                            <div class="figureChr">07</div>
-                            <div class="figureChr">08</div>
-                            <div class="figureChr">09</div>
-
-                            <div class="figureChr">10</div>
-
-                            <div class="figureChr">11</div>
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
-                            <div class="figureChr">14</div>
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">24</div>
-                            <div class="figureChr">25</div>
-                            <div class="figureChr">26</div>
-                            <div class="figureChr">27</div>
-                            <div class="figureChr">28</div>
-                            <div class="figureChr">29</div>
-                            <div class="figureChr">30</div>
-
-                            <div class="figureChr">31</div>
-                            <div class="figureChr">32</div>
-                            <div class="figureChr">33</div>
-                            <div class="figureChr">34</div>
-                            <div class="figureChr">35</div>
-                            <div class="figureChr">36</div>
-                            <div class="figureChr">37</div>
-                            <div class="figureChr">38</div>
-                            <div class="figureChr">39</div>
-                            <div class="figureChr">40</div>
-
-                            <div class="figureChr">41</div>
-                            <div class="figureChr">42</div>
-                            <div class="figureChr">43</div>
-                            <div class="figureChr">44</div>
-                            <div class="figureChr">45</div>
-                            <div class="figureChr">46</div>
-                            <div class="figureChr">47</div>
-                            <div class="figureChr">48</div>
-                            <div class="figureChr">49</div>
-                            <div class="figureChr">50</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="figureSmallBox">
-                    <div class="fgBox"></div>
-                    <div class="fgBox"></div>
-                    <div class="colon"><span>:</span></div>
-                    <div class="fgBox"></div>
-                    <div class="fgBox"></div>
-                </div>
-                <div class="fb_HourMinSec">
-                    <span>Hour</span>
-                    <span>Minute</span>
-                </div>
-            </div>
-            <div class="timeListBigBox">
-                <div class="timeListBoxFt">
-                    <div class="timeListTabLong">
-                        <span>11</span>
-                        <span>h</span>
-                        <span>10</span>
-                        <span>m</span>
-                    </div>
-                    <div class="timeListTabLong">
-                        <span>18</span>
-                        <span>h</span>
-                        <span>00</span>
-                        <span>m</span>
-                    </div>
-                </div>
-                <div class="timeListBoxBg">
-                    <div class="timeListAdd">+</div>
-                    <div class="timeListAdd">+</div>
-                    <div class="timeListAdd">+</div>
-                    <div class="timeListAdd">+</div>
-                    <div class="timeListAdd">+</div>
-                    <div class="timeListAdd">+</div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div id="tab_r" class="myTab act">
-            <div class="myOption">
-                <div class="optionBox">
-                    <div class="optionCircle"></div>
-                    <div class="opSelected">
-                        <div class="myV">
-                            <svg viewBox="0 0 1024 1024"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M997.888 70.144C686.592 261.12 460.8 502.272 358.912 623.104L110.08 428.032 0 516.608l429.568 437.248C503.296 764.416 737.792 394.24 1024 131.072l-26.112-60.928m0 0z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="tabTitle">倒数提醒</div>
+        <div class="tabTitle">到点提醒</div>
+      </div>
+      <div class="figureBigBox">
+        <div class="figureChrBox">
+          <div class="figureCut  row_h">
+            <div class="figureChrRow" id="timeChrL_h">
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">00</div>
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
+              <div class="figureChr">04</div>
+
+              <div class="figureChr">05</div>
+              <div class="figureChr">06</div>
+              <div class="figureChr">07</div>
+              <div class="figureChr">08</div>
+              <div class="figureChr">09</div>
+              <div class="figureChr">10</div>
+              <div class="figureChr">11</div>
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+              <div class="figureChr">14</div>
+
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">00</div>
+
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
+              <div class="figureChr">04</div>
+              <div class="figureChr">05</div>
+              <div class="figureChr">06</div>
+              <div class="figureChr">07</div>
+              <div class="figureChr">08</div>
+              <div class="figureChr">09</div>
+              <div class="figureChr">10</div>
+
+              <div class="figureChr">11</div>
+
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+              <div class="figureChr">14</div>
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
+              <div class="figureChr">21</div>
+
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">00</div>
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
+              <div class="figureChr">04</div>
+              <div class="figureChr">05</div>
+              <div class="figureChr">06</div>
+              <div class="figureChr">07</div>
+
+              <div class="figureChr">08</div>
+              <div class="figureChr">09</div>
+              <div class="figureChr">10</div>
+              <div class="figureChr">11</div>
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+              <div class="figureChr">14</div>
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">00</div>
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
             </div>
-            <div class="figureBigBox">
-                <div class="figureChrBox">
-                    <div class="figureCut  row_h">
-                        <div class="figureChrRow" id="timeChrR_h">
+          </div>
+          <div class="figureCut row_m">
+            <div class="figureChrRow" id="timeChrL_m">
+              <div class="figureChr">30</div>
+              <div class="figureChr">31</div>
+              <div class="figureChr">32</div>
+              <div class="figureChr">33</div>
+              <div class="figureChr">34</div>
+              <div class="figureChr">35</div>
+              <div class="figureChr">36</div>
+              <div class="figureChr">37</div>
+              <div class="figureChr">38</div>
+              <div class="figureChr">39</div>
 
-                            <div class="figureChr">08</div>
-                            <div class="figureChr">09</div>
-                            <div class="figureChr">10</div>
-                            <div class="figureChr">11</div>
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
-                            <div class="figureChr">14</div>
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
+              <div class="figureChr">40</div>
+              <div class="figureChr">41</div>
+              <div class="figureChr">42</div>
+              <div class="figureChr">43</div>
+              <div class="figureChr">44</div>
+              <div class="figureChr">45</div>
+              <div class="figureChr">46</div>
+              <div class="figureChr">47</div>
+              <div class="figureChr">48</div>
+              <div class="figureChr">49</div>
 
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">00</div>
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
+              <div class="figureChr">50</div>
+              <div class="figureChr">51</div>
+              <div class="figureChr">52</div>
+              <div class="figureChr">53</div>
+              <div class="figureChr">54</div>
+              <div class="figureChr">55</div>
+              <div class="figureChr">56</div>
+              <div class="figureChr">57</div>
+              <div class="figureChr">58</div>
+              <div class="figureChr">59</div>
 
-                            <div class="figureChr">04</div>
-                            <div class="figureChr">05</div>
-                            <div class="figureChr">06</div>
-                            <div class="figureChr">07</div>
-                            <div class="figureChr">08</div>
-                            <div class="figureChr">09</div>
-                            <div class="figureChr">10</div>
-                            <div class="figureChr">11</div>
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
+              <div class="figureChr">00</div>
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
+              <div class="figureChr">04</div>
+              <div class="figureChr">05</div>
+              <div class="figureChr">06</div>
+              <div class="figureChr">07</div>
+              <div class="figureChr">08</div>
+              <div class="figureChr">09</div>
 
-                            <div class="figureChr">14</div>
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
+              <div class="figureChr">10</div>
 
-                            <div class="figureChr">00</div>
+              <div class="figureChr">11</div>
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+              <div class="figureChr">14</div>
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
 
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
-                            <div class="figureChr">14</div>
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-                            <div class="figureChr">21</div>
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">24</div>
+              <div class="figureChr">25</div>
+              <div class="figureChr">26</div>
+              <div class="figureChr">27</div>
+              <div class="figureChr">28</div>
+              <div class="figureChr">29</div>
+              <div class="figureChr">30</div>
 
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">00</div>
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
-                            <div class="figureChr">04</div>
-                            <div class="figureChr">05</div>
-                            <div class="figureChr">06</div>
-                            <div class="figureChr">07</div>
+              <div class="figureChr">31</div>
+              <div class="figureChr">32</div>
+              <div class="figureChr">33</div>
+              <div class="figureChr">34</div>
+              <div class="figureChr">35</div>
+              <div class="figureChr">36</div>
+              <div class="figureChr">37</div>
+              <div class="figureChr">38</div>
+              <div class="figureChr">39</div>
+              <div class="figureChr">40</div>
 
-                            <div class="figureChr">08</div>
-                            <div class="figureChr">09</div>
-                            <div class="figureChr">10</div>
-                            <div class="figureChr">11</div>
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
-                            <div class="figureChr">14</div>
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
-
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">00</div>
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
-
-                        </div>
-                    </div>
-                    <div class="figureCut  row_m">
-                        <div class="figureChrRow" id="timeChrR_m">
-
-                            <div class="figureChr">40</div>
-                            <div class="figureChr">41</div>
-                            <div class="figureChr">42</div>
-                            <div class="figureChr">43</div>
-                            <div class="figureChr">44</div>
-                            <div class="figureChr">45</div>
-                            <div class="figureChr">46</div>
-                            <div class="figureChr">47</div>
-                            <div class="figureChr">48</div>
-                            <div class="figureChr">49</div>
-
-                            <div class="figureChr">50</div>
-                            <div class="figureChr">51</div>
-                            <div class="figureChr">52</div>
-                            <div class="figureChr">53</div>
-                            <div class="figureChr">54</div>
-                            <div class="figureChr">55</div>
-                            <div class="figureChr">56</div>
-                            <div class="figureChr">57</div>
-                            <div class="figureChr">58</div>
-                            <div class="figureChr">59</div>
-
-                            <div class="figureChr">00</div>
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
-                            <div class="figureChr">04</div>
-                            <div class="figureChr">05</div>
-                            <div class="figureChr">06</div>
-                            <div class="figureChr">07</div>
-                            <div class="figureChr">08</div>
-                            <div class="figureChr">09</div>
-
-                            <div class="figureChr">10</div>
-                            <div class="figureChr">11</div>
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
-                            <div class="figureChr">14</div>
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-
-                            <div class="figureChr">20</div>
-
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">24</div>
-                            <div class="figureChr">25</div>
-                            <div class="figureChr">26</div>
-                            <div class="figureChr">27</div>
-                            <div class="figureChr">28</div>
-                            <div class="figureChr">29</div>
-                            <div class="figureChr">30</div>
-
-                            <div class="figureChr">31</div>
-                            <div class="figureChr">32</div>
-                            <div class="figureChr">33</div>
-                            <div class="figureChr">34</div>
-                            <div class="figureChr">35</div>
-                            <div class="figureChr">36</div>
-                            <div class="figureChr">37</div>
-                            <div class="figureChr">38</div>
-                            <div class="figureChr">39</div>
-                            <div class="figureChr">40</div>
-
-                            <div class="figureChr">41</div>
-                            <div class="figureChr">42</div>
-                            <div class="figureChr">43</div>
-                            <div class="figureChr">44</div>
-                            <div class="figureChr">45</div>
-                            <div class="figureChr">46</div>
-                            <div class="figureChr">47</div>
-                            <div class="figureChr">48</div>
-                            <div class="figureChr">49</div>
-                            <div class="figureChr">50</div>
-
-                            <div class="figureChr">51</div>
-                            <div class="figureChr">52</div>
-                            <div class="figureChr">53</div>
-                            <div class="figureChr">54</div>
-                            <div class="figureChr">55</div>
-                            <div class="figureChr">56</div>
-                            <div class="figureChr">57</div>
-                            <div class="figureChr">58</div>
-                            <div class="figureChr">59</div>
-                            <div class="figureChr">00</div>
-
-                        </div>
-                    </div>
-                    <div class="figureCut  row_s">
-                        <div class="figureChrRow" id="timeChrR_s">
-
-                            <div class="figureChr">20</div>
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">24</div>
-                            <div class="figureChr">25</div>
-                            <div class="figureChr">26</div>
-                            <div class="figureChr">27</div>
-                            <div class="figureChr">28</div>
-                            <div class="figureChr">29</div>
-
-                            <div class="figureChr">30</div>
-                            <div class="figureChr">31</div>
-                            <div class="figureChr">32</div>
-                            <div class="figureChr">33</div>
-                            <div class="figureChr">34</div>
-                            <div class="figureChr">35</div>
-                            <div class="figureChr">36</div>
-                            <div class="figureChr">37</div>
-                            <div class="figureChr">38</div>
-                            <div class="figureChr">39</div>
-
-                            <div class="figureChr">40</div>
-                            <div class="figureChr">41</div>
-                            <div class="figureChr">42</div>
-                            <div class="figureChr">43</div>
-                            <div class="figureChr">44</div>
-                            <div class="figureChr">45</div>
-                            <div class="figureChr">46</div>
-                            <div class="figureChr">47</div>
-                            <div class="figureChr">48</div>
-                            <div class="figureChr">49</div>
-
-                            <div class="figureChr">50</div>
-                            <div class="figureChr">51</div>
-                            <div class="figureChr">52</div>
-                            <div class="figureChr">53</div>
-                            <div class="figureChr">54</div>
-                            <div class="figureChr">55</div>
-                            <div class="figureChr">56</div>
-                            <div class="figureChr">57</div>
-                            <div class="figureChr">58</div>
-                            <div class="figureChr">59</div>
-
-                            <div class="figureChr">00</div>
-
-                            <div class="figureChr">01</div>
-                            <div class="figureChr">02</div>
-                            <div class="figureChr">03</div>
-                            <div class="figureChr">04</div>
-                            <div class="figureChr">05</div>
-                            <div class="figureChr">06</div>
-                            <div class="figureChr">07</div>
-                            <div class="figureChr">08</div>
-                            <div class="figureChr">09</div>
-                            <div class="figureChr">10</div>
-
-                            <div class="figureChr">11</div>
-                            <div class="figureChr">12</div>
-                            <div class="figureChr">13</div>
-                            <div class="figureChr">14</div>
-                            <div class="figureChr">15</div>
-                            <div class="figureChr">16</div>
-                            <div class="figureChr">17</div>
-                            <div class="figureChr">18</div>
-                            <div class="figureChr">19</div>
-                            <div class="figureChr">20</div>
-
-                            <div class="figureChr">21</div>
-                            <div class="figureChr">22</div>
-                            <div class="figureChr">23</div>
-                            <div class="figureChr">24</div>
-                            <div class="figureChr">25</div>
-                            <div class="figureChr">26</div>
-                            <div class="figureChr">27</div>
-                            <div class="figureChr">28</div>
-                            <div class="figureChr">29</div>
-                            <div class="figureChr">30</div>
-
-                            <div class="figureChr">31</div>
-                            <div class="figureChr">32</div>
-                            <div class="figureChr">33</div>
-                            <div class="figureChr">34</div>
-                            <div class="figureChr">35</div>
-                            <div class="figureChr">36</div>
-                            <div class="figureChr">37</div>
-                            <div class="figureChr">38</div>
-                            <div class="figureChr">39</div>
-                            <div class="figureChr">40</div>
-                            <div class="figureChr">41</div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="figureSmallBox">
-                    <div class="fgBox"></div>
-                    <div class="fgBox"></div>
-                    <div class="colon"><span>:</span></div>
-                    <div class="fgBox"></div>
-                    <div class="fgBox"></div>
-                    <div class="colon"><span>:</span></div>
-                    <div class="fgBox"></div>
-                    <div class="fgBox"></div>
-                </div>
-                <div class="fb_HourMinSec">
-                    <span>Hour</span>
-                    <span>Minute</span>
-                    <span>Second</span>
-                </div>
+              <div class="figureChr">41</div>
+              <div class="figureChr">42</div>
+              <div class="figureChr">43</div>
+              <div class="figureChr">44</div>
+              <div class="figureChr">45</div>
+              <div class="figureChr">46</div>
+              <div class="figureChr">47</div>
+              <div class="figureChr">48</div>
+              <div class="figureChr">49</div>
+              <div class="figureChr">50</div>
             </div>
-            <div class="timeListBigBox">
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>1</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>3</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>5</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>10</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>20</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>25</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>30</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>40</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>60</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>m</span>
-                    <span>90</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>h</span>
-                    <span>2</span>
-                </div>
-                <div class="timeListTabShort">
-                    <span>h</span>
-                    <span>3</span>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="figureSmallBox">
+          <div class="fgBox"></div>
+          <div class="fgBox"></div>
+          <div class="colon"><span>:</span></div>
+          <div class="fgBox"></div>
+          <div class="fgBox"></div>
+        </div>
+        <div class="fb_HourMinSec">
+          <span>Hour</span>
+          <span>Minute</span>
+        </div>
+      </div>
+      <div class="timeListBigBox">
+        <div class="timeListBoxFt">
+          <div class="timeListTabLong">
+            <span>11</span>
+            <span>h</span>
+            <span>10</span>
+            <span>m</span>
+          </div>
+          <div class="timeListTabLong">
+            <span>18</span>
+            <span>h</span>
+            <span>00</span>
+            <span>m</span>
+          </div>
+        </div>
+        <div class="timeListBoxBg">
+          <div class="timeListAdd">+</div>
+          <div class="timeListAdd">+</div>
+          <div class="timeListAdd">+</div>
+          <div class="timeListAdd">+</div>
+          <div class="timeListAdd">+</div>
+          <div class="timeListAdd">+</div>
+        </div>
+      </div>
     </div>
-    <div class="bigBoxB">
-        <div id="hideButton_1" class="grayButton">隐藏</div>
-        <div id="startNew" class="greenButton">开始新倒数</div>
+    <div id="tab_r" class="myTab act">
+      <div class="myOption">
+        <div class="optionBox">
+          <div class="optionCircle"></div>
+          <div class="opSelected">
+            <div class="myV">
+              <svg viewBox="0 0 1024 1024"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M997.888 70.144C686.592 261.12 460.8 502.272 358.912 623.104L110.08 428.032 0 516.608l429.568 437.248C503.296 764.416 737.792 394.24 1024 131.072l-26.112-60.928m0 0z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="tabTitle">倒数提醒</div>
+      </div>
+      <div class="figureBigBox">
+        <div class="figureChrBox">
+          <div class="figureCut  row_h">
+            <div class="figureChrRow" id="timeChrR_h">
+
+              <div class="figureChr">08</div>
+              <div class="figureChr">09</div>
+              <div class="figureChr">10</div>
+              <div class="figureChr">11</div>
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+              <div class="figureChr">14</div>
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">00</div>
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
+
+              <div class="figureChr">04</div>
+              <div class="figureChr">05</div>
+              <div class="figureChr">06</div>
+              <div class="figureChr">07</div>
+              <div class="figureChr">08</div>
+              <div class="figureChr">09</div>
+              <div class="figureChr">10</div>
+              <div class="figureChr">11</div>
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+
+              <div class="figureChr">14</div>
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+
+              <div class="figureChr">00</div>
+
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+              <div class="figureChr">14</div>
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
+              <div class="figureChr">21</div>
+
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">00</div>
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
+              <div class="figureChr">04</div>
+              <div class="figureChr">05</div>
+              <div class="figureChr">06</div>
+              <div class="figureChr">07</div>
+
+              <div class="figureChr">08</div>
+              <div class="figureChr">09</div>
+              <div class="figureChr">10</div>
+              <div class="figureChr">11</div>
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+              <div class="figureChr">14</div>
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">00</div>
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
+
+            </div>
+          </div>
+          <div class="figureCut  row_m">
+            <div class="figureChrRow" id="timeChrR_m">
+
+              <div class="figureChr">40</div>
+              <div class="figureChr">41</div>
+              <div class="figureChr">42</div>
+              <div class="figureChr">43</div>
+              <div class="figureChr">44</div>
+              <div class="figureChr">45</div>
+              <div class="figureChr">46</div>
+              <div class="figureChr">47</div>
+              <div class="figureChr">48</div>
+              <div class="figureChr">49</div>
+
+              <div class="figureChr">50</div>
+              <div class="figureChr">51</div>
+              <div class="figureChr">52</div>
+              <div class="figureChr">53</div>
+              <div class="figureChr">54</div>
+              <div class="figureChr">55</div>
+              <div class="figureChr">56</div>
+              <div class="figureChr">57</div>
+              <div class="figureChr">58</div>
+              <div class="figureChr">59</div>
+
+              <div class="figureChr">00</div>
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
+              <div class="figureChr">04</div>
+              <div class="figureChr">05</div>
+              <div class="figureChr">06</div>
+              <div class="figureChr">07</div>
+              <div class="figureChr">08</div>
+              <div class="figureChr">09</div>
+
+              <div class="figureChr">10</div>
+              <div class="figureChr">11</div>
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+              <div class="figureChr">14</div>
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+
+              <div class="figureChr">20</div>
+
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">24</div>
+              <div class="figureChr">25</div>
+              <div class="figureChr">26</div>
+              <div class="figureChr">27</div>
+              <div class="figureChr">28</div>
+              <div class="figureChr">29</div>
+              <div class="figureChr">30</div>
+
+              <div class="figureChr">31</div>
+              <div class="figureChr">32</div>
+              <div class="figureChr">33</div>
+              <div class="figureChr">34</div>
+              <div class="figureChr">35</div>
+              <div class="figureChr">36</div>
+              <div class="figureChr">37</div>
+              <div class="figureChr">38</div>
+              <div class="figureChr">39</div>
+              <div class="figureChr">40</div>
+
+              <div class="figureChr">41</div>
+              <div class="figureChr">42</div>
+              <div class="figureChr">43</div>
+              <div class="figureChr">44</div>
+              <div class="figureChr">45</div>
+              <div class="figureChr">46</div>
+              <div class="figureChr">47</div>
+              <div class="figureChr">48</div>
+              <div class="figureChr">49</div>
+              <div class="figureChr">50</div>
+
+              <div class="figureChr">51</div>
+              <div class="figureChr">52</div>
+              <div class="figureChr">53</div>
+              <div class="figureChr">54</div>
+              <div class="figureChr">55</div>
+              <div class="figureChr">56</div>
+              <div class="figureChr">57</div>
+              <div class="figureChr">58</div>
+              <div class="figureChr">59</div>
+              <div class="figureChr">00</div>
+
+            </div>
+          </div>
+          <div class="figureCut  row_s">
+            <div class="figureChrRow" id="timeChrR_s">
+
+              <div class="figureChr">20</div>
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">24</div>
+              <div class="figureChr">25</div>
+              <div class="figureChr">26</div>
+              <div class="figureChr">27</div>
+              <div class="figureChr">28</div>
+              <div class="figureChr">29</div>
+
+              <div class="figureChr">30</div>
+              <div class="figureChr">31</div>
+              <div class="figureChr">32</div>
+              <div class="figureChr">33</div>
+              <div class="figureChr">34</div>
+              <div class="figureChr">35</div>
+              <div class="figureChr">36</div>
+              <div class="figureChr">37</div>
+              <div class="figureChr">38</div>
+              <div class="figureChr">39</div>
+
+              <div class="figureChr">40</div>
+              <div class="figureChr">41</div>
+              <div class="figureChr">42</div>
+              <div class="figureChr">43</div>
+              <div class="figureChr">44</div>
+              <div class="figureChr">45</div>
+              <div class="figureChr">46</div>
+              <div class="figureChr">47</div>
+              <div class="figureChr">48</div>
+              <div class="figureChr">49</div>
+
+              <div class="figureChr">50</div>
+              <div class="figureChr">51</div>
+              <div class="figureChr">52</div>
+              <div class="figureChr">53</div>
+              <div class="figureChr">54</div>
+              <div class="figureChr">55</div>
+              <div class="figureChr">56</div>
+              <div class="figureChr">57</div>
+              <div class="figureChr">58</div>
+              <div class="figureChr">59</div>
+
+              <div class="figureChr">00</div>
+
+              <div class="figureChr">01</div>
+              <div class="figureChr">02</div>
+              <div class="figureChr">03</div>
+              <div class="figureChr">04</div>
+              <div class="figureChr">05</div>
+              <div class="figureChr">06</div>
+              <div class="figureChr">07</div>
+              <div class="figureChr">08</div>
+              <div class="figureChr">09</div>
+              <div class="figureChr">10</div>
+
+              <div class="figureChr">11</div>
+              <div class="figureChr">12</div>
+              <div class="figureChr">13</div>
+              <div class="figureChr">14</div>
+              <div class="figureChr">15</div>
+              <div class="figureChr">16</div>
+              <div class="figureChr">17</div>
+              <div class="figureChr">18</div>
+              <div class="figureChr">19</div>
+              <div class="figureChr">20</div>
+
+              <div class="figureChr">21</div>
+              <div class="figureChr">22</div>
+              <div class="figureChr">23</div>
+              <div class="figureChr">24</div>
+              <div class="figureChr">25</div>
+              <div class="figureChr">26</div>
+              <div class="figureChr">27</div>
+              <div class="figureChr">28</div>
+              <div class="figureChr">29</div>
+              <div class="figureChr">30</div>
+
+              <div class="figureChr">31</div>
+              <div class="figureChr">32</div>
+              <div class="figureChr">33</div>
+              <div class="figureChr">34</div>
+              <div class="figureChr">35</div>
+              <div class="figureChr">36</div>
+              <div class="figureChr">37</div>
+              <div class="figureChr">38</div>
+              <div class="figureChr">39</div>
+              <div class="figureChr">40</div>
+              <div class="figureChr">41</div>
+
+            </div>
+          </div>
+        </div>
+        <div class="figureSmallBox">
+          <div class="fgBox"></div>
+          <div class="fgBox"></div>
+          <div class="colon"><span>:</span></div>
+          <div class="fgBox"></div>
+          <div class="fgBox"></div>
+          <div class="colon"><span>:</span></div>
+          <div class="fgBox"></div>
+          <div class="fgBox"></div>
+        </div>
+        <div class="fb_HourMinSec">
+          <span>Hour</span>
+          <span>Minute</span>
+          <span>Second</span>
+        </div>
+      </div>
+      <div class="timeListBigBox">
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>1</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>3</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>5</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>10</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>20</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>25</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>30</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>40</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>60</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>m</span>
+          <span>90</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>h</span>
+          <span>2</span>
+        </div>
+        <div class="timeListTabShort">
+          <span>h</span>
+          <span>3</span>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="bigBoxB">
+    <div id="hideButton_1" class="grayButton">隐藏</div>
+    <div id="startNew" class="greenButton">开始新倒数</div>
+  </div>
 </div>
 </body>
 
 
-<script> if (typeof module === 'object') {
+<!--<script> if (typeof module === 'object') {
     window.module = module;
     module = undefined;
-}</script>
+}</script>-->
 <!--这句是解决代码Electron与JQuery冲突,期间的为自己的js和jQuery,记住,要将自己的js和引入的jQuery放在这里两句代码中间.（第一句）-->
 
-<script src="src/js/jquery-3.6.0.min.js"></script>
-<script src="src/js/jquery-ui.min.js"></script>
+<!--<script src="src/js/jquery-3.6.0.min.js"></script>
+<script src="src/js/jquery-ui.min.js"></script>-->
+<script>window.$ = window.jQuery = require('jquery');</script>
 <script type="module" src="src/js/setBox.js"></script>
 
-<script> if (window.module) module = window.module;</script>
+<!--<script> if (window.module) module = window.module;</script>-->
 <!--这句是解决代码Electron与JQuery冲突,期间的为自己的js和jQuery,记住,要将自己的js和引入的jQuery放在这里两句代码中间.（第二句）-->
 
 
