@@ -1,12 +1,10 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'DigitalNumbers-Regular';
-  src: url("../../img/DigitalNumbers-Regular.ttf");
-}
+  font-family: "DigitalNumbers-Regular";
+  src: url("../../img/DigitalNumbers-Regular.ttf"); }
 @font-face {
-  font-family: 'SourceHanSansCN-Regular';
-  src: url("../../img/SourceHanSansCN-Regular.otf");
-}
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../../img/SourceHanSansCN-Regular.otf"); }
 /*其中fontName替换为你的字体名称*/
 #ProgressBar_body {
   padding: 0;
@@ -31,7 +29,7 @@
   margin: 0;
   width: 329px;
   height: 244px;
-  font-family: 'SourceHanSansCN-Regular';
+  font-family: "SourceHanSansCN-Regular";
   overflow: hidden;
   -webkit-user-select: none; }
 
@@ -43,7 +41,7 @@
   width: 329px;
   height: 244px;
   border-radius: 10px;
-  background-color: #2B2B2B;
+  background-color: #2b2b2b;
   overflow: hidden;
   box-shadow: 0 1.4px 4.6px -13px rgba(0, 0, 0, 0.364), 0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536), 0px 6px 25px -13px rgba(0, 0, 0, 0.9); }
 
@@ -58,21 +56,21 @@
 .myTab {
   float: left;
   height: 200px;
-  background-color: #2B2B2B;
-  border: 1px solid #1E1E1E;
+  background-color: #2b2b2b;
+  border: 1px solid #1e1e1e;
   box-sizing: border-box;
-  transition: all .3s ease-in-out, transform 0s ease-in-out; }
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out; }
   .myTab:hover {
     border: 1px solid #45484a; }
   .myTab.act {
-    border: 1px solid #3C3F41;
-    background-color: #3C3F41; }
+    border: 1px solid #3c3f41;
+    background-color: #3c3f41; }
     .myTab.act .tabTitle, .myTab.act .figureChr, .myTab.act .colon, .myTab.act .timeListTabShort, .myTab.act .timeListTabShort {
-      color: #BBBBBB; }
+      color: #bbbbbb; }
     .myTab.act .timeListTabShort, .myTab.act .timeListTabLong {
-      background-color: #2B2B2B; }
+      background-color: #2b2b2b; }
     .myTab.act .timeListAdd {
-      background-color: #3C3F41; }
+      background-color: #3c3f41; }
     .myTab.act .fgBox {
       background: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%); }
 
@@ -97,10 +95,10 @@
   float: left;
   width: 25px;
   height: 25px;
-  background-color: #2B2B2B;
-  border: 1px solid #3C3F41;
+  background-color: #2b2b2b;
+  border: 1px solid #3c3f41;
   box-sizing: border-box;
-  box-shadow: inset 0 0 10px #3C3F41;
+  box-shadow: inset 0 0 10px #3c3f41;
   border-radius: 50%; }
 
 .tabTitle {
@@ -109,7 +107,7 @@
   font-size: 18px;
   line-height: 26px;
   color: #838383;
-  transition: all .3s ease-in-out, transform 0s ease-in-out; }
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out; }
 
 .opSelected {
   position: absolute;
@@ -131,10 +129,10 @@
   float: left;
   width: 23px;
   height: 39px;
-  background: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%);
+  background: linear-gradient(180deg, #2b2b2b 0%, #3d3d3d 27.08%, #2b2b2b 100%);
   border-radius: 3px;
   margin-right: 2px;
-  transition: all .3s ease-in-out, transform 0s ease-in-out; }
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out; }
 
 .colon {
   float: left;
@@ -142,8 +140,8 @@
   height: 39px;
   color: #838383;
   font-size: 24px;
-  font-family: 'DigitalNumbers-Regular';
-  transition: all .3s ease-in-out, transform 0s ease-in-out; }
+  font-family: "DigitalNumbers-Regular";
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out; }
   .colon span {
     margin-left: -4px;
     line-height: 45px; }
@@ -152,7 +150,7 @@
   float: left;
   height: 11px;
   font-size: 9px;
-  color: #1E1E1E; }
+  color: #1e1e1e; }
   .fb_HourMinSec span {
     float: left; }
     .fb_HourMinSec span:nth-child(1) {
@@ -184,12 +182,12 @@
 .figureChr {
   width: 46px;
   height: 39px;
-  font-family: 'DigitalNumbers-Regular';
+  font-family: "DigitalNumbers-Regular";
   font-size: 24px;
   line-height: 39px;
   color: #838383;
   letter-spacing: 5.5px;
-  transition: all .3s ease-in-out, transform 0s ease-in-out;
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out;
   transition: all 0s cubic-bezier(0.19, 1, 0.22, 1); }
 
 .timeListBigBox {
@@ -207,11 +205,11 @@
   height: 20px;
   margin-right: 4px;
   margin-bottom: 4px;
-  background: #2B2B2B;
-  border: 1px solid #1E1E1E;
+  background: #2b2b2b;
+  border: 1px solid #1e1e1e;
   box-sizing: border-box;
   border-radius: 3px;
-  transition: all .3s ease-in-out, transform 0s ease-in-out; }
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out; }
   .timeListAdd:hover {
     filter: brightness(0.7); }
 
@@ -225,12 +223,12 @@
   height: 20px;
   margin-right: 4px;
   margin-bottom: 4px;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   box-sizing: border-box;
   border-radius: 3px;
   overflow: hidden;
   padding-left: 2px;
-  transition: all .3s ease-in-out, transform 0s ease-in-out; }
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out; }
   .timeListTabLong span {
     float: left; }
     .timeListTabLong span:nth-child(odd) {
@@ -254,12 +252,12 @@
   height: 20px;
   margin-right: 4px;
   margin-bottom: 4px;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   box-sizing: border-box;
   border-radius: 3px;
   overflow: hidden;
   padding-right: 3px;
-  transition: all .3s ease-in-out, transform 0s ease-in-out; }
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out; }
   .timeListTabShort span {
     float: right; }
     .timeListTabShort span:nth-child(even) {
@@ -281,7 +279,7 @@
 
 .grayButton {
   width: 126px;
-  background-color: #3C3F41;
+  background-color: #3c3f41;
   border-radius: 0 0 0 5px;
   color: #838383;
   float: left;
@@ -289,27 +287,27 @@
   text-align: center;
   font-size: 18px;
   line-height: 28px;
-  transition: all .3s ease-in-out, transform 0s ease-in-out; }
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out; }
   .grayButton:hover {
     background-color: #45484a; }
   .grayButton:active {
-    background-color: #3C3F41; }
+    background-color: #3c3f41; }
 
 .greenButton {
   width: 189px;
-  background-color: #27D600;
+  background-color: #27d600;
   border-radius: 0 0 5px 0;
-  color: #2B2B2B;
+  color: #2b2b2b;
   float: left;
   height: 30px;
   text-align: center;
   font-size: 18px;
   line-height: 28px;
-  transition: all .3s ease-in-out, transform 0s ease-in-out; }
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out; }
   .greenButton:hover {
     background-color: #2fff00; }
   .greenButton:active {
-    background-color: #27D600; }
+    background-color: #27d600; }
 
 #startNew {
   margin-left: 2px; }

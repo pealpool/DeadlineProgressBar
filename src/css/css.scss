@@ -1,13 +1,13 @@
-$Bg: #2B2B2B;
-$DaBg: #1E1E1E;
-$frontD: #3C3F41;
+$Bg: #2b2b2b;
+$DaBg: #1e1e1e;
+$frontD: #3c3f41;
 $frontL: #45484a;
-$L1: linear-gradient(180deg, #2B2B2B 0%, #3D3D3D 27.08%, #2B2B2B 100%);
+$L1: linear-gradient(180deg, #2b2b2b 0%, #3d3d3d 27.08%, #2b2b2b 100%);
 $L2: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
-$fontL: #BBBBBB;
+$fontL: #bbbbbb;
 $fontD: #838383;
 $GreenL: #2fff00;
-$GreenD: #27D600;
+$GreenD: #27d600;
 $bigBox-W: 329px;
 $bigBox-H: 244px;
 $bigBoxT-H: 200px;
@@ -21,11 +21,11 @@ $frSizeSmall: 10px;
 $frSizeMin: 9px;
 $fgChrH: 39px;
 @mixin tra {
-  transition: all .3s ease-in-out, transform 0s ease-in-out;
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out;
 }
 
 @mixin myHoverD {
-  filter: brightness(.7);
+  filter: brightness(0.7);
 }
 
 @mixin myButton {
@@ -37,15 +37,14 @@ $fgChrH: 39px;
   @include tra;
 }
 
-
 @font-face {
-  font-family: 'DigitalNumbers-Regular';
-  src: url('../../img/DigitalNumbers-Regular.ttf');
+  font-family: "DigitalNumbers-Regular";
+  src: url("../../img/DigitalNumbers-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'SourceHanSansCN-Regular';
-  src: url('../../img/SourceHanSansCN-Regular.otf');
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../../img/SourceHanSansCN-Regular.otf");
 }
 
 /*其中fontName替换为你的字体名称*/
@@ -76,7 +75,7 @@ $fgChrH: 39px;
   margin: 0;
   width: $bigBox-W;
   height: $bigBox-H;
-  font-family: 'SourceHanSansCN-Regular';
+  font-family: "SourceHanSansCN-Regular";
   overflow: hidden;
   -webkit-user-select: none;
   //-webkit-app-region: drag;
@@ -93,8 +92,7 @@ $fgChrH: 39px;
   background-color: $Bg;
   overflow: hidden;
   box-shadow: 0 1.4px 4.6px -13px rgba(0, 0, 0, 0.364),
-  0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536),
-  0px 6px 25px -13px rgba(0, 0, 0, 0.9);
+  0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536), 0px 6px 25px -13px rgba(0, 0, 0, 0.9);
 }
 
 .bigBoxT {
@@ -144,7 +142,6 @@ $fgChrH: 39px;
     & .fgBox {
       background: $L2;
     }
-
   }
 }
 
@@ -201,7 +198,6 @@ $fgChrH: 39px;
   fill: $GreenL;
 }
 
-
 .figureBigBox {
   position: relative;
   margin-left: 6px;
@@ -225,7 +221,7 @@ $fgChrH: 39px;
   height: $fgChrH;
   color: $fontD;
   font-size: $frSizeDig;
-  font-family: 'DigitalNumbers-Regular';
+  font-family: "DigitalNumbers-Regular";
   @include tra;
 
   span {
@@ -255,7 +251,6 @@ $fgChrH: 39px;
       margin-left: 31px;
     }
   }
-
 }
 
 .figureChrBox {
@@ -286,13 +281,13 @@ $fgChrH: 39px;
 .figureChr {
   width: 46px;
   height: $fgChrH;
-  font-family: 'DigitalNumbers-Regular';
+  font-family: "DigitalNumbers-Regular";
   font-size: $frSizeDig;
   line-height: $fgChrH;
   color: $fontD;
   letter-spacing: 5.5px;
   @include tra;
-  transition: all .0s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .timeListBigBox {
@@ -407,7 +402,6 @@ $fgChrH: 39px;
   &:active {
     transform: translateY(2px);
   }
-
 }
 
 .grayButton {

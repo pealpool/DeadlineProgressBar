@@ -6,13 +6,21 @@
   "appName": "DeadLineProgressBar",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "electron ."
+    "dev": "electron .",
+    "lint:prettier": "prettier --write \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/"
   },
   "author": "pealpool",
   "license": "ISC",
   "devDependencies": {
     "electron": "^19.0.4",
-    "html-webpack-plugin": "^5.5.0"
+    "html-webpack-plugin": "^5.5.0",
+    "postcss-html": "^1.4.1",
+    "prettier": "^2.6.2",
+    "stylelint": "^14.9.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-order": "^5.0.0"
   },
   "dependencies": {
     "@electron/remote": "^2.0.1",
