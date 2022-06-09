@@ -14,7 +14,7 @@
     factory(jQuery);
   }
 })(function ($) {
-  "use strict";
+  ("use strict");
 
   $.ui = $.ui || {};
 
@@ -651,12 +651,11 @@
                 (backgroundColor === "" || backgroundColor === "transparent") &&
                 curElem &&
                 curElem.style
-                ) {
+              ) {
                 try {
                   backgroundColor = jQuery.css(curElem, "backgroundColor");
                   curElem = curElem.parentNode;
-                } catch (e) {
-                }
+                } catch (e) {}
               }
 
               value = value.blend(
@@ -923,12 +922,12 @@
         return function (classNames, speed, easing, callback) {
           return speed
             ? $.effects.animateClass.call(
-              this,
-              {add: classNames},
-              speed,
-              easing,
-              callback
-            )
+                this,
+                { add: classNames },
+                speed,
+                easing,
+                callback
+              )
             : orig.apply(this, arguments);
         };
       })($.fn.addClass),
@@ -937,12 +936,12 @@
         return function (classNames, speed, easing, callback) {
           return arguments.length > 1
             ? $.effects.animateClass.call(
-              this,
-              {remove: classNames},
-              speed,
-              easing,
-              callback
-            )
+                this,
+                { remove: classNames },
+                speed,
+                easing,
+                callback
+              )
             : orig.apply(this, arguments);
         };
       })($.fn.removeClass),
@@ -956,7 +955,7 @@
             } else {
               return $.effects.animateClass.call(
                 this,
-                force ? {add: classNames} : {remove: classNames},
+                force ? { add: classNames } : { remove: classNames },
                 speed,
                 easing,
                 callback
@@ -966,7 +965,7 @@
             // Without force parameter
             return $.effects.animateClass.call(
               this,
-              {toggle: classNames},
+              { toggle: classNames },
               force,
               speed,
               easing
@@ -1086,8 +1085,8 @@
 
           // Transfer positioning properties to the wrapper
           if (element.css("position") === "static") {
-            wrapper.css({position: "relative"});
-            element.css({position: "relative"});
+            wrapper.css({ position: "relative" });
+            element.css({ position: "relative" });
           } else {
             $.extend(props, {
               position: element.css("position"),
@@ -1337,7 +1336,7 @@
       }
 
       // Convert to an object
-      effect = {effect: effect};
+      effect = { effect: effect };
 
       // Catch (effect, null, ...)
       if (options == null) {
@@ -1373,10 +1372,10 @@
       effect.duration = $.fx.off
         ? 0
         : typeof speed === "number"
-          ? speed
-          : speed in $.fx.speeds
-            ? $.fx.speeds[speed]
-            : $.fx.speeds._default;
+        ? speed
+        : speed in $.fx.speeds
+        ? $.fx.speeds[speed]
+        : $.fx.speeds._default;
 
       effect.complete = callback || options.complete;
 
@@ -1570,14 +1569,14 @@
           return this.css(
             "clip",
             "rect(" +
-            clipObj.top +
-            "px " +
-            clipObj.right +
-            "px " +
-            clipObj.bottom +
-            "px " +
-            clipObj.left +
-            "px)"
+              clipObj.top +
+              "px " +
+              clipObj.right +
+              "px " +
+              clipObj.bottom +
+              "px " +
+              clipObj.left +
+              "px)"
           );
         }
         return parseClip(this.css("clip"), this);
@@ -1686,8 +1685,7 @@
         var pow2,
           bounce = 4;
 
-        while (p < ((pow2 = Math.pow(2, --bounce)) - 1) / 11) {
-        }
+        while (p < ((pow2 = Math.pow(2, --bounce)) - 1) / 11) {}
         return (
           1 / Math.pow(4, 3 - bounce) - 7.5625 * Math.pow((pow2 * 3 - 2) / 22 - p, 2)
         );
@@ -1734,7 +1732,7 @@
       element = $(this),
       direction = options.direction || "up",
       start = element.cssClip(),
-      animate = {clip: $.extend({}, start)},
+      animate = { clip: $.extend({}, start) },
       placeholder = $.effects.createPlaceholder(element);
 
     animate.clip[map[direction][0]] = animate.clip[map[direction][1]];
@@ -1807,7 +1805,7 @@
     }
 
     if (show) {
-      downAnim = {opacity: 1};
+      downAnim = { opacity: 1 };
       downAnim[ref] = refValue;
 
       // If we are showing, force opacity 0 and set the initial position
@@ -1838,7 +1836,7 @@
 
     // Last Bounce when Hiding
     if (hide) {
-      upAnim = {opacity: 0};
+      upAnim = { opacity: 0 };
       upAnim[ref] = (motion ? "-=" : "+=") + distance;
 
       element.animate(upAnim, speed, easing);
@@ -2115,8 +2113,8 @@
       duration = options.duration / 2,
       placeholder = $.effects.createPlaceholder(element),
       start = element.cssClip(),
-      animation1 = {clip: $.extend({}, start)},
-      animation2 = {clip: $.extend({}, start)},
+      animation1 = { clip: $.extend({}, start) },
+      animation2 = { clip: $.extend({}, start) },
       distance = [start[ref[0]], start[ref[1]]],
       queuelen = element.queue().length;
 
@@ -2469,11 +2467,11 @@
 
       // Anims - 1 opacity "toggles"
       for (; i < anims; i++) {
-        element.animate({opacity: animateTo}, duration, options.easing);
+        element.animate({ opacity: animateTo }, duration, options.easing);
         animateTo = 1 - animateTo;
       }
 
-      element.animate({opacity: animateTo}, duration, options.easing);
+      element.animate({ opacity: animateTo }, duration, options.easing);
 
       element.queue(done);
 
