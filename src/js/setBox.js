@@ -3,6 +3,7 @@
 // const {app, Menu, Tray} = electron;
 // const {BrowserWindow} = electron;
 // const path = require('path');
+// window.$ = window.jQuery = require('jquery');
 const { BrowserWindow, screen } = require("@electron/remote");
 const { ipcRenderer } = require("electron");
 

@@ -1,8 +1,4 @@
 "use strict";
-// 使用 remote API 来获取渲染页面的当前视窗
-import $ from "jquery";
-// import './css/css.scss';
-
 const btn = document.querySelector("#startNew");
 //渲染进程没法直接调用主进程中的模块，但是我们可以通过 electron中的remote模块间接的调用主进程中的模块
 //remote执行主进程与渲染进程之间的IPC
