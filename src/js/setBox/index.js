@@ -1,4 +1,7 @@
 "use strict";
+import "./dragWindow.js"; //拖动窗体
+import "./startButton.js"; //开始按钮
+import "./hideButton.js"; //隐藏按钮
 // const electron = require('electron');
 // const {app, Menu, Tray} = electron;
 // const {BrowserWindow} = electron;
@@ -6,35 +9,6 @@
 // window.$ = window.jQuery = require('jquery');
 const { BrowserWindow, screen } = require("@electron/remote");
 const { ipcRenderer } = require("electron");
-
-//拖动窗体
-let wX = 0;
-let wY = 0;
-let dragging = false;
-let scrolling = false;
-$("#index_body").mousedown(function (e) {
-  dragging = true;
-  wX = e.pageX;
-  wY = e.pageY;
-  // console.log(wX,wY);
-  $(window).mousemove(function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    if (dragging) {
-      let xLoc = e.screenX - wX;
-      let yLoc = e.screenY - wY;
-      // console.log(xLoc, yLoc);
-      try {
-        window.moveTo(xLoc, yLoc);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  });
-  $(window).mouseup(function () {
-    dragging = false;
-  });
-});
 
 //拖动时间
 let fgChrH = 39;
@@ -231,6 +205,8 @@ function myRound(number, precision) {
   return (Math.round(number * _sign * _pow) / _pow) * _sign;
 }
 
+let scrolling = false;
+
 function myAnimate(obj, target, speed, callback) {
   if (!scrolling) {
     scrolling = true;
@@ -330,42 +306,8 @@ $(".figureCut").on("mousewheel", function (e) {
   }
 });
 
-$("#startNew").click(function () {
-  let time_h = 0,
-    time_m = 0,
-    time_s = 0;
-  if ($("#tab_r").attr("class") == "myTab") {
-    //勾选 #tab_l
-    time_h = $("#timeChrL_h .figureChr:nth-child(41)").text();
-    time_m = $("#timeChrL_m .figureChr:nth-child(41)").text();
-    ipcRenderer.send("startRun_toM", {
-      tab: "l",
-      time_h: time_h,
-      time_m: time_m,
-    });
-  } else {
-    //勾选 #tab_r
-    time_h = $("#timeChrR_h .figureChr:nth-child(41)").text();
-    time_m = $("#timeChrR_m .figureChr:nth-child(41)").text();
-    time_s = $("#timeChrR_s .figureChr:nth-child(41)").text();
-    ipcRenderer.send("startRun_toM", {
-      tab: "r",
-      time_h: time_h,
-      time_m: time_m,
-      time_s: time_s,
-    });
-  }
 
-  $("#index_div").hide("scale", { percent: 10 }, 100, function () {
-    ipcRenderer.send("hideWin");
-  });
-});
 
-$("#hideButton_1").click(function () {
-  $("#index_div").hide("scale", {percent: 10}, 100, function () {
-    ipcRenderer.send("hideWin");
-  });
-});
 
 ipcRenderer.on("showWin", (event, message) => {
   $("#index_div").show("scale", {percent: 10}, 100);

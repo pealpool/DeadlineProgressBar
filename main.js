@@ -169,7 +169,7 @@ function create_bgBarWin() {
   //打开一个新的窗口
   // newWin.loadURL(`file://${__dirname}/otherWin.html`);
   //新建窗口
-  pgBarWin.loadURL(`file://${__dirname}/progressBar.html`);
+  pgBarWin.loadURL(`file://${__dirname}/src/progressBar.html`);
   pgBarWin.on("close", () => {
     pgBarWin = null;
   });
