@@ -4,7 +4,7 @@ $("#startNew").click(function () {
   let time_h = 0,
     time_m = 0,
     time_s = 0;
-  if ($("#tab_r").attr("class") == "myTab") {
+  if ($("#tab_r").attr("class") === "myTab") {
     //勾选 #tab_l
     time_h = $("#timeChrL_h .figureChr:nth-child(41)").text();
     time_m = $("#timeChrL_m .figureChr:nth-child(41)").text();
