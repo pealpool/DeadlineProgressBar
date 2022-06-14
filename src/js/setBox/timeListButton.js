@@ -17,6 +17,30 @@ $(".timeListTabShort").click(function () {
   let time_h = $("#timeChrR_h .figureChr:nth-child(41)").text();
   let time_m = $("#timeChrR_m .figureChr:nth-child(41)").text();
   let time_s = $("#timeChrR_s .figureChr:nth-child(41)").text();
+
+  console.log(upOrDown(h, time_h, true));
+  console.log(upOrDown(m, time_m, false));
+  console.log(upOrDown(0, time_s, false));
+  if (upOrDown(0, time_s, false)) {
+    //todo go on
+  }
 });
 
-function upOrDown(num) {}
+/**
+ * 决定div上移还是下移
+ * @param newValue 新值
+ * @param oldValue 原来值
+ * @param isHours true:24进制，false:60进制
+ * @returns {boolean} true:div上移，false:下滚
+ */
+function upOrDown(newValue, oldValue, isHours) {
+  let hex = 30;
+  if (isHours) {
+    hex = 12;
+  }
+  if (newValue > oldValue) {
+    return parseInt(newValue) - parseInt(oldValue) <= hex;
+  } else {
+    return parseInt(oldValue) - parseInt(newValue) > hex;
+  }
+}
