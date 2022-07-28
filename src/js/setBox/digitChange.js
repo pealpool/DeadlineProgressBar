@@ -1,12 +1,9 @@
 "use strict";
 
 //拖动时间
-let fgChrH = 39;
-let tY = 0;
+const fgChrH = 39;
 let timeDragging = false;
 let myEle;
-let mh = 0; //#figureChrRow的margin-top
-let len = 0;
 let divNum = 0;
 let divTarget = 0;
 let mgt = "";
@@ -19,7 +16,7 @@ $(".figureCut").mousedown(function (e) {
   e.preventDefault();
   timeDragging = true;
   // tX = e.pageX;
-  tY = e.screenY;
+  let tY = e.screenY;
   let elY = Number(
     $(myEle)
       .css("transform")
@@ -28,13 +25,10 @@ $(".figureCut").mousedown(function (e) {
   );
   mgt = $(myEle).css("margin-top");
   mgt = mgt.substring(0, mgt.length - 2);
-  // console.log('margin-top = ' + mgt);
-  // let elY = Number(document.defaultView.getComputedStyle(myEle, null).transform.replace(/[^0-9\-,]/g, '').split(',')[5]);
-  // $(window).mousemove(function (e) {
   $(window).bind("mousemove", function (e) {
     // console.log(myEle);
     if (timeDragging) {
-      len = e.screenY - tY;
+      let len = e.screenY - tY;
       // let yLoc = elY + len;
       try {
         // console.log(yLoc);
@@ -114,11 +108,9 @@ function scrollDiv(that, hOrM) {
       // console.log('add Bottom ' + topNum);
       divNum--;
     }
-    mh = -fgChrH * divNum;
-    // console.log('mgt = ' + mgt + ', mh = ' + mh);
-    // mgt = Number(mgt) + Number(mh);
+    let mh = -fgChrH * divNum; //#figureChrRow的margin-top
+
     $(myEle).css("margin-top", Number(mgt) + Number(mh) + "px");
-    // console.log('margin-top = ' + (Number(mgt) + Number(mh)));
   }
 }
 
@@ -229,9 +221,6 @@ $(".figureCut").on("mousewheel", function (e) {
         }
         $(myEle).css("margin-top", Number(mt) + l + "px");
       });
-
-      // divTarget = myRound(len / fgChrH, 0);
-      // scrollDiv(myEle, hOrM);
     } catch (err) {
       console.log(err);
     }

@@ -12,6 +12,7 @@ import "./hideButton.js"; //隐藏按钮
 import "./digitChange.js"; //数字变化
 import "./timeListButton.js"; //预设按钮
 
+
 $("#tab_l").click(function () {
   $(this).addClass("act");
   // $(this).find('.opSelected').eq(0).css('display', 'inline');
@@ -69,11 +70,6 @@ function createBarWin() {
     ]);
 }
 */
-
-
-
-
-
 
 ipcRenderer.on("showWin", (event, message) => {
   $("#index_div").show("scale", {percent: 10}, 100);

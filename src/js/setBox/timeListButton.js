@@ -44,3 +44,8 @@ function upOrDown(newValue, oldValue, isHours) {
     return parseInt(oldValue) - parseInt(newValue) > hex;
   }
 }
+
+function clickAndScroll(newValue, oldValue, isHours, whichDiv) {
+  if (upOrDown(newValue, oldValue, isHours)) {
+  }
+}
